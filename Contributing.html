@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>MetaMask</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="MetaMask project documentation">
+        <link rel="icon" type="image/png" href="https://metamask.io/img/metamask.png">
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+            @import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+            * {
+                box-sizing: border-box;
+            }
+
+            html,
+            body {
+                color: #333;
+                font-family: 'Roboto', sans-serif;
+                font-size: 16px;
+                line-height: 28px;
+                margin: 0;
+            }
+
+            body {
+                display: flex;
+                flex-direction: column;
+            }
+
+            header {
+                border-bottom: 1px solid lightgray;
+                display: flex;
+                flex-grow: 0;
+                flex-shrink: 0;
+                position: relative;
+            }
+
+            .content {
+                display: flex;
+                min-height: 100vh;
+            }
+
+            nav {
+                background-color: #F5F7F9;
+                border-right: 1px solid lightgray;
+                flex-grow: 0;
+                flex-shrink: 0;
+                padding: 24px;
+                position: relative;
+                width: 288px;
+            }
+
+            nav ul {
+                margin: 0;
+                padding: 0;
+            }
+
+            .scroll nav ul {
+                left: 24px;
+                position: fixed;
+                top: 24px;
+                width: calc(288px - 48px);
+            }
+
+            nav li {
+                list-style: none;
+            }
+
+            nav li a,
+            nav .folder {
+                border-bottom: 0;
+                color: inherit;
+                text-transform: capitalize;
+            }
+
+            nav .folder {
+
+            }
+
+            nav .indent {
+                margin-bottom: 24px;
+                margin-left: 12px;
+            }
+
+            nav ul > .indent {
+                margin-left: 0;
+            }
+
+            nav ul > .indent > li,
+            nav ul > li {
+                font-weight: 700;
+            }
+
+            main {
+                flex: 1;
+                padding: 24px;
+            }
+
+            .container {
+                font-weight: 300;
+                margin: auto;
+                max-width: 800px;
+                position: relative;
+            }
+
+            .copy > *:first-child {
+                margin-top: 0;
+                padding-top: 0;
+            }
+
+            .title {
+                flex-grow: 0;
+                flex-shrink: 0;
+                font-size: 24px;
+                font-weight: 700;
+                line-height: 24px;
+                padding: 24px 24px 24px 78px;
+                width: 288px;
+            }
+
+            .logo {
+                background-repeat: no-repeat;
+                background-size: contain;
+                display: inline-block;
+                height: 36px;
+                left: 24px;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 36px;
+            }
+
+            .header-anchor {
+                border-bottom: 0;
+                color: inherit;
+                visibility: hidden;
+            }
+
+            h1:hover .header-anchor,
+            h2:hover .header-anchor,
+            h3:hover .header-anchor,
+            h4:hover .header-anchor,
+            h5:hover .header-anchor,
+            h6:hover .header-anchor {
+                visibility: visible;
+            }
+
+            .feedback {
+                background-color: #E6ECF1;
+                border-radius: 3px;
+                bottom: 24px;
+                color: #9DAAB6;
+                font-size: 12px;
+                left: 24px;
+                line-height: 1.6;
+                padding: 12px 12px 12px 54px;
+                position: fixed;
+                width: calc(288px - 48px);
+            }
+
+            .feedback a {
+                color: inherit;
+            }
+
+            .feedback i {
+                font-size: 32px;
+                left: 12px;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .edit {
+                align-items: center;
+                display: flex;
+                flex: 1;
+                justify-content: flex-end;
+                padding: 24px;
+            }
+
+            .edit a {
+                border-bottom: 0;
+                color: inherit;
+            }
+
+            .edit > * {
+                cursor: pointer;
+                height: 20px;
+                line-height: 20px;
+                margin-left: 20px;
+                text-align: center;
+                width: 20px;
+            }
+
+            .version {
+                color: gray;
+                font-size: 16px;
+            }
+
+            .expanded nav {
+                display: none;
+            }
+
+            .expanded .container {
+                max-width: 1200px;
+            }
+
+            #menu {
+                display: none;
+                z-index: 2;
+            }
+
+            a {
+                border-bottom: 1px solid;
+                color: #2980b9;
+                text-decoration: none;
+            }
+
+            .bottomMatter {
+                color: lightgray;
+                display: inline-block;
+                font-size: 12px;
+                font-weight: 400;
+                margin: 32px 0;
+                position: relative;
+                width: 100%;
+            }
+
+            #top {
+                cursor: pointer;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            @media (max-width: 800px) {
+                html,
+                body {
+                    height: 100%;
+                }
+
+                main {
+                    padding: 0;
+                }
+
+                .content {
+                    -webkit-overflow-scrolling: touch;
+                    min-height: 0;
+                    overflow: auto;
+                }
+
+                .copy {
+                    padding: 12px;
+                }
+
+                #expando,
+                .version,
+                .pullrequest,
+                .help {
+                    display: none;
+                }
+
+                #menu {
+                    display: block;
+                }
+
+                nav {
+                    border-left: 1px solid lightgray;
+                    border-right: 0;
+                    display: block !important;
+                    height: 100%;
+                    max-width: calc(100vw - 48px);
+                    position: fixed;
+                    right: 0;
+                    top: 0;
+                    transform: translateX(100%);
+                    transition: transform ease-out 0.2s;
+                    z-index: 1;
+                }
+
+                nav ul {
+                    position: static;
+                    width: 100%;
+                }
+
+                .edit {
+                    flex-grow: 0;
+                    flex-shrink: 0;
+                    padding: 12px;
+                }
+
+                .menu nav {
+                    transform: translateX(0);
+                }
+
+                .title {
+                    flex: 1;
+                    font-size: 18px;
+                    padding: 12px 12px 12px 54px;
+                    width: auto;
+                    word-break: break-word;
+                }
+
+                .logo {
+                    height: 24px;
+                    left: 12px;
+                    width: 24px;
+                }
+            }
+        </style>
+	</head>
+	<body>
+        <header>
+            <div class="title">
+                
+                    <div class="logo" style="background-image: url(https://metamask.io/img/metamask.png)"></div>
+                
+                MetaMask
+                
+                    <span class="version">VERSION</span>
+                
+            </div>
+            <div class="edit">
+                <a href="/" class="help">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                </a>
+                
+                    <a href="https://github.com/metamask/metamask-extension" class="pullrequest">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                
+                <i class="fa fa-plus-square" aria-hidden="true" id="expando"></i>
+                <i class="fa fa-bars" aria-hidden="true" id="menu"></i>
+            </div>
+        </header>
+        <div class="content">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="/">home</a>
+                    </li>
+                    
+                            <div class="indent">
+                    
+                                            <li>
+                                                <div class="folder">.circleci</div>
+                                            </li>
+                    
+                            <div class="indent">
+                    
+                            </div>
+                    
+                                            <li>
+                                                <div class="folder">Main Concepts</div>
+                                            </li>
+                    
+                            <div class="indent">
+                    
+                                        <li>
+                                            <a href="/Main_Concepts/Getting_Started">Getting Started</a>
+                                        </li>
+                    
+                                        <li>
+                                            <a href="/Main_Concepts/Common_Terms">Common Terms</a>
+                                        </li>
+                    
+                                        <li>
+                                            <a href="/Main_Concepts/Initializing_Dapps">Initializing Dapps</a>
+                                        </li>
+                    
+                                        <li>
+                                            <a href="/Main_Concepts/Accessing_Accounts">Accessing Accounts</a>
+                                        </li>
+                    
+                                        <li>
+                                            <a href="/Main_Concepts/Sending_Transactions">Sending Transactions</a>
+                                        </li>
+                    
+                                        <li>
+                                            <a href="/Main_Concepts/Example:_Hello_World">Example: Hello World</a>
+                                        </li>
+                    
+                            </div>
+                    
+                                            <li>
+                                                <div class="folder">Advanced Concepts</div>
+                                            </li>
+                    
+                            <div class="indent">
+                    
+                                        <li>
+                                            <a href="/Advanced_Concepts/Provider_API">Provider API</a>
+                                        </li>
+                    
+                                        <li>
+                                            <a href="/Advanced_Concepts/Granular_Permissions">Granular Permissions</a>
+                                        </li>
+                    
+                                        <li>
+                                            <a href="/Advanced_Concepts/Proposals_and_Rationales">Proposals and Rationales</a>
+                                        </li>
+                    
+                                        <li>
+                                            <a href="/Advanced_Concepts/experimental_APIs">experimental APIs</a>
+                                        </li>
+                    
+                            </div>
+                    
+                                        <li>
+                                            <a href="/API_Reference">API Reference</a>
+                                        </li>
+                    
+                                        <li>
+                                            <a href="/Contributing">Contributing</a>
+                                        </li>
+                    
+                                        <li>
+                                            <a href="/FAQs">FAQs</a>
+                                        </li>
+                    
+                            </div>
+                    
+                </ul>
+                
+                    <div class="feedback">
+                        <i class="fa fa-bug" aria-hidden="true"></i>
+                        Found a documentation bug?<br>
+                        <a href="https://github.com/metamask/metamask-extension/issues/new">File an issue</a>
+                    </div>
+                
+            </nav>
+            <main>
+                <div class="container copy">
+                    <h1 id="contributing">Contributing <a class="header-anchor" href="#contributing" aria-hidden="true">#</a></h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros nisi, sodales eu justo vel, laoreet blandit ante. Suspendisse sagittis semper lacus at viverra. Nulla varius ultrices orci. Pellentesque a commodo diam. Suspendisse blandit arcu eget rhoncus faucibus. Integer tempor convallis urna, non ullamcorper elit malesuada eu. Aenean rhoncus accumsan lacinia. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum a neque quam. Fusce sit amet rhoncus augue, vitae pulvinar dui. In posuere vehicula posuere. Proin massa nisi, pretium eu mollis eu, blandit ac nibh.</p>
+<p>Vestibulum eget ullamcorper dolor. Suspendisse elementum lorem viverra, tristique nulla ut, ullamcorper purus. Praesent interdum aliquam vehicula. Maecenas eu massa maximus, cursus mi et, condimentum mauris. Etiam rhoncus efficitur risus et hendrerit. Nulla condimentum, nibh ut dignissim aliquam, nunc turpis fringilla nulla, non molestie ante justo eget velit. Nullam quis augue iaculis, viverra diam sit amet, porttitor massa. Curabitur velit nulla, lacinia ac sapien sed, ultrices pharetra urna. Sed est odio, porttitor et tortor vel, hendrerit feugiat nunc. Sed velit diam, tincidunt in mauris in, fermentum bibendum dolor. Suspendisse et congue augue, in porttitor eros. Maecenas viverra suscipit eleifend. Duis lacinia varius dui ut elementum. Nam erat massa, pretium eu libero id, feugiat lobortis nisi. Suspendisse nec consectetur massa, ac laoreet quam.</p>
+<p>Duis ut feugiat ante. Pellentesque dictum ultrices porta. Etiam vel magna vitae erat sollicitudin mattis suscipit nec orci. Vivamus sit amet erat vitae mi pretium tristique sed sed velit. Suspendisse ut tellus imperdiet, feugiat eros in, luctus nunc. Maecenas vitae purus et elit eleifend ornare. Aenean vel cursus erat. Etiam accumsan justo lectus, tincidunt porta tortor sodales non. Donec venenatis erat gravida accumsan sodales. Quisque urna eros, interdum et blandit rutrum, maximus sit amet nibh. Nunc tincidunt enim in elit dapibus rutrum. Vivamus vel odio pretium, faucibus est at, tempus orci. Quisque non rutrum ante. In laoreet felis et nisi facilisis condimentum.</p>
+<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris eleifend mi nunc, id venenatis turpis mattis at. In in justo vel tortor interdum imperdiet. Donec id aliquam augue. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent aliquet dolor non turpis elementum, et interdum elit volutpat. Cras sem ipsum, tempor ut ipsum eget, vestibulum dictum nulla. Vestibulum at diam tristique, gravida nisi in, consequat ipsum. Suspendisse vitae mauris non erat elementum egestas et imperdiet mauris. Curabitur quis ex nibh. Aenean ac odio volutpat, varius justo ac, consectetur dui. Donec tincidunt augue est, sit amet dignissim risus fermentum sit amet. Proin mollis, purus at maximus sagittis, nibh justo vehicula nisl, sed consequat felis odio ac orci. Quisque luctus, arcu id accumsan porttitor, sapien nunc semper dui, nec posuere nisi dolor non velit.</p>
+<p>Vestibulum dapibus risus sit amet erat maximus lacinia. Integer congue, massa eget feugiat euismod, orci magna posuere nulla, vel auctor eros diam vitae tortor. Praesent sollicitudin erat eget nisi sagittis, id vulputate libero ultrices. Ut feugiat risus eget tellus dictum auctor. Nunc nec massa ut erat interdum luctus. Etiam vulputate erat quis finibus consequat. Fusce viverra ante neque, a pellentesque diam gravida a. Nullam quis dolor est. Vestibulum finibus ante volutpat lectus mollis hendrerit.</p>
+
+                    <div class="bottomMatter">
+                        Last updated:
+                        
+                        12/1/2018
+                        <span id="top">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <script>
+            const header = document.querySelector('header');
+            function onScroll() {
+                document.body.classList.toggle('scroll', document.documentElement.scrollTop > header.offsetHeight);
+            }
+            window.addEventListener('scroll', onScroll);
+            onScroll();
+
+            document.querySelector('#expando').addEventListener('click', ({ target }) => {
+                const expanded = target.classList.contains('fa-minus-square');
+                target.classList.toggle('fa-minus-square', !expanded);
+                target.classList.toggle('fa-minus-plus', expanded);
+                document.body.classList.toggle('expanded', !expanded);
+            });
+
+            document.querySelector('#menu').addEventListener('click', ({ target }) => {
+                const open = target.classList.contains('fa-times');
+                target.classList.toggle('fa-times', !open);
+                target.classList.toggle('fa-bars', open);
+                document.body.classList.toggle('menu', !open);
+            });
+
+            document.querySelector('#top').addEventListener('click', () => {
+                document.documentElement.scrollTop = 0;
+            });
+        </script>
+	</body>
+</html>
+
+
