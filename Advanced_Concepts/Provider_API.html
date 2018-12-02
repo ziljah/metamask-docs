@@ -5,318 +5,319 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="MetaMask project documentation">
         <link rel="icon" type="image/png" href="https://metamask.io/img/metamask.png">
-        <style>
-            @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
-            @import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+            <style>
+                @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+                @import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+                @import url('//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css');
+                @import url('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/solarized-dark.min.css');
 
-            * {
-                box-sizing: border-box;
-            }
-
-            html,
-            body {
-                color: #333;
-                font-family: 'Roboto', sans-serif;
-                font-size: 16px;
-                line-height: 28px;
-                margin: 0;
-            }
-
-            body {
-                display: flex;
-                flex-direction: column;
-            }
-
-            header {
-                border-bottom: 1px solid lightgray;
-                display: flex;
-                flex-grow: 0;
-                flex-shrink: 0;
-                position: relative;
-            }
-
-            .content {
-                display: flex;
-                min-height: 100vh;
-            }
-
-            nav {
-                background-color: #F5F7F9;
-                border-right: 1px solid lightgray;
-                flex-grow: 0;
-                flex-shrink: 0;
-                padding: 24px;
-                position: relative;
-                width: 288px;
-            }
-
-            nav ul {
-                margin: 0;
-                padding: 0;
-            }
-
-            .scroll nav ul {
-                left: 24px;
-                position: fixed;
-                top: 24px;
-                width: calc(288px - 48px);
-            }
-
-            nav li {
-                list-style: none;
-            }
-
-            nav li a,
-            nav .folder {
-                border-bottom: 0;
-                color: inherit;
-                text-transform: capitalize;
-            }
-
-            nav .indent {
-                margin-bottom: 24px;
-                margin-left: 12px;
-            }
-
-            nav ul > .indent {
-                margin-left: 0;
-            }
-
-            nav ul > .indent > li,
-            nav ul > li {
-                font-weight: 700;
-            }
-
-            main {
-                flex: 1;
-                padding: 24px;
-            }
-
-            .container {
-                font-weight: 300;
-                margin: auto;
-                max-width: 800px;
-                position: relative;
-            }
-
-            .copy > *:first-child {
-                margin-top: 0;
-                padding-top: 0;
-            }
-
-            .title {
-                flex-grow: 0;
-                flex-shrink: 0;
-                font-size: 24px;
-                font-weight: 700;
-                line-height: 24px;
-                padding: 24px 24px 24px 78px;
-                width: 288px;
-            }
-
-            .logo {
-                background-repeat: no-repeat;
-                background-size: contain;
-                display: inline-block;
-                height: 36px;
-                left: 24px;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 36px;
-            }
-
-            .header-anchor {
-                border-bottom: 0;
-                color: inherit;
-                visibility: hidden;
-            }
-
-            h1:hover .header-anchor,
-            h2:hover .header-anchor,
-            h3:hover .header-anchor,
-            h4:hover .header-anchor,
-            h5:hover .header-anchor,
-            h6:hover .header-anchor {
-                visibility: visible;
-            }
-
-            .feedback {
-                background-color: #E6ECF1;
-                border-radius: 3px;
-                bottom: 24px;
-                color: #9DAAB6;
-                font-size: 12px;
-                left: 24px;
-                line-height: 1.6;
-                padding: 12px 12px 12px 54px;
-                position: fixed;
-                width: calc(288px - 48px);
-            }
-
-            .feedback a {
-                color: inherit;
-            }
-
-            .feedback i {
-                font-size: 32px;
-                left: 12px;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-
-            .edit {
-                align-items: center;
-                display: flex;
-                flex: 1;
-                justify-content: flex-end;
-                padding: 24px;
-            }
-
-            .edit a {
-                border-bottom: 0;
-                color: inherit;
-            }
-
-            .edit > * {
-                cursor: pointer;
-                height: 20px;
-                line-height: 20px;
-                margin-left: 20px;
-                text-align: center;
-                width: 20px;
-            }
-
-            .version {
-                color: gray;
-                font-size: 16px;
-            }
-
-            .expanded nav {
-                display: none;
-            }
-
-            .expanded .container {
-                max-width: 1200px;
-            }
-
-            #menu {
-                display: none;
-                z-index: 2;
-            }
-
-            a {
-                border-bottom: 1px solid;
-                color: #2980b9;
-                text-decoration: none;
-            }
-
-            .bottomMatter {
-                color: lightgray;
-                display: inline-block;
-                font-size: 12px;
-                font-weight: 400;
-                margin: 32px 0;
-                position: relative;
-                width: 100%;
-            }
-
-            #top {
-                cursor: pointer;
-                position: absolute;
-                right: 0;
-                top: 0;
-            }
-
-            @media (max-width: 800px) {
-                html,
-                body {
-                    height: 100%;
+                * {
+                    box-sizing: border-box;
                 }
 
-                main {
-                    -webkit-overflow-scrolling: touch;
-                    overflow: auto;
-                    padding: 0;
+                html,
+                body {
+                    color: #333;
+                    font-family: 'Roboto', sans-serif;
+                    font-size: 16px;
+                    line-height: 24px;
+                    margin: 0;
+                }
+
+                body {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                header {
+                    border-bottom: 1px solid lightgray;
+                    display: flex;
+                    flex-grow: 0;
+                    flex-shrink: 0;
+                    position: relative;
                 }
 
                 .content {
-                    flex: 1;
-                    min-height: 0;
-                }
-
-                .copy {
-                    padding: 12px;
-                }
-
-                #expando,
-                .version,
-                .pullrequest,
-                .help {
-                    display: none;
-                }
-
-                #menu {
-                    display: block;
+                    display: flex;
+                    min-height: 100vh;
                 }
 
                 nav {
-                    border-left: 1px solid lightgray;
-                    border-right: 0;
-                    display: block !important;
-                    height: 100%;
-                    max-width: calc(100vw - 48px);
-                    position: fixed;
-                    right: 0;
-                    top: 0;
-                    transform: translateX(100%);
-                    transition: transform ease-out 0.2s;
-                    z-index: 1;
+                    background-color: #F5F7F9;
+                    border-right: 1px solid lightgray;
+                    flex-grow: 0;
+                    flex-shrink: 0;
+                    padding: 24px;
+                    position: relative;
+                    width: 288px;
                 }
 
                 nav ul {
-                    position: static;
-                    width: 100%;
+                    margin: 0;
+                    padding: 0;
                 }
 
-                .edit {
-                    flex-grow: 0;
-                    flex-shrink: 0;
-                    padding: 12px;
+                .scroll nav ul {
+                    left: 24px;
+                    position: fixed;
+                    top: 24px;
+                    width: calc(288px - 48px);
                 }
 
-                .menu nav {
-                    transform: translateX(0);
+                nav li {
+                    list-style: none;
+                }
+
+                nav li a,
+                nav .folder {
+                    border-bottom: 0;
+                    color: inherit;
+                    text-transform: capitalize;
+                }
+
+                nav .indent {
+                    margin-bottom: 24px;
+                    margin-left: 12px;
+                }
+
+                nav ul > .indent {
+                    margin-left: 0;
+                }
+
+                nav ul > .indent > li,
+                nav ul > li {
+                    font-weight: 700;
+                }
+
+                main {
+                    flex: 1;
+                    padding: 24px;
+                }
+
+                .container {
+                    font-weight: 300;
+                    margin: auto;
+                    max-width: 800px;
+                    position: relative;
+                }
+
+                .container > *:first-child {
+                    margin-top: 0;
+                    padding-top: 0;
                 }
 
                 .title {
-                    flex: 1;
-                    font-size: 18px;
-                    padding: 12px 12px 12px 54px;
-                    width: auto;
-                    word-break: break-word;
+                    flex-grow: 0;
+                    flex-shrink: 0;
+                    font-size: 24px;
+                    font-weight: 700;
+                    line-height: 24px;
+                    padding: 24px 24px 24px 78px;
+                    width: 288px;
                 }
 
                 .logo {
-                    height: 24px;
-                    left: 12px;
-                    width: 24px;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    display: inline-block;
+                    height: 36px;
+                    left: 24px;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 36px;
                 }
-            }
-        </style>
+
+                .header-anchor {
+                    border-bottom: 0;
+                    color: inherit;
+                    visibility: hidden;
+                }
+
+                h1:hover .header-anchor,
+                h2:hover .header-anchor,
+                h3:hover .header-anchor,
+                h4:hover .header-anchor,
+                h5:hover .header-anchor,
+                h6:hover .header-anchor {
+                    visibility: visible;
+                }
+
+                .feedback {
+                    background-color: #E6ECF1;
+                    border-radius: 3px;
+                    bottom: 24px;
+                    color: #9DAAB6;
+                    font-size: 12px;
+                    left: 24px;
+                    line-height: 1.6;
+                    padding: 12px 12px 12px 54px;
+                    position: fixed;
+                    width: calc(288px - 48px);
+                }
+
+                .feedback a {
+                    color: inherit;
+                }
+
+                .feedback i {
+                    font-size: 32px;
+                    left: 12px;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+
+                .edit {
+                    align-items: center;
+                    display: flex;
+                    flex: 1;
+                    justify-content: flex-end;
+                    padding: 24px;
+                }
+
+                .edit a {
+                    border-bottom: 0;
+                    color: inherit;
+                }
+
+                .edit > * {
+                    cursor: pointer;
+                    height: 20px;
+                    line-height: 20px;
+                    margin-left: 20px;
+                    text-align: center;
+                    width: 20px;
+                }
+
+                .version {
+                    color: gray;
+                    font-size: 16px;
+                }
+
+                .expanded nav {
+                    display: none;
+                }
+
+                .expanded .container {
+                    max-width: 1200px;
+                }
+
+                #menu {
+                    display: none;
+                    z-index: 2;
+                }
+
+                a {
+                    border-bottom: 1px solid;
+                    color: #2980b9;
+                    text-decoration: none;
+                }
+
+                .bottomMatter {
+                    color: lightgray;
+                    display: inline-block;
+                    font-size: 12px;
+                    font-weight: 400;
+                    margin: 32px 0;
+                    position: relative;
+                    width: 100%;
+                }
+
+                #top {
+                    cursor: pointer;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                }
+
+                @media (max-width: 800px) {
+                    html,
+                    body {
+                        height: 100%;
+                    }
+
+                    main {
+                        -webkit-overflow-scrolling: touch;
+                        overflow: auto;
+                        padding: 0;
+                    }
+
+                    .content {
+                        flex: 1;
+                        min-height: 0;
+                    }
+
+                    .container {
+                        padding: 12px;
+                    }
+
+                    #expando,
+                    .version,
+                    .pullrequest,
+                    .help {
+                        display: none;
+                    }
+
+                    #menu {
+                        display: block;
+                    }
+
+                    nav {
+                        border-left: 1px solid lightgray;
+                        border-right: 0;
+                        display: block !important;
+                        height: 100%;
+                        max-width: calc(100vw - 48px);
+                        position: fixed;
+                        right: 0;
+                        top: 0;
+                        transform: translateX(100%);
+                        transition: transform ease-out 0.2s;
+                        z-index: 1;
+                    }
+
+                    nav ul {
+                        position: static;
+                        width: 100%;
+                    }
+
+                    .edit {
+                        flex-grow: 0;
+                        flex-shrink: 0;
+                        padding: 12px;
+                    }
+
+                    .menu nav {
+                        transform: translateX(0);
+                    }
+
+                    .title {
+                        flex: 1;
+                        font-size: 18px;
+                        padding: 12px 12px 12px 54px;
+                        width: auto;
+                        word-break: break-word;
+                    }
+
+                    .logo {
+                        height: 24px;
+                        left: 12px;
+                        width: 24px;
+                    }
+                }
+            </style>
+        
         
 	</head>
 	<body>
         <header>
             <div class="title">
-                
-                    <div class="logo" style="background-image: url(https://metamask.io/img/metamask.png)"></div>
-                
+                <div class="logo" style="background-image: url(https://metamask.io/img/metamask.png)"></div>
                 MetaMask
-                
-                    <span class="version">v5.0.3</span>
-                
+                <span class="version">v5.0.3</span>
             </div>
             <div class="edit">
                 <a href="/metamask-docs/" class="help">
@@ -338,77 +339,128 @@
                         <a href="/metamask-docs/">home</a>
                     </li>
                     
-                            <div class="indent">
                     
-                                            <li>
-                                                <div class="folder">Main Concepts</div>
-                                            </li>
-                    
-                            <div class="indent">
-                    
+                        <div class="indent">
+                            
+                                
+                                    
                                         <li>
-                                            <a href="/metamask-docs/Main_Concepts/Getting_Started">Getting Started</a>
+                                            <div class="folder">Main Concepts</div>
                                         </li>
+                                        
+                        <div class="indent">
+                            
+                                
+                                
+                                    <li>
+                                        <a href="/metamask-docs/Main_Concepts/Getting_Started">Getting Started</a>
+                                    </li>
+                                
+                            
+                                
+                                
+                                    <li>
+                                        <a href="/metamask-docs/Main_Concepts/Common_Terms">Common Terms</a>
+                                    </li>
+                                
+                            
+                                
+                                
+                                    <li>
+                                        <a href="/metamask-docs/Main_Concepts/Initializing_Dapps">Initializing Dapps</a>
+                                    </li>
+                                
+                            
+                                
+                                
+                                    <li>
+                                        <a href="/metamask-docs/Main_Concepts/Accessing_Accounts">Accessing Accounts</a>
+                                    </li>
+                                
+                            
+                                
+                                
+                                    <li>
+                                        <a href="/metamask-docs/Main_Concepts/Sending_Transactions">Sending Transactions</a>
+                                    </li>
+                                
+                            
+                                
+                                
+                                    <li>
+                                        <a href="/metamask-docs/Main_Concepts/Example:_Hello_World">Example: Hello World</a>
+                                    </li>
+                                
+                            
+                        </div>
                     
+                                    
+                                    
+                                
+                                    
                                         <li>
-                                            <a href="/metamask-docs/Main_Concepts/Common_Terms">Common Terms</a>
+                                            <div class="folder">Advanced Concepts</div>
                                         </li>
+                                        
+                        <div class="indent">
+                            
+                                
+                                
+                                    <li>
+                                        <a href="/metamask-docs/Advanced_Concepts/Provider_API">Provider API</a>
+                                    </li>
+                                
+                            
+                                
+                                
+                                    <li>
+                                        <a href="/metamask-docs/Advanced_Concepts/Granular_Permissions">Granular Permissions</a>
+                                    </li>
+                                
+                            
+                                
+                                
+                                    <li>
+                                        <a href="/metamask-docs/Advanced_Concepts/Proposals_and_Rationales">Proposals and Rationales</a>
+                                    </li>
+                                
+                            
+                                
+                                
+                                    <li>
+                                        <a href="/metamask-docs/Advanced_Concepts/experimental_APIs">experimental APIs</a>
+                                    </li>
+                                
+                            
+                        </div>
                     
-                                        <li>
-                                            <a href="/metamask-docs/Main_Concepts/Initializing_Dapps">Initializing Dapps</a>
-                                        </li>
-                    
-                                        <li>
-                                            <a href="/metamask-docs/Main_Concepts/Accessing_Accounts">Accessing Accounts</a>
-                                        </li>
-                    
-                                        <li>
-                                            <a href="/metamask-docs/Main_Concepts/Sending_Transactions">Sending Transactions</a>
-                                        </li>
-                    
-                                        <li>
-                                            <a href="/metamask-docs/Main_Concepts/Example:_Hello_World">Example: Hello World</a>
-                                        </li>
-                    
-                            </div>
-                    
-                                            <li>
-                                                <div class="folder">Advanced Concepts</div>
-                                            </li>
-                    
-                            <div class="indent">
-                    
-                                        <li>
-                                            <a href="/metamask-docs/Advanced_Concepts/Provider_API">Provider API</a>
-                                        </li>
-                    
-                                        <li>
-                                            <a href="/metamask-docs/Advanced_Concepts/Granular_Permissions">Granular Permissions</a>
-                                        </li>
-                    
-                                        <li>
-                                            <a href="/metamask-docs/Advanced_Concepts/Proposals_and_Rationales">Proposals and Rationales</a>
-                                        </li>
-                    
-                                        <li>
-                                            <a href="/metamask-docs/Advanced_Concepts/experimental_APIs">experimental APIs</a>
-                                        </li>
-                    
-                            </div>
-                    
-                                        <li>
-                                            <a href="/metamask-docs/API_Reference">API Reference</a>
-                                        </li>
-                    
-                                        <li>
-                                            <a href="/metamask-docs/Contributing">Contributing</a>
-                                        </li>
-                    
-                                        <li>
-                                            <a href="/metamask-docs/FAQs">FAQs</a>
-                                        </li>
-                    
-                            </div>
+                                    
+                                    
+                                
+                                
+                                    <li>
+                                        <a href="/metamask-docs/API_Reference">API Reference</a>
+                                    </li>
+                                
+                            
+                                
+                                
+                                    <li>
+                                        <a href="/metamask-docs/Contributing">Contributing</a>
+                                    </li>
+                                
+                            
+                                
+                                
+                                    <li>
+                                        <a href="/metamask-docs/FAQs">FAQs</a>
+                                    </li>
+                                
+                            
+                                
+                                
+                            
+                        </div>
                     
                 </ul>
                 
@@ -420,14 +472,14 @@
                 
             </nav>
             <main>
-                <div class="container copy">
+                <div class="container">
                     <h1 id="provider-api">Provider API <a class="header-anchor" href="#provider-api" aria-hidden="true">#</a></h1>
 <p>MetaMask injects a global API into websites visited by its users at <code>window.ethereum</code> (Also available at <code>window.web3.currentProvider</code> for legacy reasons). This API allows websites to request user login, load data from blockchains the user has a connection to, and suggest the user sign messages and transactions. You can use this API to detect the user of a web3 browser.</p>
-<pre><code class="language-javascript">if (typeof window.ethereum !== 'undefined'
-|| (typeof window.web3 !== 'undefined')) {
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">window</span>.ethereum !== <span class="hljs-string">'undefined'</span>
+|| (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">window</span>.web3 !== <span class="hljs-string">'undefined'</span>)) {
 
-  // Web3 browser user detected. You can now use the provider.
-  const provider = window['ethereum'] || window.web3.currentProvider
+  <span class="hljs-comment">// Web3 browser user detected. You can now use the provider.</span>
+  <span class="hljs-keyword">const</span> provider = <span class="hljs-built_in">window</span>[<span class="hljs-string">'ethereum'</span>] || <span class="hljs-built_in">window</span>.web3.currentProvider
 }
 </code></pre>
 <p>The provider API itself is very simple, and wraps <a href="https://github.com/ethereum/wiki/wiki/JSON-RPC#json-rpc-methods">Ethereum JSON-RPC</a> formatted messages, which is why developers usually use a convenience library for interacting with the provider, like <a href="https://www.npmjs.com/package/web3">web3</a>, <a href="https://truffleframework.com/">truffle</a>, <a href="https://www.npmjs.com/package/ethjs">ethjs</a>, <a href="https://embark.status.im/">Embark</a>, or others. From those tools, you can generally find sufficient documentation to interact with the provider, without reading this lower-level API.</p>
@@ -437,50 +489,50 @@
 <h3 id="ethereum.enable()">ethereum.enable() <a class="header-anchor" href="#ethereum.enable()" aria-hidden="true">#</a></h3>
 <p>Requests the user provides an ethereum address to be identified by. Returns a promise of an array of hex-prefixed ethereum address strings.</p>
 <p>Example usage (ES6), assuming <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">async function</a>:</p>
-<pre><code class="language-javascript">try {
-  const accounts = await ethereum.enable()
-  // You now have an array of accounts!
-  // Currently only ever one:
-  // ['0xFDEa65C8e26263F6d9A1B5de9555D2931A33b825']
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">try</span> {
+  <span class="hljs-keyword">const</span> accounts = <span class="hljs-keyword">await</span> ethereum.enable()
+  <span class="hljs-comment">// You now have an array of accounts!</span>
+  <span class="hljs-comment">// Currently only ever one:</span>
+  <span class="hljs-comment">// ['0xFDEa65C8e26263F6d9A1B5de9555D2931A33b825']</span>
 
-} catch (error) {
-  // Handle error. Likely the user rejected the login:
-  console.log(reason === &quot;User rejected provider access&quot;)
+} <span class="hljs-keyword">catch</span> (error) {
+  <span class="hljs-comment">// Handle error. Likely the user rejected the login:</span>
+  <span class="hljs-built_in">console</span>.log(reason === <span class="hljs-string">"User rejected provider access"</span>)
 }
 </code></pre>
 <p>Example usage (ES5):</p>
-<pre><code class="language-javascript">ethereum.enable()
-.then(function (accounts) {
-  // You now have an array of accounts!
-  // Currently only ever one:
-  // ['0xFDEa65C8e26263F6d9A1B5de9555D2931A33b825']
+<pre><code class="hljs language-javascript">ethereum.enable()
+.then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">accounts</span>) </span>{
+  <span class="hljs-comment">// You now have an array of accounts!</span>
+  <span class="hljs-comment">// Currently only ever one:</span>
+  <span class="hljs-comment">// ['0xFDEa65C8e26263F6d9A1B5de9555D2931A33b825']</span>
 })
-.catch(function (reason) {
-  // Handle error. Likely the user rejected the login:
-  console.log(reason === &quot;User rejected provider access&quot;)
+.catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">reason</span>) </span>{
+  <span class="hljs-comment">// Handle error. Likely the user rejected the login:</span>
+  <span class="hljs-built_in">console</span>.log(reason === <span class="hljs-string">"User rejected provider access"</span>)
 })
 </code></pre>
 <h3 id="ethereum.sendasync(options%2C-callback)">ethereum.sendAsync(options, callback) <a class="header-anchor" href="#ethereum.sendasync(options%2C-callback)" aria-hidden="true">#</a></h3>
 <p><em>To be superceded by the promise-returning send() method in <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md">EIP 1193</a>.</em></p>
 <p>Sends a message to the web3 browser. Message format maps to the format of <a href="https://github.com/ethereum/wiki/wiki/JSON-RPC#json-rpc-methods">the Ethereum JSON-RPC API</a>.</p>
-<p>Here's an example of everyone's favorite method, sending a transaction, which is both how Ether is sent, and how smart contract methods are called:</p>
-<pre><code class="language-javascript">params: [{
-  &quot;from&quot;: &quot;0xb60e8dd61c5d32be8058bb8eb970870f07233155&quot;,
-  &quot;to&quot;: &quot;0xd46e8dd67c5d32be8058bb8eb970870f07244567&quot;,
-  &quot;gas&quot;: &quot;0x76c0&quot;, // 30400
-  &quot;gasPrice&quot;: &quot;0x9184e72a000&quot;, // 10000000000000
-  &quot;value&quot;: &quot;0x9184e72a&quot;, // 2441406250
-  &quot;data&quot;: &quot;0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675&quot;
+<p>Here’s an example of everyone’s favorite method, sending a transaction, which is both how Ether is sent, and how smart contract methods are called:</p>
+<pre><code class="hljs language-javascript">params: [{
+  <span class="hljs-string">"from"</span>: <span class="hljs-string">"0xb60e8dd61c5d32be8058bb8eb970870f07233155"</span>,
+  <span class="hljs-string">"to"</span>: <span class="hljs-string">"0xd46e8dd67c5d32be8058bb8eb970870f07244567"</span>,
+  <span class="hljs-string">"gas"</span>: <span class="hljs-string">"0x76c0"</span>, <span class="hljs-comment">// 30400</span>
+  <span class="hljs-string">"gasPrice"</span>: <span class="hljs-string">"0x9184e72a000"</span>, <span class="hljs-comment">// 10000000000000</span>
+  <span class="hljs-string">"value"</span>: <span class="hljs-string">"0x9184e72a"</span>, <span class="hljs-comment">// 2441406250</span>
+  <span class="hljs-string">"data"</span>: <span class="hljs-string">"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"</span>
 }]
 
 ethereum.sendAsync({
-  method: 'eth_sendTransaction',
-  params: params,
-  from: accounts[0], // Provide the user's account to use.
-}, function (err, result) {
-  // A typical node-style, error-first callback.
-  // The result varies by method, per the JSON RPC API.
-  // For example, this method will return a transaction hash on success.
+  <span class="hljs-attr">method</span>: <span class="hljs-string">'eth_sendTransaction'</span>,
+  <span class="hljs-attr">params</span>: params,
+  <span class="hljs-attr">from</span>: accounts[<span class="hljs-number">0</span>], <span class="hljs-comment">// Provide the user's account to use.</span>
+}, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, result</span>) </span>{
+  <span class="hljs-comment">// A typical node-style, error-first callback.</span>
+  <span class="hljs-comment">// The result varies by method, per the JSON RPC API.</span>
+  <span class="hljs-comment">// For example, this method will return a transaction hash on success.</span>
 })
 </code></pre>
 <h3 id="ethereum.on(eventname%2C-callback)">ethereum.on(eventName, callback) <a class="header-anchor" href="#ethereum.on(eventname%2C-callback)" aria-hidden="true">#</a></h3>
@@ -490,11 +542,11 @@ ethereum.sendAsync({
 <li><code>networkChanged</code>, returns network ID string.</li>
 </ul>
 <p>Example</p>
-<pre><code class="language-javascript">ethereum.on('accountsChanged', function (accounts) {
-  // Time to reload your interface with accounts[0]!
+<pre><code class="hljs language-javascript">ethereum.on(<span class="hljs-string">'accountsChanged'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">accounts</span>) </span>{
+  <span class="hljs-comment">// Time to reload your interface with accounts[0]!</span>
 })
 </code></pre>
-<p>Note currently <code>networkChanged</code> is not completely useful, because MetaMask currently reloads pages that have made requests to the provider upon network change, but <a href="https://medium.com/metamask/breaking-change-no-longer-reloading-pages-on-network-change-4a3e1fd2f5e7">we plan to change this behavior</a>, so it's safest to prepare your application to gracefully handle network changes.</p>
+<p>Note currently <code>networkChanged</code> is not completely useful, because MetaMask currently reloads pages that have made requests to the provider upon network change, but <a href="https://medium.com/metamask/breaking-change-no-longer-reloading-pages-on-network-change-4a3e1fd2f5e7">we plan to change this behavior</a>, so it’s safest to prepare your application to gracefully handle network changes.</p>
 
                     <div class="bottomMatter">
                         Last updated:
