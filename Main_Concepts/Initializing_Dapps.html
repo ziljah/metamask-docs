@@ -5,14 +5,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="MetaMask project documentation">
         <link rel="icon" type="image/png" href="https://metamask.io/img/metamask.png">
-        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+
+        <link href="//fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" type="text/css">
+        <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css" rel="stylesheet" type="text/css">
+        <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css" rel="stylesheet" type="text/css">
+        <link href="//unpkg.com/wysiwyg.css/wysiwyg.css" rel="stylesheet" type="text/css">
+
         
             <style>
-                @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
-                @import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-                @import url('//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css');
-                @import url('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/solarized-dark.min.css');
-
                 * {
                     box-sizing: border-box;
                 }
@@ -21,8 +22,6 @@
                 body {
                     color: #333;
                     font-family: 'Roboto', sans-serif;
-                    font-size: 16px;
-                    line-height: 24px;
                     margin: 0;
                 }
 
@@ -31,12 +30,21 @@
                     flex-direction: column;
                 }
 
+                .wysiwyg pre,
+                .wysiwyg pre > code {
+                    color: inherit;
+                    font-size: inherit;
+                    line-height: 1.4;
+                }
+
                 header {
                     border-bottom: 1px solid lightgray;
+                    box-shadow: -4px -4px 9px 1px grey;
                     display: flex;
                     flex-grow: 0;
                     flex-shrink: 0;
                     position: relative;
+                    z-index: 1;
                 }
 
                 .content {
@@ -54,7 +62,7 @@
                     width: 288px;
                 }
 
-                nav ul {
+                nav.wysiwyg ul {
                     margin: 0;
                     padding: 0;
                 }
@@ -78,7 +86,7 @@
                 }
 
                 nav .indent {
-                    margin-bottom: 24px;
+                    margin-bottom: 1.4em;
                     margin-left: 12px;
                 }
 
@@ -136,12 +144,7 @@
                     visibility: hidden;
                 }
 
-                h1:hover .header-anchor,
-                h2:hover .header-anchor,
-                h3:hover .header-anchor,
-                h4:hover .header-anchor,
-                h5:hover .header-anchor,
-                h6:hover .header-anchor {
+                *:hover > .header-anchor {
                     visibility: visible;
                 }
 
@@ -219,7 +222,6 @@
                 .bottomMatter {
                     color: lightgray;
                     display: inline-block;
-                    font-size: 12px;
                     font-weight: 400;
                     margin: 32px 0;
                     position: relative;
@@ -333,7 +335,7 @@
             </div>
         </header>
         <div class="content">
-            <nav>
+            <nav class="wysiwyg">
                 <ul>
                     <li>
                         <a href="/metamask-docs/">home</a>
@@ -472,7 +474,7 @@
                 
             </nav>
             <main>
-                <div class="container">
+                <div class="container wysiwyg">
                     <h1 id="initializing-dapps">Initializing Dapps <a class="header-anchor" href="#initializing-dapps" aria-hidden="true">#</a></h1>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mollis, nisl eget condimentum volutpat, nisl justo convallis neque, vehicula ultricies lectus nibh non urna. Donec suscipit ipsum non ex imperdiet ultricies. Quisque vehicula metus eget neque viverra vestibulum. Quisque volutpat nisl eu erat vestibulum, sed auctor elit varius. Nunc faucibus quam urna, in placerat erat dictum sed. Duis interdum ultrices arcu, nec dapibus nibh condimentum a. Pellentesque sit amet auctor libero. Duis sit amet ultricies tellus, a dapibus mauris. Duis fringilla porttitor diam non accumsan. Ut vehicula semper pretium. Mauris condimentum leo ut est blandit, id imperdiet ante congue. Sed at lobortis nulla, vel lobortis orci. Curabitur consequat, sem ac scelerisque posuere, sem orci euismod ante, non suscipit dui libero in libero. Duis urna felis, cursus id arcu at, interdum vulputate elit. Suspendisse vulputate, nisi vel rutrum pharetra, diam leo placerat dui, eget maximus ex elit sed dui.</p>
 <p>Donec accumsan nulla turpis, quis porta nibh ornare pulvinar. Nulla fringilla felis ut lacus condimentum malesuada. Suspendisse non ultrices elit. Integer tincidunt ultrices velit quis consequat. Mauris eget aliquet lorem, sit amet scelerisque diam. Pellentesque suscipit, libero vel auctor scelerisque, quam mi mollis augue, in elementum nisi elit vitae orci. Pellentesque convallis, lorem et feugiat vulputate, nisi metus finibus lacus, vel vulputate tortor sem eget orci. Vivamus a mollis purus. Integer blandit lectus in gravida bibendum. Curabitur vitae egestas ligula.</p>
@@ -483,12 +485,13 @@
                     <div class="bottomMatter">
                         Last updated:
                         
-                        12/2/2018
+                        12/3/2018
                         <span id="top">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></span>
                     </div>
                 </div>
             </main>
         </div>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
         <script>
             const header = document.querySelector('header');
             const main = document.querySelector('main');
