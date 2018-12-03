@@ -6,13 +6,14 @@
 		<meta name="description" content="MetaMask project documentation">
         <link rel="icon" type="image/png" href="https://metamask.io/img/metamask.png">
 
-        <link href="//fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" type="text/css">
         <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css" rel="stylesheet" type="text/css">
         <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css" rel="stylesheet" type="text/css">
-        <link href="//unpkg.com/wysiwyg.css/wysiwyg.css" rel="stylesheet" type="text/css">
 
         
+            <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" type="text/css">
+            <link href="//fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" type="text/css">
+
             <style>
                 * {
                     box-sizing: border-box;
@@ -20,26 +21,18 @@
 
                 html,
                 body {
-                    color: #333;
                     font-family: 'Roboto', sans-serif;
-                    margin: 0;
                 }
 
                 body {
                     display: flex;
                     flex-direction: column;
-                }
-
-                .wysiwyg pre,
-                .wysiwyg pre > code {
-                    color: inherit;
-                    font-size: inherit;
-                    line-height: 1.4;
+                    line-height: 1.6;
                 }
 
                 header {
-                    border-bottom: 1px solid lightgray;
-                    box-shadow: -4px -4px 9px 1px grey;
+                    border-bottom: 1px solid gainsboro;
+                    box-shadow: -4px -4px 8px 1px grey;
                     display: flex;
                     flex-grow: 0;
                     flex-shrink: 0;
@@ -53,8 +46,8 @@
                 }
 
                 nav {
-                    background-color: #F5F7F9;
-                    border-right: 1px solid lightgray;
+                    background-color: whitesmoke;
+                    border-right: 1px solid gainsboro;
                     flex-grow: 0;
                     flex-shrink: 0;
                     padding: 24px;
@@ -62,7 +55,7 @@
                     width: 288px;
                 }
 
-                nav.wysiwyg ul {
+                nav ul {
                     margin: 0;
                     padding: 0;
                 }
@@ -116,7 +109,7 @@
                     padding-top: 0;
                 }
 
-                .title {
+                .name {
                     flex-grow: 0;
                     flex-shrink: 0;
                     font-size: 24px;
@@ -149,10 +142,10 @@
                 }
 
                 .feedback {
-                    background-color: #E6ECF1;
+                    background-color: #E8E8E8;
                     border-radius: 3px;
                     bottom: 24px;
-                    color: #9DAAB6;
+                    color: darkgray;
                     font-size: 12px;
                     left: 24px;
                     line-height: 1.6;
@@ -173,7 +166,7 @@
                     transform: translateY(-50%);
                 }
 
-                .edit {
+                .actions {
                     align-items: center;
                     display: flex;
                     flex: 1;
@@ -181,12 +174,12 @@
                     padding: 24px;
                 }
 
-                .edit a {
+                .actions a {
                     border-bottom: 0;
                     color: inherit;
                 }
 
-                .edit > * {
+                .actions > * {
                     cursor: pointer;
                     height: 20px;
                     line-height: 20px;
@@ -196,7 +189,7 @@
                 }
 
                 .version {
-                    color: gray;
+                    color: darkgray;
                     font-size: 16px;
                 }
 
@@ -213,17 +206,10 @@
                     z-index: 2;
                 }
 
-                a {
-                    border-bottom: 1px solid;
-                    color: #2980b9;
-                    text-decoration: none;
-                }
-
                 .bottomMatter {
-                    color: lightgray;
+                    color: darkgray;
                     display: inline-block;
-                    font-weight: 400;
-                    margin: 32px 0;
+                    margin: 56px 0;
                     position: relative;
                     width: 100%;
                 }
@@ -247,6 +233,10 @@
                         padding: 0;
                     }
 
+                    header {
+                        z-index: auto;
+                    }
+
                     .content {
                         flex: 1;
                         min-height: 0;
@@ -268,8 +258,9 @@
                     }
 
                     nav {
-                        border-left: 1px solid lightgray;
+                        border-left: 1px solid gainsboro;
                         border-right: 0;
+                        box-shadow: 4px 4px 9px 1px grey;
                         display: block !important;
                         height: 100%;
                         max-width: calc(100vw - 48px);
@@ -286,7 +277,7 @@
                         width: 100%;
                     }
 
-                    .edit {
+                    .actions {
                         flex-grow: 0;
                         flex-shrink: 0;
                         padding: 12px;
@@ -296,7 +287,7 @@
                         transform: translateX(0);
                     }
 
-                    .title {
+                    .name {
                         flex: 1;
                         font-size: 18px;
                         padding: 12px 12px 12px 54px;
@@ -310,18 +301,66 @@
                         width: 24px;
                     }
                 }
+
+                /* Markdown styles */
+                blockquote {
+                    border-left: 4px solid gainsboro;
+                    margin-left: 0;
+                    padding-left: 1em;
+                    padding-right: 1em;
+                }
+
+                table {
+                    border-collapse: collapse;
+                }
+
+                table th,
+                table td {
+                    border: 1px solid gainsboro;
+                    padding: 4px 8px;
+                }
+
+                table tbody tr:nth-child(even) {
+                    background: whitesmoke;
+                }
+
+                code {
+                    background-color: whitesmoke !important;
+                    border-radius: 3px !important;
+                    font-size: 85% !important;
+                    padding: 4px !important;
+                }
+
+                .hljs {
+                    padding: 8px !important;
+                }
+
+                a {
+                    border-bottom: 1px solid;
+                    color: dodgerblue;
+                    text-decoration: none;
+                }
+
+                .contains-task-list {
+                    list-style: none;
+                    padding-left: 18px;
+                }
+
+                .task-list-item-checkbox {
+                    margin-right: 4px;
+                }
             </style>
         
         
 	</head>
 	<body>
         <header>
-            <div class="title">
+            <div class="name">
                 <div class="logo" style="background-image: url(https://metamask.io/img/metamask.png)"></div>
                 MetaMask
                 <span class="version">v5.0.3</span>
             </div>
-            <div class="edit">
+            <div class="actions">
                 <a href="/metamask-docs/" class="help">
                     <i class="fa fa-home" aria-hidden="true"></i>
                 </a>
@@ -335,7 +374,7 @@
             </div>
         </header>
         <div class="content">
-            <nav class="wysiwyg">
+            <nav>
                 <ul>
                     <li>
                         <a href="/metamask-docs/">home</a>
@@ -474,7 +513,7 @@
                 
             </nav>
             <main>
-                <div class="container wysiwyg">
+                <div class="container">
                     <h1 id="api-reference">API Reference <a class="header-anchor" href="#api-reference" aria-hidden="true">#</a></h1>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at varius nisl, a interdum arcu. Cras aliquam lectus sit amet pellentesque rhoncus. In gravida nisi et lobortis ullamcorper. Fusce eu erat sit amet dolor semper vehicula. Vestibulum tempus ipsum vitae volutpat vulputate. Cras molestie in arcu eu feugiat. Aenean malesuada purus ac lectus cursus, a placerat mi commodo. Sed dapibus diam eu massa bibendum accumsan. Aenean vitae lobortis arcu. Ut tempus ex dui, at vehicula lacus ornare vel. Aenean quis condimentum orci, ac egestas ipsum. Curabitur sit amet sagittis massa. Quisque a arcu pretium, porta odio non, lobortis purus. Cras tincidunt congue ante id porta. Mauris ornare, dui at facilisis iaculis, metus nunc scelerisque felis, vitae tincidunt dui tortor a dolor.</p>
 <p>Sed at lorem eget erat posuere vehicula. Sed dignissim vel elit ut porttitor. Nullam eget mi mauris. Aenean pharetra ultricies ligula ac egestas. Nulla fringilla sed tortor at commodo. Nullam convallis tempor consequat. Phasellus ut laoreet augue. Fusce massa sapien, commodo non dolor vel, rhoncus consequat justo. Aliquam sodales euismod enim eget commodo. Sed pharetra pretium eros nec pharetra. Etiam malesuada rhoncus lacinia. Aenean efficitur nisl vitae magna semper, sed pretium elit bibendum. Fusce imperdiet vitae sapien id imperdiet. Aenean tempor tincidunt elit, eget iaculis nisi egestas eget. Cras luctus rutrum lorem, ac tempor nisl finibus eget. Etiam in magna in elit lobortis pharetra.</p>
