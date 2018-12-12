@@ -533,12 +533,138 @@
             </nav>
             <main>
                 <div class="container">
-                    <h1 id="proposals-and-rationales">Proposals and Rationales <a class="header-anchor" href="#proposals-and-rationales" aria-hidden="true">#</a></h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus auctor dapibus tempor. Integer venenatis tempor magna, vitae vestibulum risus rhoncus id. Ut id tempor leo. Integer ac tristique ipsum. Ut maximus, velit pretium tempor dictum, erat nibh feugiat magna, at pharetra ligula est non lorem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus id rutrum nibh. Aliquam vel urna eget sem sodales mattis sit amet eget ante. Nulla lorem nibh, eleifend quis mattis et, congue quis sapien. Proin aliquam mauris tincidunt, efficitur erat eu, varius elit. Curabitur egestas fermentum leo vitae porta. Nunc pulvinar dignissim velit. Praesent condimentum, erat eget malesuada euismod, quam tortor aliquet enim, et elementum quam leo in ligula. Donec dictum risus vitae risus facilisis, ac efficitur est faucibus. Sed ut rutrum sem. Suspendisse sed maximus libero, et tempus odio.</p>
-<p>Cras bibendum euismod lacus. Donec bibendum ut felis eu semper. Mauris nec enim laoreet, consectetur erat laoreet, rhoncus ex. Sed posuere ornare arcu ac condimentum. Praesent ac bibendum velit, at pharetra lorem. Ut vel neque ac quam rhoncus efficitur sed non orci. Vestibulum enim quam, volutpat ut efficitur rutrum, luctus ut lectus. Etiam consequat, metus et dictum congue, erat massa consequat nisi, sed scelerisque lorem libero in tellus. Etiam sagittis leo ornare pellentesque pharetra.</p>
-<p>Aliquam id turpis pharetra, sollicitudin purus vitae, pellentesque nibh. Vestibulum ultrices malesuada nisl, at tristique mi imperdiet vel. Fusce sit amet venenatis diam, eu egestas sapien. Vestibulum quis lectus vestibulum velit auctor eleifend consectetur sit amet quam. Fusce ultrices nisi ac vehicula vestibulum. Nunc nec dictum neque, non pharetra ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas eget interdum felis. Curabitur mauris lorem, elementum eget ultrices in, tristique dictum lorem. Suspendisse vitae commodo ligula, at blandit odio. Donec viverra ipsum sit amet eleifend cursus.</p>
-<p>Nullam faucibus volutpat augue, condimentum pretium erat molestie ut. In eu tincidunt massa. Maecenas gravida ex condimentum, laoreet libero elementum, pretium urna. Aenean aliquet urna quis augue aliquet, non imperdiet quam maximus. Suspendisse ornare pharetra suscipit. Praesent vulputate euismod euismod. Quisque et purus fringilla risus gravida molestie egestas eu orci.</p>
-<p>Sed feugiat in arcu elementum viverra. Aenean imperdiet cursus dignissim. Phasellus dictum lorem eu dolor rutrum, nec tristique arcu rhoncus. Quisque orci tellus, porta vel accumsan at, rutrum ac sapien. Fusce lobortis maximus risus, et pretium dolor laoreet et. Phasellus pulvinar, sem in venenatis rhoncus, diam lacus viverra magna, vel pharetra nunc augue volutpat eros. Donec magna risus, blandit vitae imperdiet eu, aliquam a nulla. Nunc ultricies ut mauris ut venenatis. Donec nec neque vehicula, aliquam felis nec, mattis magna. Morbi pharetra purus tellus, euismod auctor nisi ullamcorper ut. Duis in risus hendrerit, tincidunt sapien eu, ultrices dolor. Donec tempus dui finibus turpis ullamcorper volutpat luctus ut enim. Fusce id varius dui. Nam a luctus diam. Quisque quis turpis in leo mollis pretium.</p>
+                    <h1 id="metamask-quick-start">MetaMask Quick Start <a class="header-anchor" href="#metamask-quick-start" aria-hidden="true">#</a></h1>
+<p>Do you prefer to just copy and paste some working code? Here is a simple but complete working MetaMask tipping application.</p>
+<p>Below the code snippet, we’ll include some links to some related valuable resources.</p>
+<pre><code class="hljs language-javascript"><span class="hljs-comment">// Let's imagine you want to receive an ether tip</span>
+<span class="hljs-keyword">const</span> yourAddress = <span class="hljs-string">'0x0c54FcCd2e384b4BB6f2E405Bf5Cbc15a017AaFb'</span>
+<span class="hljs-keyword">const</span> value = <span class="hljs-string">'0xde0b6b3a7640000'</span>, <span class="hljs-comment">// an ether has 18 decimals, here in hex.</span>
+<span class="hljs-keyword">const</span> desiredNetwork = <span class="hljs-string">'1'</span> <span class="hljs-comment">// '1' is the Ethereum main network ID.</span>
+
+<span class="hljs-comment">// Detect whether the current browser is ethereum-compatible,</span>
+<span class="hljs-comment">// and handle the case where it isn't:</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">window</span>.ethereum === <span class="hljs-string">'undefined'</span>) {
+  alert(<span class="hljs-string">'Looks like you need a Dapp browser to get started.'</span>)
+  alert(<span class="hljs-string">'Consider installing MetaMask!'</span>)
+
+} <span class="hljs-keyword">else</span> {
+
+  <span class="hljs-comment">// In the case the user has MetaMask installed, you can easily</span>
+  <span class="hljs-comment">// ask them to sign in and reveal their accounts:</span>
+  ethereum.enable().then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">accounts</span>) </span>{
+
+    <span class="hljs-comment">// You also should verify the user is on the correct network:</span>
+    <span class="hljs-keyword">if</span> (ethereum.networkVersion !== desiredNetwork) {
+      alert(<span class="hljs-string">'This application requires the main network, please switch it in your MetaMask UI.'</span>)
+
+      <span class="hljs-comment">// We plan to provide an API to make this request in the near future.</span>
+      <span class="hljs-comment">// https://github.com/MetaMask/metamask-extension/issues/3663</span>
+    }
+
+    <span class="hljs-comment">// Once you have a reference to user accounts,</span>
+    <span class="hljs-comment">// you can suggest transactions and signatures:</span>
+    <span class="hljs-keyword">const</span> account = accounts[<span class="hljs-number">0</span>]
+    sendEtherFrom(account, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, transaction</span>) </span>{
+      <span class="hljs-keyword">if</span> (err) {
+        <span class="hljs-keyword">return</span> alert(<span class="hljs-string">`Sorry you weren't able to contribute!`</span>)
+      }
+
+      alert(<span class="hljs-string">'Thanks for your successful contribution!'</span>)
+    })
+
+  <span class="hljs-comment">// Remember to handle the case they reject the request:</span>
+  }).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">reason</span>) </span>{
+    <span class="hljs-keyword">if</span> (reason === <span class="hljs-string">'User rejected provider access'</span>) {
+      <span class="hljs-comment">// The user didn't want to sign in!</span>
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-comment">// This shouldn't happen, so you might want to log this...</span>
+      alert(<span class="hljs-string">'There was an issue signing you in.'</span>)
+    }
+  })
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sendEtherFrom</span> (<span class="hljs-params">account, callback</span>) </span>{
+
+  <span class="hljs-comment">// We're going to use the lowest-level API here, with simpler example links below</span>
+  <span class="hljs-keyword">const</span> method = <span class="hljs-string">'eth_sendTransaction'</span>
+  <span class="hljs-keyword">const</span> parameters = [{
+    <span class="hljs-attr">from</span>: account,
+    <span class="hljs-attr">to</span>: yourAddress,
+    <span class="hljs-attr">value</span>: value,
+  }]
+  <span class="hljs-keyword">const</span> <span class="hljs-keyword">from</span> = account
+
+  <span class="hljs-comment">// Now putting it all together into an RPC request:</span>
+  <span class="hljs-keyword">const</span> payload = {
+    <span class="hljs-attr">method</span>: method,
+    <span class="hljs-attr">params</span>: parameters,
+    <span class="hljs-attr">from</span>: <span class="hljs-keyword">from</span>,
+  }
+
+  <span class="hljs-comment">// Methods that require user authorization like this one will prompt a user interaction.</span>
+  <span class="hljs-comment">// Other methods (like reading from the blockchain) may not.</span>
+  ethereum.sendAsync(payload, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, response</span>) </span>{
+    <span class="hljs-keyword">const</span> rejected = <span class="hljs-string">'User denied transaction signature.'</span>
+    <span class="hljs-keyword">if</span> (response.error &amp;&amp; response.error.message.includes(rejected)) {
+      <span class="hljs-keyword">return</span> alert(<span class="hljs-string">`We can't take your money without your permission.`</span>)
+    }
+
+    <span class="hljs-keyword">if</span> (err) {
+      <span class="hljs-keyword">return</span> alert(<span class="hljs-string">'There was an issue, please try again.'</span>)
+    }
+
+    <span class="hljs-keyword">if</span> (response.result) {
+      <span class="hljs-comment">// If there is a response.result, the call was successful.</span>
+      <span class="hljs-comment">// In the case of this method, it is a transaction hash.</span>
+      <span class="hljs-keyword">const</span> txHash = response.result
+      alert(<span class="hljs-string">'Thank you for your generosity!'</span>)
+
+      <span class="hljs-comment">// You can poll the blockchain to see when this transaction has been mined:</span>
+      pollForCompletion(txHash, callback)
+    }
+  })
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pollForCompletion</span> (<span class="hljs-params">txHash, callback</span>) </span>{
+  <span class="hljs-keyword">let</span> calledBack = <span class="hljs-literal">false</span>
+
+  <span class="hljs-comment">// Normal ethereum blocks are approximately every 15 seconds.</span>
+  <span class="hljs-comment">// Here we'll poll every 2 seconds.</span>
+  <span class="hljs-keyword">const</span> checkInterval = setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+
+    <span class="hljs-keyword">const</span> notYet = <span class="hljs-string">'response has no error or result'</span>
+    ethereum.sendAsync({
+      <span class="hljs-attr">method</span>: <span class="hljs-string">'eth_getTransactionByHash'</span>,
+      <span class="hljs-attr">params</span>: [ txHash ],
+    }, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, response</span>) </span>{
+      <span class="hljs-keyword">if</span> (calledBack) <span class="hljs-keyword">return</span>
+      <span class="hljs-keyword">if</span> (err || response.error) {
+        <span class="hljs-keyword">if</span> (err.message.includes(notYet)) {
+          <span class="hljs-keyword">return</span> <span class="hljs-string">'transaction is not yet mined'</span>
+        }
+
+        callback(err || response.error)
+      }
+
+      <span class="hljs-comment">// We have successfully verified the mined transaction.</span>
+      <span class="hljs-comment">// Mind you, we should do this server side, with our own blockchain connection.</span>
+      <span class="hljs-comment">// Client side we are trusting the user's connection to the blockchain.</span>
+      <span class="hljs-keyword">const</span> transaction = response.result
+      clearInterval(checkInterval)
+      calledBack = <span class="hljs-literal">true</span>
+      callback(<span class="hljs-literal">null</span>, transaction)
+    })
+  }, <span class="hljs-number">2000</span>)
+}
+</code></pre>
+<p>Now that was all very low level, but should show you how MetaMask works at its simplest, and lowest level!</p>
+<p>Now you can read more about this <a href="./API_Reference">ethereum API</a>, or maybe get acquainted with a convenience library so you don’t have to interact with it directly:</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/ethjs">ethjs</a></li>
+<li><a href="https://truffleframework.com/">truffle</a></li>
+<li><a href="https://embark.status.im/">Embark</a></li>
+<li><a href="https://www.npmjs.com/package/web3">web3</a></li>
+</ul>
 
                     <div class="bottomMatter">
                         Last updated:
