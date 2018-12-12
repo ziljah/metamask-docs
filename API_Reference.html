@@ -545,6 +545,19 @@
 <p>The provider API itself is very simple, and wraps <a href="https://github.com/ethereum/wiki/wiki/JSON-RPC#json-rpc-methods">Ethereum JSON-RPC</a> formatted messages, which is why developers usually use a convenience library for interacting with the provider, like <a href="https://www.npmjs.com/package/web3">web3</a>, <a href="https://truffleframework.com/">truffle</a>, <a href="https://www.npmjs.com/package/ethjs">ethjs</a>, <a href="https://embark.status.im/">Embark</a>, or others. From those tools, you can generally find sufficient documentation to interact with the provider, without reading this lower-level API.</p>
 <p>However, for developers of convenience libraries, and for developers who would like to use features that are not yet supported by their favorite libraries, knowledge of the provider API is essential.</p>
 <p>Some simplifications are coming soon to this API, which you can <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md">read more about here</a>.</p>
+<h2 id="properties">Properties <a class="header-anchor" href="#properties" aria-hidden="true">#</a></h2>
+<p>These properties can be used to check the current state of the connected user, which can be important things to verify before sending a transaction:</p>
+<h3 id="ethereum.networkversion">ethereum.networkVersion <a class="header-anchor" href="#ethereum.networkversion" aria-hidden="true">#</a></h3>
+<p>Returns a numeric string representing the current blockchain’s network ID. A few example values:</p>
+<p>‘1’: Ethereum Main Network
+‘2’: Morden Test network
+‘3’: Ropsten Test Network
+‘4’: Rinkeby Test Network
+‘42’: Kovan Test Network</p>
+<h3 id="ethereum.selectedaddress">ethereum.selectedAddress <a class="header-anchor" href="#ethereum.selectedaddress" aria-hidden="true">#</a></h3>
+<p>Returns a hex-prefixed string representing the current user’s selected address, ex: <code>&quot;0xfdea65c8e26263f6d9a1b5de9555d2931a33b825&quot;</code>.</p>
+<h3 id="ethereum.ismetamask">ethereum.isMetaMask <a class="header-anchor" href="#ethereum.ismetamask" aria-hidden="true">#</a></h3>
+<p>Returns <code>true</code> or <code>false</code>, representing whether the user has MetaMask installed.</p>
 <h2 id="methods">Methods <a class="header-anchor" href="#methods" aria-hidden="true">#</a></h2>
 <h3 id="ethereum.enable()">ethereum.enable() <a class="header-anchor" href="#ethereum.enable()" aria-hidden="true">#</a></h3>
 <p>Requests the user provides an ethereum address to be identified by. Returns a promise of an array of hex-prefixed ethereum address strings.</p>
