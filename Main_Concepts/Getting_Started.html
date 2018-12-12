@@ -549,6 +549,17 @@
 <li>What is the current account?</li>
 </ul>
 <p>Both of these are available synchronously as <code>ethereum.networkVersion</code> and <code>ethereum.selectedAddress</code>. You can listen for changes using events, too (<a href="./API_Reference">see the API reference</a>).</p>
+<h3 id="logging-in">Logging In <a class="header-anchor" href="#logging-in" aria-hidden="true">#</a></h3>
+<p>When you’re ready to request the user logs in, you can call this simple method:</p>
+<pre><code class="hljs language-javascript">ethereum.enable()
+</code></pre>
+<p>This promise-returning function resolves with an array of hex-prefixed ethereum addresses, which can be used as general account references when sending transactions.</p>
+<p>Over time, this method is intended to grow to include various additional parameters to help your site request all the setup it needs from the user during setup.</p>
+<p>Since it returns a promise, if you’re in an <code>async</code> function, you may log in like this:</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> accounts = <span class="hljs-keyword">await</span> ethereum.enable()
+<span class="hljs-keyword">const</span> account = accounts[<span class="hljs-number">0</span>] <span class="hljs-comment">// We currently only ever provide a single account,</span>
+                            <span class="hljs-comment">// but the array gives us some room to grow.</span>
+</code></pre>
 <h2 id="choosing-a-convenience-library">Choosing a Convenience Library <a class="header-anchor" href="#choosing-a-convenience-library" aria-hidden="true">#</a></h2>
 <p>Convenience libraries exist for a variety of reasons.</p>
 <p>Some of them simplify the creation of specific user interface elements, some entirely manage the user account onboarding, and others give you a variety of methods of interacting with smart contracts, for a variety of API preferences, from promises, to callbacks, to strong types, and on.</p>
