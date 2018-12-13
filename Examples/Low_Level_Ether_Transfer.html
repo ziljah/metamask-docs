@@ -544,8 +544,20 @@
 
   <span class="hljs-comment">// In the case the user has MetaMask installed, you can easily</span>
   <span class="hljs-comment">// ask them to sign in and reveal their accounts:</span>
-  ethereum.enable().then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">accounts</span>) </span>{
+  ethereum.enable()
 
+  <span class="hljs-comment">// Remember to handle the case they reject the request:</span>
+  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">reason</span>) </span>{
+    <span class="hljs-keyword">if</span> (reason === <span class="hljs-string">'User rejected provider access'</span>) {
+      <span class="hljs-comment">// The user didn't want to sign in!</span>
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-comment">// This shouldn't happen, so you might want to log this...</span>
+      alert(<span class="hljs-string">'There was an issue signing you in.'</span>)
+    }
+  })
+
+  <span class="hljs-comment">// In the case they approve the log-in request, you'll receive their accounts:</span>
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">accounts</span>) </span>{
     <span class="hljs-comment">// You also should verify the user is on the correct network:</span>
     <span class="hljs-keyword">if</span> (ethereum.networkVersion !== desiredNetwork) {
       alert(<span class="hljs-string">'This application requires the main network, please switch it in your MetaMask UI.'</span>)
@@ -565,14 +577,6 @@
       alert(<span class="hljs-string">'Thanks for your successful contribution!'</span>)
     })
 
-  <span class="hljs-comment">// Remember to handle the case they reject the request:</span>
-  }).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">reason</span>) </span>{
-    <span class="hljs-keyword">if</span> (reason === <span class="hljs-string">'User rejected provider access'</span>) {
-      <span class="hljs-comment">// The user didn't want to sign in!</span>
-    } <span class="hljs-keyword">else</span> {
-      <span class="hljs-comment">// This shouldn't happen, so you might want to log this...</span>
-      alert(<span class="hljs-string">'There was an issue signing you in.'</span>)
-    }
   })
 }
 
