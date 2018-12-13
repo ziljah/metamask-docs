@@ -527,6 +527,13 @@
             <main>
                 <div class="container">
                     <h1 id="accessing-accounts">Accessing Accounts <a class="header-anchor" href="#accessing-accounts" aria-hidden="true">#</a></h1>
+<p>User accounts are used in a variety of contexts in Ethereum, they serve as neat identifiers, but no use as as important as calling <em>wallet methods</em>, methods that involve a signature or transaction approval. All of those methods require the sending account as a function parameter:</p>
+<ul>
+<li><code>eth_sendTransaction</code></li>
+<li><code>eth_sign</code> (insecure and unadvised to use)</li>
+<li><code>eth_personalSign</code></li>
+<li><code>eth_signTypedData</code></li>
+</ul>
 <p>Once you’ve <a href="./Getting_Started">connected to a user</a>, you can always re-check the current account by checking <code>ethereum.selectedAddress</code>.</p>
 <p>If you’d like to be notified when the address changes, we have an event you can subscribe to:</p>
 <pre><code class="hljs language-javascript">ethereum.on(<span class="hljs-string">'accountsChanged'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">accounts</span>) </span>{
@@ -538,7 +545,7 @@
                     <div class="bottomMatter">
                         Last updated:
                         
-                        12/12/2018
+                        12/13/2018
                         <span id="top">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></span>
                     </div>
                 </div>
