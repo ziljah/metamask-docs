@@ -565,6 +565,7 @@ ethereum.sendAsync({
 <p>Contract creation occurs when there is no <code>to</code> value but there is a <code>data</code> value.</p>
 <h3 id="value-%5Boptional%5D">Value [optional] <a class="header-anchor" href="#value-%5Boptional%5D" aria-hidden="true">#</a></h3>
 <p>Hex-encoded value of the network’s native currency to send. On the Main Ethereum network, this is <a href="https://www.ethereum.org/ether">ether</a>, which is denominated in <em>wei</em>, which is <code>1e-18</code> ether.</p>
+<p>Please note that these numbers often used in Ethereum are far higher precision than native JavaScript numbers, and can cause unpredictable behavior if not anticipated. For this reason, we highly recommend using <a href="https://github.com/indutny/bn.js/">BN.js</a> when manipulating values intended for the blockchain.</p>
 <h3 id="data-%5Bsemi-optional%5D">Data [semi-optional] <a class="header-anchor" href="#data-%5Bsemi-optional%5D" aria-hidden="true">#</a></h3>
 <p>Required for smart contract creation.</p>
 <p>This field is also used for specifying contract methods and their parameters. You can learn more about how that data is encoded on <a href="https://solidity.readthedocs.io/en/develop/abi-spec.html">the solidity ABI spec</a>.</p>
