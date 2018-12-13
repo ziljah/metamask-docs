@@ -528,7 +528,7 @@
                 <div class="container">
                     <h1 id="sending-transactions">Sending Transactions <a class="header-anchor" href="#sending-transactions" aria-hidden="true">#</a></h1>
 <p>Transactions are a formal action on a blockchain. They are always initiated in MetaMask with a call to the <code>eth_sendTransaction</code> method. They can involve a simple sending of ether, may result in sending tokens, creating a new smart contract, or changing state on the blockchain in any number of ways. They are always initiated by a signature from an <em>external account</em>, or a simple key pair.</p>
-<p>In MetaMask, sending a transaction will generally involve composing an options object somewhat like this:</p>
+<p>In MetaMask, using the <code>ethereum.sendAsync</code> method directly, sending a transaction will involve composing an options object like this:</p>
 <pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> transactionParameters = {
   <span class="hljs-attr">nonce</span>: <span class="hljs-string">'0x00'</span>, <span class="hljs-comment">// ignored by MetaMask</span>
   gasPrice: <span class="hljs-string">'0x09184e72a000'</span>, <span class="hljs-comment">// customizable by user during MetaMask confirmation.</span>
