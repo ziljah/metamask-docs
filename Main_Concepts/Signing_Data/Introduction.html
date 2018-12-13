@@ -552,20 +552,27 @@
             </nav>
             <main>
                 <div class="container">
-                    <h1 id="initializing-dapps">Initializing Dapps <a class="header-anchor" href="#initializing-dapps" aria-hidden="true">#</a></h1>
-<p>Once you have your basic dev environment <a href="./Getting_Started">set up</a>, you are ready to start interacting with some smart contracts. There are some basic things you’ll need regardless of what convenience library you’re using, when communicating with a smart contract:</p>
-<h2 id="the-contract-network">The Contract Network <a class="header-anchor" href="#the-contract-network" aria-hidden="true">#</a></h2>
-<p>If you aren’t connected to the right network, you aren’t going to have any luck sending transactions to your contract, so make sure you have this right!</p>
-<p>Many clever dapps will recognize the user’s current network, and actually adapt to it! For example, if you detect a test network, you could deliberately connect to a test-network version of your smart contract, which makes it easy for users to “try out” your system without using real money!</p>
-<h2 id="the-contract-address">The Contract Address <a class="header-anchor" href="#the-contract-address" aria-hidden="true">#</a></h2>
-<p>Every account in Ethereum has an address, whether it’s an external key-pair account, or a smart contract. In order for any smart contract library to communicate with your contracts, they’ll need to know its exact address.</p>
-<h2 id="the-contract-abi">The Contract ABI <a class="header-anchor" href="#the-contract-abi" aria-hidden="true">#</a></h2>
-<p>In Ethereum, <a href="https://solidity.readthedocs.io/en/develop/abi-spec.html">The ABI Specification</a> is a way to encode the interface of a smart contract in a way that your user interface can make sense of. It is an array of method-describing objects, and when you feed this and the address into a contract-abstraction library like <a href="https://www.npmjs.com/package/web3">web3</a>, <a href="https://truffleframework.com/">truffle</a>, <a href="https://www.npmjs.com/package/ethjs">ethjs</a>, <a href="https://embark.status.im/">Embark</a>, or others, this <code>ABI</code> tells those libraries about what methods to provide, and how to compose transactions to call those methods.</p>
-<h2 id="the-contract-bytecode">The Contract Bytecode <a class="header-anchor" href="#the-contract-bytecode" aria-hidden="true">#</a></h2>
-<p>If your web app is going to publish a new smart contract that is pre-compiled, it may need to include some <code>bytecode</code>. In this case, you will not know the contract address in advance, but instead will have to publish, watch for the transaction to be processed, and then extract the final contract’s address from the completed transaction.</p>
-<p>If publishing a contract from bytecode, you will still want an <code>ABI</code> if you want to interact with it! The bytecode does not describe how to interact with the final contract.</p>
-<h2 id="the-contract-source-code">The Contract Source Code <a class="header-anchor" href="#the-contract-source-code" aria-hidden="true">#</a></h2>
-<p>If your website is going to allow users to edit smart contract source code and compile it, like <a href="http://remix.ethereum.org/">Remix</a>, you may import a whole compiler, in which case you’re going to derive your bytecode and ABI from that source code, and eventually you will derive the contract’s address from the completed transaction publishing that bytecode.</p>
+                    <h1 id="signing-data-with-metamask">Signing Data with MetaMask <a class="header-anchor" href="#signing-data-with-metamask" aria-hidden="true">#</a></h1>
+<p>If you’d like to jump to some working signature examples, <a href="https://github.com/danfinlay/js-eth-personal-sign-examples">you can visit this repository</a>.</p>
+<p>If you’d like to read our JavaScript implementations of these methods, they are all available in the npm package <a href="https://github.com/MetaMask/eth-sig-util">eth-sig-util</a>.</p>
+<h2 id="a-brief-history">A Brief History <a class="header-anchor" href="#a-brief-history" aria-hidden="true">#</a></h2>
+<p>There are currently five signing methods in MetaMask, and you might wonder the history of these methods. Studying the history of these methods has some lessons in it for the emergent lessons of decentralized standards emergence. Our current five methods are:</p>
+<ul>
+<li><code>eth_sign</code></li>
+<li><code>personal_sign</code></li>
+<li><code>signTypedData</code></li>
+<li><code>signTypedData_v1</code></li>
+<li><code>signTypedData_v3</code></li>
+</ul>
+<p>There are likely to be many more over time. When MetMask first started, the Provider API wasn’t designed to be exposed to untrusted websites, and so some considerations weren’t taken as seriously as they were later.</p>
+<p>In particular, the method <code>eth_sign</code> is an open-ended signing method that allows signing an arbitrary hash, which means it can be used to sign transactions, or any other data, making it a dangerous phishing risk.</p>
+<p>For this reason, we make this method show the most frightening possible message to the user, and generally discourage using this method in production. However, some applications (usually admin panels internal to teams) use this method for the sake of its ease of use, and so we have continued to support it for the sake of not breaking the workflows of active projects.</p>
+<p>Eventually, the <a href="https://github.com/ethereum/go-ethereum/pull/2940"><code>personal_sign</code> spec</a> was proposed, which added a prefix to the data so it could not impersonate transactions. We also made this method able to display human readable text when UTF-8 encoded, making it a popular choice for site logins.</p>
+<p>However, the text-prefix made those signatures expensive to verify on-chain, and so with the help of the <a href="https://0xproject.com/">0xProtocol</a> team and <a href="https://spankchain.com/">SpankChain</a>, the <a href="https://eips.ethereum.org/EIPS/eip-712">EIP 712</a> spec was written.</p>
+<p>The strange part of EIP 712, and this decentralized standards ecosystem, is that the proposal changed several times while retaining the same EIP. This means what we initially implemented as <code>signTypedData</code> was the earliest proposed version, while other groups implemented later versions under the same method name.</p>
+<p>To avoid compatibility issues between clients, we recommend using the hard-versioned method names <code>signTypedData_v1</code> and <code>signTypedData_v2</code>.</p>
+<p>In the future, it may help to have method names include a hash of their exact proposal, since in a decentralized ecosystem, there is no absolute source of truth of wha ta given name should map to. Instead, we are forced to invent new patterns of collaboration, where we can drive forward and innovate, while simultaneously avoiding creating a brittle ecosystem by changing our meanings out from under the words.</p>
+<p>I hope this has been a useful introduction to the history of our signing methods!</p>
 
                     <div class="bottomMatter">
                         Last updated:
