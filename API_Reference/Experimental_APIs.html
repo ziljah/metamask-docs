@@ -604,16 +604,29 @@
             </nav>
             <main>
                 <div class="container">
-                    <h1 id="sign-typed-data-v1">Sign Typed Data v1 <a class="header-anchor" href="#sign-typed-data-v1" aria-hidden="true">#</a></h1>
-<p>This early version of the spec lacked some later security improvements, and should generally be neglected in favor of <a href="./Sign_Typed_Data_v3">signTypedData_v3</a>.</p>
-<p>Also known as <code>signTypedData</code>, originally premiered October 2017 in <a href="https://medium.com/metamask/scaling-web3-with-signtypeddata-91d6efc8b290">this blog post</a>, this method was the original state-channel-centric signing method.</p>
-<p>The <code>signTypedData</code> familiy has a few major design considerations:</p>
-<ul>
-<li>Cheap to verify on chain</li>
-<li>Still somewhat human readable</li>
-<li>Hard to phish signatures</li>
-</ul>
-<p>If on-chain verifiability cost is a high priority for you, you might want to consider it.</p>
+                    <h1 id="experimental-apis">Experimental APIs <a class="header-anchor" href="#experimental-apis" aria-hidden="true">#</a></h1>
+<h2 id="wallet_watchasset">wallet_watchAsset <a class="header-anchor" href="#wallet_watchasset" aria-hidden="true">#</a></h2>
+<p>Most all Ethereum wallets display some set of tokens, usually from a centrally curated registry of tokens.</p>
+<p>At MetaMask, we believe the future of tokens has the potential to be much bigger than any one party can curate, and we want to enable this explosion of creativity.</p>
+<p>In support of this goal, we have implemented support for <a href="https://github.com/estebanmino/EIPs/blob/master/EIPS/eip-747.md">EIP 747</a>, which provides a way for your site to suggest a token that a user might want to track in their wallet.</p>
+<p>The code is simple:</p>
+<pre><code class="hljs language-javascript">ethereum.sendAsync({
+	<span class="hljs-attr">method</span>: <span class="hljs-string">'metamask_watchAsset'</span>,
+	<span class="hljs-attr">params</span>: {
+		<span class="hljs-string">"type"</span>:<span class="hljs-string">"ERC20"</span>, <span class="hljs-comment">// Initially only supports ERC20, but eventually more!</span>
+		<span class="hljs-string">"options"</span>:{
+			<span class="hljs-string">"address"</span>: tokenAddress, <span class="hljs-comment">// The address that the token is at.</span>
+			<span class="hljs-string">"symbol"</span>: tokenSymbol, <span class="hljs-comment">// A ticker symbol or shorthand, up to 5 chars.</span>
+			<span class="hljs-string">"decimals"</span>: tokenDecimals, <span class="hljs-comment">// The number of decimals in the token</span>
+			<span class="hljs-string">"image"</span>: tokenImage, <span class="hljs-comment">// A string url of the token logo</span>
+		},
+	},
+	<span class="hljs-attr">id</span>: <span class="hljs-built_in">Math</span>.round(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100000</span>),
+}, (err, addedBoolean) =&gt; {
+
+})
+</code></pre>
+<p>We even created a sample Dapp so developers could suggest their tokens to users with a simple hyperlink, without a line of code. <a href="https://github.com/MetaMask/Add-Token">Visit it here</a>.</p>
 
                     <div class="bottomMatter">
                         Last updated:
