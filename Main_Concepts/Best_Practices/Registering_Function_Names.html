@@ -585,45 +585,42 @@
             </nav>
             <main>
                 <div class="container">
-                    <h1 id="registering-tokens-with-users">Registering Tokens with Users <a class="header-anchor" href="#registering-tokens-with-users" aria-hidden="true">#</a></h1>
-<p>When a user opens their MetaMask, they are shown a variety of assets, including tokens. By default, MetaMask auto-detects some major popular tokens and auto-displays them, but for most tokens, the user will need to add the token themselves.</p>
-<p>While this is possible using our UI with the <code>Add Token</code> button, that process can be cumbersome, and involves the user interacting with contract addresses, and is very error prone.</p>
-<p>You can greatly improve the security and experience of users adding your token to their MetaMask by taking advantage of the <code>wallet_watchAsset</code> API as defined in <a href="https://github.com/estebanmino/EIPs/blob/master/EIPS/eip-747.md">EIP 747</a>.</p>
-<h2 id="code-free-example">Code-free Example <a class="header-anchor" href="#code-free-example" aria-hidden="true">#</a></h2>
-<p>We have made a simple web app that allows you to enter your token details once (including an icon) and then share a link with others so they can easily see those tokens in their wallet.</p>
-<p><a href="https://metamask.github.io/Add-Token/#edit">Add Token App</a></p>
-<h2 id="example">Example <a class="header-anchor" href="#example" aria-hidden="true">#</a></h2>
-<p>If you’d like to integrate suggesting a token into your own web app, you can follow this code snippet to implement it:</p>
-<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> tokenAddress = <span class="hljs-string">'0xd00981105e61274c8a5cd5a88fe7e037d935b513'</span>
-<span class="hljs-keyword">const</span> tokenSymbol = <span class="hljs-string">'TUT'</span>
-<span class="hljs-keyword">const</span> decimals = <span class="hljs-number">18</span>
-<span class="hljs-keyword">const</span> tokenImage = <span class="hljs-string">'http://placekitten.com/200/300'</span>
-
-ethereum.sendAsync({
-    <span class="hljs-attr">method</span>: <span class="hljs-string">'wallet_watchAsset'</span>,
-    <span class="hljs-attr">params</span>: {
-      <span class="hljs-string">"type"</span>:<span class="hljs-string">"ERC20"</span>,
-      <span class="hljs-string">"options"</span>:{
-        <span class="hljs-string">"address"</span>: tokenAddress,
-        <span class="hljs-string">"symbol"</span>: tokenSymbol,
-        <span class="hljs-string">"decimals"</span>: tokenDecimals,
-        <span class="hljs-string">"image"</span>: tokenImage,
-      },
-    },
-    <span class="hljs-attr">id</span>: <span class="hljs-built_in">Math</span>.round(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100000</span>),
-}, (err, added) =&gt; {
-
-  <span class="hljs-keyword">if</span> (added) {
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Thanks for your interest!'</span>)
-  } <span class="hljs-keyword">else</span> {
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Your loss!'</span>)
-  }
-
-})
-</code></pre>
-<h2 id="default-token-list">Default Token List <a class="header-anchor" href="#default-token-list" aria-hidden="true">#</a></h2>
-<p>If you’re a major and popular token, you may qualify to be listed in our <a href="https://github.com/MetaMask/eth-contract-metadata">eth-contract-metadata</a> registry. This is a centralized solution and takes a larger toll on our development team, so we prefer to avoid the politics of picking and choosing tokens that get auto-detected in users’ accounts, so please see if the EIP-747 method above can suit your needs before submitting a new token there for inclusion.</p>
-<p>If you have a user on your site, asking them to click once to add a token is a small burden on them, and allows you to leverage the trusting relationship you already have with your user instead of our central repository.</p>
+                    <h1 id="registering-your-contract%E2%80%99s-method-names">Registering Your Contract’s Method Names <a class="header-anchor" href="#registering-your-contract%E2%80%99s-method-names" aria-hidden="true">#</a></h1>
+<p>MetaMask uses the parity on-chain registry of function signatures to display method names on the confirm screen. For many common method names, like token methods, this allows MetaMask to successfully look up the method names by their <a href="https://solidity.readthedocs.io/en/v0.4.21/abi-spec.html">method signature</a>. However, sometimes you’re using a method that is not in that on-chain registry, and MetaMask will simply display <code>Unknown Function</code> to the user.</p>
+<p>To add your contract’s function names to this registry so it shows in the MetaMask interface, follow the below steps.</p>
+<ol>
+<li>
+<p>Go to the <a href="https://etherscan.io/address/0x44691b39d1a75dc4e0a0346cbb15e310e6ed1e86#writeContract">mainnet parity signature registration contract on etherscan</a></p>
+</li>
+<li>
+<p>Connect MetaMask</p>
+</li>
+<li>
+<p>Use etherscan’s write contract feature to input the string value (without quotes) to the register function</p>
+<p>for example:</p>
+<p><code>getOwners()</code></p>
+<p><code>execTransaction(address,uint256,bytes,uint8,uint256,uint256,uint256,address,address,bytes)</code></p>
+</li>
+<li>
+<p>Press write</p>
+</li>
+<li>
+<p>Approve the transaction through MetaMask (you only pay gas)</p>
+</li>
+</ol>
+<h5 id="verify">Verify <a class="header-anchor" href="#verify" aria-hidden="true">#</a></h5>
+<p><code>web3.sha3('getOwners()') =&gt; 0xa0e67e2bdc0a6d8a09ccd6c353c9df590807ad66ff5e6630c4f31a86dfa84821</code></p>
+<p>take the first 10 characters <code>0xa0e67e2b</code>
+and input into <strong><a href="https://jennypollack.github.io/function_signature_registry/">this demo app</a> that checks the on-chain registry</strong> (mainnet or rinkeby)</p>
+<h5 id="alternate-steps-using-remix.ethereum.org%3A">Alternate steps using <a href="http://remix.ethereum.org">remix.ethereum.org</a>: <a class="header-anchor" href="#alternate-steps-using-remix.ethereum.org%3A" aria-hidden="true">#</a></h5>
+<p>Paste the contract code from <a href="https://www.bokconsulting.com.au/blog/a-quick-look-at-paritys-signature-registry-contract/">bokky’s blog post</a> into <a href="remix.ethereum.org">remix</a></p>
+<p>Set the correct compiler version based on the contract.</p>
+<p>Use remix’s write functionality to add to the registry.</p>
+<p>You can look at the FUNCTIONHASHES section on <a href="http://remix.ethereum.org">remix.ethereum.org</a> by loading the signature registry contract, press the Details button on the compile tab.</p>
+<h5 id="additional-info">Additional Info <a class="header-anchor" href="#additional-info" aria-hidden="true">#</a></h5>
+<p>You can also use the <a href="https://rinkeby.etherscan.io/address/0x0c0831fb1ec7442485fb41a033ba188389a990b4">signature registry</a> deployed on rinkeby but should note that <strong>MetaMask reads from the mainnet eth-method-registry endpoint, regardless of user’s network</strong></p>
+<p><a href="https://github.com/danfinlay/eth-method-registry">eth-method-registry</a> is used to lookup methods in MetaMask.</p>
+<p>This <a href="https://ethereum.stackexchange.com/questions/59678/metamask-shows-unknown-function-when-calling-method-send-function">stack exchange</a> answer is a good <strong>tldr</strong>.</p>
 
                     <div class="bottomMatter">
                         Last updated:
