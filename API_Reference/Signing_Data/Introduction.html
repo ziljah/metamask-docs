@@ -585,93 +585,27 @@
             </nav>
             <main>
                 <div class="container">
-                    <h1 id="api-reference">API Reference <a class="header-anchor" href="#api-reference" aria-hidden="true">#</a></h1>
-<p>MetaMask injects a global API into websites visited by its users at <code>window.ethereum</code> (Also available at <code>window.web3.currentProvider</code> for legacy reasons). This API allows websites to request user login, load data from blockchains the user has a connection to, and suggest the user sign messages and transactions. You can use this API to detect the user of a web3 browser.</p>
-<pre><code class="hljs language-javascript"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">window</span>.ethereum !== <span class="hljs-string">'undefined'</span>
-|| (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">window</span>.web3 !== <span class="hljs-string">'undefined'</span>)) {
-
-  <span class="hljs-comment">// Web3 browser user detected. You can now use the provider.</span>
-  <span class="hljs-keyword">const</span> provider = <span class="hljs-built_in">window</span>[<span class="hljs-string">'ethereum'</span>] || <span class="hljs-built_in">window</span>.web3.currentProvider
-}
-</code></pre>
-<p>The provider API itself is very simple, and wraps <a href="./JSON_RPC_API">Ethereum JSON-RPC</a> formatted messages, which is why developers usually use a convenience library for interacting with the provider, like <a href="https://www.npmjs.com/package/web3">web3</a>, <a href="https://truffleframework.com/">truffle</a>, <a href="https://www.npmjs.com/package/ethjs">ethjs</a>, <a href="https://embark.status.im/">Embark</a>, or others. From those tools, you can generally find sufficient documentation to interact with the provider, without reading this lower-level API.</p>
-<p>However, for developers of convenience libraries, and for developers who would like to use features that are not yet supported by their favorite libraries, knowledge of the provider API is essential.</p>
-<p>Some simplifications are coming soon to this API, which you can <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md">read more about here</a>.</p>
-<h2 id="properties">Properties <a class="header-anchor" href="#properties" aria-hidden="true">#</a></h2>
-<p>These properties can be used to check the current state of the connected user, which can be important things to verify before sending a transaction:</p>
-<h3 id="ethereum.networkversion">ethereum.networkVersion <a class="header-anchor" href="#ethereum.networkversion" aria-hidden="true">#</a></h3>
-<p>Returns a numeric string representing the current blockchain’s network ID. A few example values:</p>
-<p>‘1’: Ethereum Main Network
-‘2’: Morden Test network
-‘3’: Ropsten Test Network
-‘4’: Rinkeby Test Network
-‘42’: Kovan Test Network</p>
-<h3 id="ethereum.selectedaddress">ethereum.selectedAddress <a class="header-anchor" href="#ethereum.selectedaddress" aria-hidden="true">#</a></h3>
-<p>Returns a hex-prefixed string representing the current user’s selected address, ex: <code>&quot;0xfdea65c8e26263f6d9a1b5de9555d2931a33b825&quot;</code>.</p>
-<h3 id="ethereum.ismetamask">ethereum.isMetaMask <a class="header-anchor" href="#ethereum.ismetamask" aria-hidden="true">#</a></h3>
-<p>Returns <code>true</code> or <code>false</code>, representing whether the user has MetaMask installed.</p>
-<h2 id="methods">Methods <a class="header-anchor" href="#methods" aria-hidden="true">#</a></h2>
-<h3 id="ethereum.enable()">ethereum.enable() <a class="header-anchor" href="#ethereum.enable()" aria-hidden="true">#</a></h3>
-<p>Requests the user provides an ethereum address to be identified by. Returns a promise of an array of hex-prefixed ethereum address strings.</p>
-<p>Example usage (ES6), assuming <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">async function</a>:</p>
-<pre><code class="hljs language-javascript"><span class="hljs-keyword">try</span> {
-  <span class="hljs-keyword">const</span> accounts = <span class="hljs-keyword">await</span> ethereum.enable()
-  <span class="hljs-comment">// You now have an array of accounts!</span>
-  <span class="hljs-comment">// Currently only ever one:</span>
-  <span class="hljs-comment">// ['0xFDEa65C8e26263F6d9A1B5de9555D2931A33b825']</span>
-
-} <span class="hljs-keyword">catch</span> (error) {
-  <span class="hljs-comment">// Handle error. Likely the user rejected the login:</span>
-  <span class="hljs-built_in">console</span>.log(reason === <span class="hljs-string">"User rejected provider access"</span>)
-}
-</code></pre>
-<p>Example usage (ES5):</p>
-<pre><code class="hljs language-javascript">ethereum.enable()
-.then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">accounts</span>) </span>{
-  <span class="hljs-comment">// You now have an array of accounts!</span>
-  <span class="hljs-comment">// Currently only ever one:</span>
-  <span class="hljs-comment">// ['0xFDEa65C8e26263F6d9A1B5de9555D2931A33b825']</span>
-})
-.catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">reason</span>) </span>{
-  <span class="hljs-comment">// Handle error. Likely the user rejected the login:</span>
-  <span class="hljs-built_in">console</span>.log(reason === <span class="hljs-string">"User rejected provider access"</span>)
-})
-</code></pre>
-<h3 id="ethereum.sendasync(options%2C-callback)">ethereum.sendAsync(options, callback) <a class="header-anchor" href="#ethereum.sendasync(options%2C-callback)" aria-hidden="true">#</a></h3>
-<p><em>To be superceded by the promise-returning send() method in <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md">EIP 1193</a>.</em></p>
-<p>Sends a message to the web3 browser. Message format maps to the format of <a href="https://github.com/ethereum/wiki/wiki/JSON-RPC#json-rpc-methods">the Ethereum JSON-RPC API</a>.</p>
-<p>Here’s an example of everyone’s favorite method, sending a transaction, which is both how Ether is sent, and how smart contract methods are called:</p>
-<pre><code class="hljs language-javascript">params: [{
-  <span class="hljs-string">"from"</span>: <span class="hljs-string">"0xb60e8dd61c5d32be8058bb8eb970870f07233155"</span>,
-  <span class="hljs-string">"to"</span>: <span class="hljs-string">"0xd46e8dd67c5d32be8058bb8eb970870f07244567"</span>,
-  <span class="hljs-string">"gas"</span>: <span class="hljs-string">"0x76c0"</span>, <span class="hljs-comment">// 30400</span>
-  <span class="hljs-string">"gasPrice"</span>: <span class="hljs-string">"0x9184e72a000"</span>, <span class="hljs-comment">// 10000000000000</span>
-  <span class="hljs-string">"value"</span>: <span class="hljs-string">"0x9184e72a"</span>, <span class="hljs-comment">// 2441406250</span>
-  <span class="hljs-string">"data"</span>: <span class="hljs-string">"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"</span>
-}]
-
-ethereum.sendAsync({
-  <span class="hljs-attr">method</span>: <span class="hljs-string">'eth_sendTransaction'</span>,
-  <span class="hljs-attr">params</span>: params,
-  <span class="hljs-attr">from</span>: accounts[<span class="hljs-number">0</span>], <span class="hljs-comment">// Provide the user's account to use.</span>
-}, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, result</span>) </span>{
-  <span class="hljs-comment">// A typical node-style, error-first callback.</span>
-  <span class="hljs-comment">// The result varies by method, per the JSON RPC API.</span>
-  <span class="hljs-comment">// For example, this method will return a transaction hash on success.</span>
-})
-</code></pre>
-<h3 id="ethereum.on(eventname%2C-callback)">ethereum.on(eventName, callback) <a class="header-anchor" href="#ethereum.on(eventname%2C-callback)" aria-hidden="true">#</a></h3>
-<p>The provider supports listening for some events:</p>
+                    <h1 id="signing-data-with-metamask">Signing Data with MetaMask <a class="header-anchor" href="#signing-data-with-metamask" aria-hidden="true">#</a></h1>
+<p>If you’d like to jump to some working signature examples, <a href="https://github.com/danfinlay/js-eth-personal-sign-examples">you can visit this repository</a>.</p>
+<p>If you’d like to read our JavaScript implementations of these methods, they are all available in the npm package <a href="https://github.com/MetaMask/eth-sig-util">eth-sig-util</a>.</p>
+<h2 id="a-brief-history">A Brief History <a class="header-anchor" href="#a-brief-history" aria-hidden="true">#</a></h2>
+<p>There are currently five signing methods in MetaMask, and you might wonder the history of these methods. Studying the history of these methods has some lessons in it for the emergent lessons of decentralized standards emergence. Our current five methods are:</p>
 <ul>
-<li><code>accountsChanged</code>, returns updated account array.</li>
-<li><code>networkChanged</code>, returns network ID string.</li>
+<li><a href="./Eth_Sign"><code>eth_sign</code></a></li>
+<li><a href="./Personal_Sign"><code>personal_sign</code></a></li>
+<li><a href="./Sign_Typed_Data_v1"><code>signTypedData</code></a> (currently identical to <code>signTypedData_v1</code>)</li>
+<li><a href="./Sign_Typed_Data_v1"><code>signTypedData_v1</code></a></li>
+<li><a href="./Sign_Typed_Data_v3"><code>signTypedData_v3</code></a></li>
 </ul>
-<p>Example</p>
-<pre><code class="hljs language-javascript">ethereum.on(<span class="hljs-string">'accountsChanged'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">accounts</span>) </span>{
-  <span class="hljs-comment">// Time to reload your interface with accounts[0]!</span>
-})
-</code></pre>
-<p>Note currently <code>networkChanged</code> is not completely useful, because MetaMask currently reloads pages that have made requests to the provider upon network change, but <a href="https://medium.com/metamask/breaking-change-no-longer-reloading-pages-on-network-change-4a3e1fd2f5e7">we plan to change this behavior</a>, so it’s safest to prepare your application to gracefully handle network changes.</p>
+<p>There are likely to be many more over time. When MetMask first started, the Provider API wasn’t designed to be exposed to untrusted websites, and so some considerations weren’t taken as seriously as they were later.</p>
+<p>In particular, the method <code>eth_sign</code> is an open-ended signing method that allows signing an arbitrary hash, which means it can be used to sign transactions, or any other data, making it a dangerous phishing risk.</p>
+<p>For this reason, we make this method show the most frightening possible message to the user, and generally discourage using this method in production. However, some applications (usually admin panels internal to teams) use this method for the sake of its ease of use, and so we have continued to support it for the sake of not breaking the workflows of active projects.</p>
+<p>Eventually, the <a href="https://github.com/ethereum/go-ethereum/pull/2940"><code>personal_sign</code> spec</a> was proposed, which added a prefix to the data so it could not impersonate transactions. We also made this method able to display human readable text when UTF-8 encoded, making it a popular choice for site logins.</p>
+<p>However, the text-prefix made those signatures expensive to verify on-chain, and so with the help of the <a href="https://0xproject.com/">0xProtocol</a> team and <a href="https://spankchain.com/">SpankChain</a>, the <a href="https://eips.ethereum.org/EIPS/eip-712">EIP 712</a> spec was written.</p>
+<p>The strange part of EIP 712, and this decentralized standards ecosystem, is that the proposal changed several times while retaining the same EIP. This means what we initially implemented as <code>signTypedData</code> was the earliest proposed version, while other groups implemented later versions under the same method name.</p>
+<p>To avoid compatibility issues between clients, we recommend using the hard-versioned method names <code>signTypedData_v1</code> and <code>signTypedData_v3</code>. The missing <code>v2</code> represents an intermediary design that was implemented by the Cipher browser, so that we have room to implement it if there is ever enough developer demand for it.</p>
+<p>In the future, it may help to have method names include a hash of their exact proposal, since in a decentralized ecosystem, there is no absolute source of truth of wha ta given name should map to. Instead, we are forced to invent new patterns of collaboration, where we can drive forward and innovate, while simultaneously avoiding creating a brittle ecosystem by changing our meanings out from under the words.</p>
+<p>I hope this has been a useful introduction to the history of our signing methods!</p>
 
                     <div class="bottomMatter">
                         Last updated:

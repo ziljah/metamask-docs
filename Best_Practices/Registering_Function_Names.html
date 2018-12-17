@@ -585,93 +585,42 @@
             </nav>
             <main>
                 <div class="container">
-                    <h1 id="api-reference">API Reference <a class="header-anchor" href="#api-reference" aria-hidden="true">#</a></h1>
-<p>MetaMask injects a global API into websites visited by its users at <code>window.ethereum</code> (Also available at <code>window.web3.currentProvider</code> for legacy reasons). This API allows websites to request user login, load data from blockchains the user has a connection to, and suggest the user sign messages and transactions. You can use this API to detect the user of a web3 browser.</p>
-<pre><code class="hljs language-javascript"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">window</span>.ethereum !== <span class="hljs-string">'undefined'</span>
-|| (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">window</span>.web3 !== <span class="hljs-string">'undefined'</span>)) {
-
-  <span class="hljs-comment">// Web3 browser user detected. You can now use the provider.</span>
-  <span class="hljs-keyword">const</span> provider = <span class="hljs-built_in">window</span>[<span class="hljs-string">'ethereum'</span>] || <span class="hljs-built_in">window</span>.web3.currentProvider
-}
-</code></pre>
-<p>The provider API itself is very simple, and wraps <a href="./JSON_RPC_API">Ethereum JSON-RPC</a> formatted messages, which is why developers usually use a convenience library for interacting with the provider, like <a href="https://www.npmjs.com/package/web3">web3</a>, <a href="https://truffleframework.com/">truffle</a>, <a href="https://www.npmjs.com/package/ethjs">ethjs</a>, <a href="https://embark.status.im/">Embark</a>, or others. From those tools, you can generally find sufficient documentation to interact with the provider, without reading this lower-level API.</p>
-<p>However, for developers of convenience libraries, and for developers who would like to use features that are not yet supported by their favorite libraries, knowledge of the provider API is essential.</p>
-<p>Some simplifications are coming soon to this API, which you can <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md">read more about here</a>.</p>
-<h2 id="properties">Properties <a class="header-anchor" href="#properties" aria-hidden="true">#</a></h2>
-<p>These properties can be used to check the current state of the connected user, which can be important things to verify before sending a transaction:</p>
-<h3 id="ethereum.networkversion">ethereum.networkVersion <a class="header-anchor" href="#ethereum.networkversion" aria-hidden="true">#</a></h3>
-<p>Returns a numeric string representing the current blockchain’s network ID. A few example values:</p>
-<p>‘1’: Ethereum Main Network
-‘2’: Morden Test network
-‘3’: Ropsten Test Network
-‘4’: Rinkeby Test Network
-‘42’: Kovan Test Network</p>
-<h3 id="ethereum.selectedaddress">ethereum.selectedAddress <a class="header-anchor" href="#ethereum.selectedaddress" aria-hidden="true">#</a></h3>
-<p>Returns a hex-prefixed string representing the current user’s selected address, ex: <code>&quot;0xfdea65c8e26263f6d9a1b5de9555d2931a33b825&quot;</code>.</p>
-<h3 id="ethereum.ismetamask">ethereum.isMetaMask <a class="header-anchor" href="#ethereum.ismetamask" aria-hidden="true">#</a></h3>
-<p>Returns <code>true</code> or <code>false</code>, representing whether the user has MetaMask installed.</p>
-<h2 id="methods">Methods <a class="header-anchor" href="#methods" aria-hidden="true">#</a></h2>
-<h3 id="ethereum.enable()">ethereum.enable() <a class="header-anchor" href="#ethereum.enable()" aria-hidden="true">#</a></h3>
-<p>Requests the user provides an ethereum address to be identified by. Returns a promise of an array of hex-prefixed ethereum address strings.</p>
-<p>Example usage (ES6), assuming <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">async function</a>:</p>
-<pre><code class="hljs language-javascript"><span class="hljs-keyword">try</span> {
-  <span class="hljs-keyword">const</span> accounts = <span class="hljs-keyword">await</span> ethereum.enable()
-  <span class="hljs-comment">// You now have an array of accounts!</span>
-  <span class="hljs-comment">// Currently only ever one:</span>
-  <span class="hljs-comment">// ['0xFDEa65C8e26263F6d9A1B5de9555D2931A33b825']</span>
-
-} <span class="hljs-keyword">catch</span> (error) {
-  <span class="hljs-comment">// Handle error. Likely the user rejected the login:</span>
-  <span class="hljs-built_in">console</span>.log(reason === <span class="hljs-string">"User rejected provider access"</span>)
-}
-</code></pre>
-<p>Example usage (ES5):</p>
-<pre><code class="hljs language-javascript">ethereum.enable()
-.then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">accounts</span>) </span>{
-  <span class="hljs-comment">// You now have an array of accounts!</span>
-  <span class="hljs-comment">// Currently only ever one:</span>
-  <span class="hljs-comment">// ['0xFDEa65C8e26263F6d9A1B5de9555D2931A33b825']</span>
-})
-.catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">reason</span>) </span>{
-  <span class="hljs-comment">// Handle error. Likely the user rejected the login:</span>
-  <span class="hljs-built_in">console</span>.log(reason === <span class="hljs-string">"User rejected provider access"</span>)
-})
-</code></pre>
-<h3 id="ethereum.sendasync(options%2C-callback)">ethereum.sendAsync(options, callback) <a class="header-anchor" href="#ethereum.sendasync(options%2C-callback)" aria-hidden="true">#</a></h3>
-<p><em>To be superceded by the promise-returning send() method in <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md">EIP 1193</a>.</em></p>
-<p>Sends a message to the web3 browser. Message format maps to the format of <a href="https://github.com/ethereum/wiki/wiki/JSON-RPC#json-rpc-methods">the Ethereum JSON-RPC API</a>.</p>
-<p>Here’s an example of everyone’s favorite method, sending a transaction, which is both how Ether is sent, and how smart contract methods are called:</p>
-<pre><code class="hljs language-javascript">params: [{
-  <span class="hljs-string">"from"</span>: <span class="hljs-string">"0xb60e8dd61c5d32be8058bb8eb970870f07233155"</span>,
-  <span class="hljs-string">"to"</span>: <span class="hljs-string">"0xd46e8dd67c5d32be8058bb8eb970870f07244567"</span>,
-  <span class="hljs-string">"gas"</span>: <span class="hljs-string">"0x76c0"</span>, <span class="hljs-comment">// 30400</span>
-  <span class="hljs-string">"gasPrice"</span>: <span class="hljs-string">"0x9184e72a000"</span>, <span class="hljs-comment">// 10000000000000</span>
-  <span class="hljs-string">"value"</span>: <span class="hljs-string">"0x9184e72a"</span>, <span class="hljs-comment">// 2441406250</span>
-  <span class="hljs-string">"data"</span>: <span class="hljs-string">"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"</span>
-}]
-
-ethereum.sendAsync({
-  <span class="hljs-attr">method</span>: <span class="hljs-string">'eth_sendTransaction'</span>,
-  <span class="hljs-attr">params</span>: params,
-  <span class="hljs-attr">from</span>: accounts[<span class="hljs-number">0</span>], <span class="hljs-comment">// Provide the user's account to use.</span>
-}, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, result</span>) </span>{
-  <span class="hljs-comment">// A typical node-style, error-first callback.</span>
-  <span class="hljs-comment">// The result varies by method, per the JSON RPC API.</span>
-  <span class="hljs-comment">// For example, this method will return a transaction hash on success.</span>
-})
-</code></pre>
-<h3 id="ethereum.on(eventname%2C-callback)">ethereum.on(eventName, callback) <a class="header-anchor" href="#ethereum.on(eventname%2C-callback)" aria-hidden="true">#</a></h3>
-<p>The provider supports listening for some events:</p>
-<ul>
-<li><code>accountsChanged</code>, returns updated account array.</li>
-<li><code>networkChanged</code>, returns network ID string.</li>
-</ul>
-<p>Example</p>
-<pre><code class="hljs language-javascript">ethereum.on(<span class="hljs-string">'accountsChanged'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">accounts</span>) </span>{
-  <span class="hljs-comment">// Time to reload your interface with accounts[0]!</span>
-})
-</code></pre>
-<p>Note currently <code>networkChanged</code> is not completely useful, because MetaMask currently reloads pages that have made requests to the provider upon network change, but <a href="https://medium.com/metamask/breaking-change-no-longer-reloading-pages-on-network-change-4a3e1fd2f5e7">we plan to change this behavior</a>, so it’s safest to prepare your application to gracefully handle network changes.</p>
+                    <h1 id="registering-your-contract%E2%80%99s-method-names">Registering Your Contract’s Method Names <a class="header-anchor" href="#registering-your-contract%E2%80%99s-method-names" aria-hidden="true">#</a></h1>
+<p>MetaMask uses the parity on-chain registry of function signatures to display method names on the confirm screen. For many common method names, like token methods, this allows MetaMask to successfully look up the method names by their <a href="https://solidity.readthedocs.io/en/v0.4.21/abi-spec.html">method signature</a>. However, sometimes you’re using a method that is not in that on-chain registry, and MetaMask will simply display <code>Unknown Function</code> to the user.</p>
+<p>To add your contract’s function names to this registry so it shows in the MetaMask interface, follow the below steps.</p>
+<ol>
+<li>
+<p>Go to the <a href="https://etherscan.io/address/0x44691b39d1a75dc4e0a0346cbb15e310e6ed1e86#writeContract">mainnet parity signature registration contract on etherscan</a></p>
+</li>
+<li>
+<p>Connect MetaMask</p>
+</li>
+<li>
+<p>Use etherscan’s write contract feature to input the string value (without quotes or spaces) to the register function</p>
+<p>for example:</p>
+<p><code>getOwners()</code></p>
+<p><code>execTransaction(address,uint256,bytes,uint8,uint256,uint256,uint256,address,address,bytes)</code></p>
+</li>
+<li>
+<p>Press write</p>
+</li>
+<li>
+<p>Approve the transaction through MetaMask (you only pay gas)</p>
+</li>
+</ol>
+<h5 id="verify">Verify <a class="header-anchor" href="#verify" aria-hidden="true">#</a></h5>
+<p><code>web3.sha3('getOwners()') =&gt; 0xa0e67e2bdc0a6d8a09ccd6c353c9df590807ad66ff5e6630c4f31a86dfa84821</code></p>
+<p>take the first 10 characters <code>0xa0e67e2b</code>
+and input into <strong><a href="https://jennypollack.github.io/function_signature_registry/">this demo app</a> that checks the on-chain registry</strong> (mainnet or rinkeby)</p>
+<h5 id="alternate-steps-using-remix.ethereum.org%3A">Alternate steps using <a href="http://remix.ethereum.org">remix.ethereum.org</a>: <a class="header-anchor" href="#alternate-steps-using-remix.ethereum.org%3A" aria-hidden="true">#</a></h5>
+<p>Paste the contract code from <a href="https://www.bokconsulting.com.au/blog/a-quick-look-at-paritys-signature-registry-contract/">bokky’s blog post</a> into <a href="remix.ethereum.org">remix</a></p>
+<p>Set the correct compiler version based on the contract.</p>
+<p>Use remix’s write functionality to add to the registry.</p>
+<p>You can look at the FUNCTIONHASHES section on <a href="http://remix.ethereum.org">remix.ethereum.org</a> by loading the signature registry contract, press the Details button on the compile tab.</p>
+<h5 id="additional-info">Additional Info <a class="header-anchor" href="#additional-info" aria-hidden="true">#</a></h5>
+<p>You can also use the <a href="https://rinkeby.etherscan.io/address/0x0c0831fb1ec7442485fb41a033ba188389a990b4">signature registry</a> deployed on rinkeby but should note that <strong>MetaMask reads from the mainnet eth-method-registry endpoint, regardless of user’s network</strong></p>
+<p><a href="https://github.com/danfinlay/eth-method-registry">eth-method-registry</a> is used to lookup methods in MetaMask.</p>
+<p>This <a href="https://ethereum.stackexchange.com/questions/59678/metamask-shows-unknown-function-when-calling-method-send-function">stack exchange</a> answer is a good <strong>tldr</strong>.</p>
 
                     <div class="bottomMatter">
                         Last updated:
