@@ -507,6 +507,13 @@
                                     </li>
                                 
                             
+                                
+                                
+                                    <li>
+                                        <a href="/metamask-docs/Main_Concepts/Best_Practices/Registering_Your_Token">Registering Your Token</a>
+                                    </li>
+                                
+                            
                         </div>
                     
                                     
@@ -527,20 +534,6 @@
                                 
                                     <li>
                                         <a href="/metamask-docs/Advanced_Concepts/Provider_API">Provider API</a>
-                                    </li>
-                                
-                            
-                                
-                                
-                                    <li>
-                                        <a href="/metamask-docs/Advanced_Concepts/Granular_Permissions">Granular Permissions</a>
-                                    </li>
-                                
-                            
-                                
-                                
-                                    <li>
-                                        <a href="/metamask-docs/Advanced_Concepts/Proposals_and_Rationales">Proposals and Rationales</a>
                                     </li>
                                 
                             
@@ -593,11 +586,28 @@
             <main>
                 <div class="container">
                     <h1 id="experimental-apis">Experimental APIs <a class="header-anchor" href="#experimental-apis" aria-hidden="true">#</a></h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt odio eu neque bibendum, nec faucibus eros iaculis. Aliquam commodo tempus lectus ac lacinia. Vestibulum hendrerit fringilla arcu, sed condimentum mauris consectetur non. Donec ut risus nunc. Nam vel tincidunt odio. Proin quis odio porttitor eros varius consequat. Donec eget urna ipsum. Cras eu ullamcorper felis. Mauris pharetra condimentum euismod. Morbi eu dui lacus. Nullam quis velit at ligula aliquam suscipit.</p>
-<p>In posuere luctus ornare. Mauris fermentum justo ligula, sed commodo lorem mollis ac. Nullam ut purus consequat, fringilla purus nec, iaculis dui. Sed vitae est porttitor, semper erat et, volutpat nulla. Praesent efficitur efficitur orci eget congue. Sed eget ante eu diam dictum mollis vel at dui. Fusce dignissim sit amet ex eget fringilla. In congue accumsan blandit. Phasellus eleifend leo mi, a congue metus ultrices non. Donec sit amet sollicitudin nulla. Nunc tristique dapibus molestie.</p>
-<p>Nullam varius, est in ultricies dapibus, neque orci pretium ipsum, ac semper orci lorem ut sapien. Sed mollis, nulla ac ornare sodales, nisl sem malesuada urna, sit amet eleifend lectus tortor non purus. Etiam molestie lectus ac dui volutpat, a suscipit purus consequat. Nullam vel vehicula neque. Duis tempor aliquam consectetur. Maecenas odio enim, molestie sit amet viverra at, consequat at lacus. Nullam nec risus sed neque aliquam tincidunt quis eget odio. Nunc nulla massa, elementum et tempor quis, mattis a felis. Quisque mollis semper tortor, quis aliquet mi. Aliquam erat volutpat. Phasellus condimentum mi in sem ultrices elementum. Donec id faucibus dui.</p>
-<p>Fusce facilisis pretium tempor. Vivamus ornare sem eu nisl auctor ultricies. Phasellus vestibulum efficitur risus, finibus dictum ex egestas eu. Proin auctor lacus quis est blandit, eu commodo eros luctus. Pellentesque lacinia placerat nibh, pharetra pretium tellus lacinia ac. Curabitur vehicula orci id risus tristique, ac luctus ex maximus. Vivamus suscipit tempor consectetur. Nunc commodo pellentesque quam, sed posuere ex ultrices eu. Praesent egestas odio eget imperdiet placerat. Nullam in vestibulum mi.</p>
-<p>Aliquam arcu sem, suscipit at dolor non, gravida tristique lorem. Curabitur in pharetra ante. Sed at tempor purus. Curabitur a aliquam mi. Mauris quis tellus rutrum, accumsan eros vel, facilisis sem. Quisque euismod tellus ac semper feugiat. Etiam risus nisl, finibus ac pellentesque nec, congue non quam.</p>
+<h2 id="wallet_watchasset">wallet_watchAsset <a class="header-anchor" href="#wallet_watchasset" aria-hidden="true">#</a></h2>
+<p>Most all Ethereum wallets display some set of tokens, usually from a centrally curated registry of tokens.</p>
+<p>At MetaMask, we believe the future of tokens has the potential to be much bigger than any one party can curate, and we want to enable this explosion of creativity.</p>
+<p>In support of this goal, we have implemented support for <a href="https://github.com/estebanmino/EIPs/blob/master/EIPS/eip-747.md">EIP 747</a>, which provides a way for your site to suggest a token that a user might want to track in their wallet.</p>
+<p>The code is simple:</p>
+<pre><code class="hljs language-javascript">ethereum.sendAsync({
+	<span class="hljs-attr">method</span>: <span class="hljs-string">'metamask_watchAsset'</span>,
+	<span class="hljs-attr">params</span>: {
+		<span class="hljs-string">"type"</span>:<span class="hljs-string">"ERC20"</span>, <span class="hljs-comment">// Initially only supports ERC20, but eventually more!</span>
+		<span class="hljs-string">"options"</span>:{
+			<span class="hljs-string">"address"</span>: tokenAddress, <span class="hljs-comment">// The address that the token is at.</span>
+			<span class="hljs-string">"symbol"</span>: tokenSymbol, <span class="hljs-comment">// A ticker symbol or shorthand, up to 5 chars.</span>
+			<span class="hljs-string">"decimals"</span>: tokenDecimals, <span class="hljs-comment">// The number of decimals in the token</span>
+			<span class="hljs-string">"image"</span>: tokenImage, <span class="hljs-comment">// A string url of the token logo</span>
+		},
+	},
+	<span class="hljs-attr">id</span>: <span class="hljs-built_in">Math</span>.round(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100000</span>),
+}, (err, addedBoolean) =&gt; {
+
+})
+</code></pre>
+<p>We even created a sample Dapp so developers could suggest their tokens to users with a simple hyperlink, without a line of code. <a href="https://github.com/MetaMask/Add-Token">Visit it here</a>.</p>
 
                     <div class="bottomMatter">
                         Last updated:

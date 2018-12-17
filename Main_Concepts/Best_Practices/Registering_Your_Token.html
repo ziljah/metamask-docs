@@ -585,11 +585,12 @@
             </nav>
             <main>
                 <div class="container">
-                    <h1 id="personal-sign">Personal Sign <a class="header-anchor" href="#personal-sign" aria-hidden="true">#</a></h1>
-<p>We introduced the <code>personal_sign</code> method in March 2017 with <a href="https://medium.com/metamask/the-new-secure-way-to-sign-data-in-your-browser-6af9dd2a1527">this blog post</a>.</p>
-<p>It was designed to <a href="https://github.com/ethereum/go-ethereum/pull/2940">alleviate security concerns</a> from <code>[eth_sign](./Eth_Sign)</code>, by only allowing the signing of a hash prefixed by a pre-defined string (<code>&quot;\x19Ethereum Signed Message:\n&quot;</code>).</p>
-<p>The method signature is <code>personal_sign(hash, address)</code>.</p>
-<p>You can <a href="https://github.com/MetaMask/eth-sig-util/blob/master/index.js#L193-L199">read our implementation here</a>, or read <a href="https://github.com/danfinlay/js-eth-personal-sign-examples/blob/master/index.js#L103-L161">a working client-side example</a> here, or <a href="https://blog.ricmoo.com/verifying-messages-in-solidity-50a94f82b2ca">read a guide to verifying these signatures in solidity</a>.</p>
+                    <h1 id="registering-tokens-with-users">Registering Tokens with Users <a class="header-anchor" href="#registering-tokens-with-users" aria-hidden="true">#</a></h1>
+<p>When a user opens their MetaMask, they are shown a variety of assets, including tokens. By default, MetaMask auto-detects some major popular tokens and auto-displays them, but for most tokens, the user will need to add the token themselves.</p>
+<p>While this is possible using our UI with the <code>Add Token</code> button, that process can be cumbersome, and involves the user interacting with contract addresses, and is very error prone.</p>
+<p>You can greatly improve the security and experience of users adding your token to their MetaMask by taking advantage of the <code>wallet_watchAsset</code> API as defined in <a href="https://github.com/estebanmino/EIPs/blob/master/EIPS/eip-747.md">EIP 747</a>.</p>
+<p>You can see some working code <a href="https://github.com/MetaMask/Add-Token/blob/master/src/AddTokenPanel.jsx#L119-L131">here</a>, but we have also made a simple web app that allows you to enter your token details once (including an icon) and then share a link with others so they can easily see those tokens in their wallet.</p>
+<p><a href="https://metamask.github.io/Add-Token/#edit">Add Token App</a></p>
 
                     <div class="bottomMatter">
                         Last updated:
