@@ -589,8 +589,41 @@
 <p>When a user opens their MetaMask, they are shown a variety of assets, including tokens. By default, MetaMask auto-detects some major popular tokens and auto-displays them, but for most tokens, the user will need to add the token themselves.</p>
 <p>While this is possible using our UI with the <code>Add Token</code> button, that process can be cumbersome, and involves the user interacting with contract addresses, and is very error prone.</p>
 <p>You can greatly improve the security and experience of users adding your token to their MetaMask by taking advantage of the <code>wallet_watchAsset</code> API as defined in <a href="https://github.com/estebanmino/EIPs/blob/master/EIPS/eip-747.md">EIP 747</a>.</p>
-<p>You can see some working code <a href="https://github.com/MetaMask/Add-Token/blob/master/src/AddTokenPanel.jsx#L119-L131">here</a>, but we have also made a simple web app that allows you to enter your token details once (including an icon) and then share a link with others so they can easily see those tokens in their wallet.</p>
+<h2 id="code-free-example">Code-free Example <a class="header-anchor" href="#code-free-example" aria-hidden="true">#</a></h2>
+<p>We have made a simple web app that allows you to enter your token details once (including an icon) and then share a link with others so they can easily see those tokens in their wallet.</p>
 <p><a href="https://metamask.github.io/Add-Token/#edit">Add Token App</a></p>
+<h2 id="example">Example <a class="header-anchor" href="#example" aria-hidden="true">#</a></h2>
+<p>If you’d like to integrate suggesting a token into your own web app, you can follow this code snippet to implement it:</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> tokenAddress = <span class="hljs-string">'0xd00981105e61274c8a5cd5a88fe7e037d935b513'</span>
+<span class="hljs-keyword">const</span> tokenSymbol = <span class="hljs-string">'TUT'</span>
+<span class="hljs-keyword">const</span> decimals = <span class="hljs-number">18</span>
+<span class="hljs-keyword">const</span> tokenImage = <span class="hljs-string">'http://placekitten.com/200/300'</span>
+
+ethereum.sendAsync({
+    <span class="hljs-attr">method</span>: <span class="hljs-string">'wallet_watchAsset'</span>,
+    <span class="hljs-attr">params</span>: {
+      <span class="hljs-string">"type"</span>:<span class="hljs-string">"ERC20"</span>,
+      <span class="hljs-string">"options"</span>:{
+        <span class="hljs-string">"address"</span>: tokenAddress,
+        <span class="hljs-string">"symbol"</span>: tokenSymbol,
+        <span class="hljs-string">"decimals"</span>: tokenDecimals,
+        <span class="hljs-string">"image"</span>: tokenImage,
+      },
+    },
+    <span class="hljs-attr">id</span>: <span class="hljs-built_in">Math</span>.round(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100000</span>),
+}, (err, added) =&gt; {
+
+  <span class="hljs-keyword">if</span> (added) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Thanks for your interest!'</span>)
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Your loss!'</span>)
+  }
+
+})
+</code></pre>
+<h2 id="default-token-list">Default Token List <a class="header-anchor" href="#default-token-list" aria-hidden="true">#</a></h2>
+<p>If you’re a major and popular token, you may qualify to be listed in our <a href="https://github.com/MetaMask/eth-contract-metadata">eth-contract-metadata</a> registry. This is a centralized solution and takes a larger toll on our development team, so we prefer to avoid the politics of picking and choosing tokens that get auto-detected in users’ accounts, so please see if the EIP-747 method above can suit your needs before submitting a new token there for inclusion.</p>
+<p>If you have a user on your site, asking them to click once to add a token is a small burden on them, and allows you to leverage the trusting relationship you already have with your user instead of our central repository.</p>
 
                     <div class="bottomMatter">
                         Last updated:
