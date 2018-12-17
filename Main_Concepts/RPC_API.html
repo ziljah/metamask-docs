@@ -595,15 +595,15 @@
                     <h1 id="the-ethereum-rpc-api">The Ethereum RPC API <a class="header-anchor" href="#the-ethereum-rpc-api" aria-hidden="true">#</a></h1>
 <p>MetaMask uses the <code>ethereum.sendAsync()</code> API to wrap an RPC API which is based on an interface exposed by all Ethereum clients, with some extra methods that are provided by MetaMask, as a key-holding signer. You can look up how to pass these methods to the <code>window.ethereum</code> object <a href="../Advanced_Concepts/Provider_API">here</a>.</p>
 <p>This document is a cross-post of <a href="https://github.com/ethereum/EIPs/pull/1474/">EIP 1474</a>, which aims to standardize the declaration of this interface.</p>
-<hr>
-<h2 id="eip%3A-1474title%3A-remote-procedure-call-specificationauthor%3A-paul-bouchon-mail%40bitpshr.netdiscussions-to%3A-https%3A%2F%2Fethereum-magicians.org%2Ft%2Feip-remote-procedure-call-specification%2F1537status%3A-drafttype%3A-standards-trackcategory%3A-interfacecreated%3A-2018-10-02">eip: 1474
-title: Remote procedure call specification
-author: Paul Bouchon <a href="mailto:mail@bitpshr.net">mail@bitpshr.net</a>
-discussions-to: <a href="https://ethereum-magicians.org/t/eip-remote-procedure-call-specification/1537">https://ethereum-magicians.org/t/eip-remote-procedure-call-specification/1537</a>
-status: Draft
+<pre><code class="hljs">eip: <span class="hljs-number">1474</span>
+title: Remote <span class="hljs-function"><span class="hljs-keyword">procedure</span> <span class="hljs-title">call</span> <span class="hljs-title">specification</span>
+<span class="hljs-title">author</span>:</span> Paul Bouchon &lt;mail@bitpshr.net&gt;
+discussions-<span class="hljs-keyword">to</span>: https://ethereum-magicians.org/t/eip-remote-<span class="hljs-function"><span class="hljs-keyword">procedure</span>-<span class="hljs-title">call</span>-<span class="hljs-title">specification</span>/1537
+<span class="hljs-title">status</span>:</span> Draft
 type: Standards Track
 category: Interface
-created: 2018-10-02 <a class="header-anchor" href="#eip%3A-1474title%3A-remote-procedure-call-specificationauthor%3A-paul-bouchon-mail%40bitpshr.netdiscussions-to%3A-https%3A%2F%2Fethereum-magicians.org%2Ft%2Feip-remote-procedure-call-specification%2F1537status%3A-drafttype%3A-standards-trackcategory%3A-interfacecreated%3A-2018-10-02" aria-hidden="true">#</a></h2>
+created: <span class="hljs-number">2018</span>-<span class="hljs-number">10</span>-<span class="hljs-number">02</span>
+</code></pre>
 <h2 id="simple-summary">Simple Summary <a class="header-anchor" href="#simple-summary" aria-hidden="true">#</a></h2>
 <p>This proposal defines a standard set of remote procedure call methods that an Ethereum node should implement.</p>
 <h2 id="abstract">Abstract <a class="header-anchor" href="#abstract" aria-hidden="true">#</a></h2>
