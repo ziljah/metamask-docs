@@ -592,11 +592,42 @@
             </nav>
             <main>
                 <div class="container">
-                    <h1 id="personal-sign">Personal Sign <a class="header-anchor" href="#personal-sign" aria-hidden="true">#</a></h1>
-<p>We introduced the <code>personal_sign</code> method in March 2017 with <a href="https://medium.com/metamask/the-new-secure-way-to-sign-data-in-your-browser-6af9dd2a1527">this blog post</a>.</p>
-<p>It was designed to <a href="https://github.com/ethereum/go-ethereum/pull/2940">alleviate security concerns</a> from <code>[eth_sign](./Eth_Sign)</code>, by only allowing the signing of a hash prefixed by a pre-defined string (<code>&quot;\x19Ethereum Signed Message:\n&quot;</code>).</p>
-<p>The method signature is <code>personal_sign(hash, address)</code>.</p>
-<p>You can <a href="https://github.com/MetaMask/eth-sig-util/blob/master/index.js#L193-L199">read our implementation here</a>, or read <a href="https://github.com/danfinlay/js-eth-personal-sign-examples/blob/master/index.js#L103-L161">a working client-side example</a> here, or <a href="https://blog.ricmoo.com/verifying-messages-in-solidity-50a94f82b2ca">read a guide to verifying these signatures in solidity</a>.</p>
+                    <h1 id="how-to-get-your-function-name-displayed-on-the-metamask-confirm-screen-instead-of-%E2%80%9Cunknown-function%E2%80%9D">How to get your function name displayed on the MetaMask Confirm Screen instead of “unknown function” <a class="header-anchor" href="#how-to-get-your-function-name-displayed-on-the-metamask-confirm-screen-instead-of-%E2%80%9Cunknown-function%E2%80%9D" aria-hidden="true">#</a></h1>
+<p><em>MetaMask uses the parity on-chain registry of function signatures to display method names on the confirm screen.</em></p>
+<p>To add your contract’s function names to this registry, follow the below steps.</p>
+<ol>
+<li>
+<p>Go to the <a href="https://etherscan.io/address/0x44691b39d1a75dc4e0a0346cbb15e310e6ed1e86#writeContract">mainnet parity signature registration contract on etherscan</a></p>
+</li>
+<li>
+<p>Connect MetaMask</p>
+</li>
+<li>
+<p>Use etherscan’s write contract feature to input the string value (without quotes) to the register function</p>
+<p>for example:</p>
+<p><code>getOwners()</code></p>
+<p><code>execTransaction(address,uint256,bytes,uint8,uint256,uint256,uint256,address,address,bytes)</code></p>
+</li>
+<li>
+<p>Press write</p>
+</li>
+<li>
+<p>Approve the transaction through MetaMask (you only pay gas)</p>
+</li>
+</ol>
+<h5 id="verify">Verify <a class="header-anchor" href="#verify" aria-hidden="true">#</a></h5>
+<p><code>web3.sha3('getOwners()') =&gt; 0xa0e67e2bdc0a6d8a09ccd6c353c9df590807ad66ff5e6630c4f31a86dfa84821</code></p>
+<p>take the first 10 characters <code>0xa0e67e2b</code>
+and input into <strong><a href="https://jennypollack.github.io/function_signature_registry/">this demo app</a> that checks the on-chain registry</strong> (mainnet or rinkeby)</p>
+<h5 id="alternate-steps-using-remix.ethereum.org%3A">Alternate steps using <a href="http://remix.ethereum.org">remix.ethereum.org</a>: <a class="header-anchor" href="#alternate-steps-using-remix.ethereum.org%3A" aria-hidden="true">#</a></h5>
+<p>Paste the contract code from <a href="https://www.bokconsulting.com.au/blog/a-quick-look-at-paritys-signature-registry-contract/">bokky’s blog post</a> into <a href="remix.ethereum.org">remix</a></p>
+<p>Set the correct compiler version based on the contract.</p>
+<p>Use remix’s write functionality to add to the registry.</p>
+<p>You can look at the FUNCTIONHASHES section on <a href="http://remix.ethereum.org">remix.ethereum.org</a> by loading the signature registry contract, press the Details button on the compile tab.</p>
+<h5 id="additional-info">Additional Info <a class="header-anchor" href="#additional-info" aria-hidden="true">#</a></h5>
+<p>You can also use the <a href="https://rinkeby.etherscan.io/address/0x0c0831fb1ec7442485fb41a033ba188389a990b4">signature registry</a> deployed on rinkeby but should note that <strong>MetaMask reads from the mainnet eth-method-registry endpoint, regardless of user’s network</strong></p>
+<p><a href="https://github.com/danfinlay/eth-method-registry">eth-method-registry</a> is used to lookup methods in MetaMask.</p>
+<p>This <a href="https://ethereum.stackexchange.com/questions/59678/metamask-shows-unknown-function-when-calling-method-send-function">stack exchange</a> answer is a good <strong>tldr</strong>.</p>
 
                     <div class="bottomMatter">
                         Last updated:
