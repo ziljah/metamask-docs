@@ -358,7 +358,7 @@
             <div class="name">
                 <div class="logo" style="background-image: url(https://i.ibb.co/BsTBKsn/fox.png)"></div>
                 MetaMask
-                <span class="version">v5.2.2</span>
+                <span class="version">v5.3.0</span>
             </div>
             <div class="actions">
                 <a href="/metamask-docs/" class="help">
@@ -576,8 +576,11 @@
 <p>While this is possible using our UI with the <code>Add Token</code> button, that process can be cumbersome, and involves the user interacting with contract addresses, and is very error prone.</p>
 <p>You can greatly improve the security and experience of users adding your token to their MetaMask by taking advantage of the <code>wallet_watchAsset</code> API as defined in <a href="https://github.com/estebanmino/EIPs/blob/master/EIPS/eip-747.md">EIP 747</a>.</p>
 <h2 id="code-free-example">Code-free Example <a class="header-anchor" href="#code-free-example" aria-hidden="true">#</a></h2>
-<p>We have made a simple web app that allows you to enter your token details once (including an icon) and then share a link with others so they can easily see those tokens in their wallet.</p>
-<p><a href="https://metamask.github.io/Add-Token/#edit">Add Token App</a></p>
+<p>Here are a couple live web applications that let you enter your token details, and then share them with a simple web link:</p>
+<ul>
+<li><a href="https://vittominacori.github.io/watch-token/create.html">Watch Token</a></li>
+<li><a href="https://metamask.github.io/Add-Token/#edit">Add Token App</a></li>
+</ul>
 <h2 id="example">Example <a class="header-anchor" href="#example" aria-hidden="true">#</a></h2>
 <p>If you’d like to integrate suggesting a token into your own web app, you can follow this code snippet to implement it:</p>
 <pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> tokenAddress = <span class="hljs-string">'0xd00981105e61274c8a5cd5a88fe7e037d935b513'</span>
@@ -614,7 +617,7 @@ ethereum.sendAsync({
                     <div class="bottomMatter">
                         Last updated:
                         
-                        1/2/2019
+                        1/9/2019
                         <span id="top">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></span>
                     </div>
                 </div>
