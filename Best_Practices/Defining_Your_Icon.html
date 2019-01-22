@@ -578,11 +578,14 @@
             </nav>
             <main>
                 <div class="container">
-                    <h1 id="personal-sign">Personal Sign <a class="header-anchor" href="#personal-sign" aria-hidden="true">#</a></h1>
-<p>We introduced the <code>personal_sign</code> method in March 2017 with <a href="https://medium.com/metamask/the-new-secure-way-to-sign-data-in-your-browser-6af9dd2a1527">this blog post</a>.</p>
-<p>It was designed to <a href="https://github.com/ethereum/go-ethereum/pull/2940">alleviate security concerns</a> from <code>[eth_sign](./Eth_Sign)</code>, by only allowing the signing of a hash prefixed by a pre-defined string (<code>&quot;\x19Ethereum Signed Message:\n&quot;</code>).</p>
-<p>The method signature is <code>personal_sign(hash, address)</code>.</p>
-<p>You can <a href="https://github.com/MetaMask/eth-sig-util/blob/master/index.js#L193-L199">read our implementation here</a>, or read <a href="https://github.com/danfinlay/js-eth-personal-sign-examples/blob/master/index.js#L103-L161">a working client-side example</a> here, or <a href="https://blog.ricmoo.com/verifying-messages-in-solidity-50a94f82b2ca">read a guide to verifying these signatures in solidity</a>.</p>
+                    <h1 id="defining-your-app%E2%80%99s-icon">Defining Your App’s Icon <a class="header-anchor" href="#defining-your-app%E2%80%99s-icon" aria-hidden="true">#</a></h1>
+<p>When your site makes a login request to a MetaMask user, MetaMask may render a modal that display’s your site icon.</p>
+<p>We retrieve this icon using the HTML selector <code>head &gt; link[rel=&quot;shortcut icon&quot;]</code>, so to customize this icon for your site, just make sure to follow the <a href="https://en.wikipedia.org/wiki/Favicon">favicon standard</a>, and make sure to have a <code>link</code> tag within your site’s <code>head</code> with <code>rel = &quot;shortcut icon&quot;</code>, like this.</p>
+<p>The tag’s <code>href</code> attribute will be used for assigning the site icon.</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"shortcut icon"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://your-site.com/your-icon.png"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+</code></pre>
 
                     <div class="bottomMatter">
                         Last updated:
