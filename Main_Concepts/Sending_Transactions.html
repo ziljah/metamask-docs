@@ -608,8 +608,8 @@ ethereum.sendAsync({
 <h3 id="gas-price-%5Boptional%5D">Gas Price [optional] <a class="header-anchor" href="#gas-price-%5Boptional%5D" aria-hidden="true">#</a></h3>
 <p>Optional parameter - best used on private blockchains.</p>
 <p>In Ethereum, the pool of pending transactions offer their gas price as a sort of auction bid to the validators to include this transaction in a block in exchange for a transaction fee. That means high gas prices can mean faster processing, but also more expensive transactions.</p>
-<p>MetaMask helps users select a competitive gas price on the Ethereum Main Network and on popular test networks, but we cannot know about the gas market on all blockchains, because it requires some deep analysis.</p>
-<p>For this reason, while you can safely ignore this parameter on our main hosted networks, you may want to suggest a gas price in situations where your application knows more about the target network than we do.</p>
+<p>MetaMask helps users select a competitive gas price on the Ethereum Main Network and popular test networks. We make requests to an API maintained by our friends at MyCryto and allow users to choose between “slow,” “medium,” and “fast” options for their gas price.</p>
+<p>We cannot know about the gas market on all blockchains because it requires some deep analysis. For this reason, while you can safely ignore this parameter on our main hosted networks, you may want to suggest a gas price in situations where your application knows more about the target network than we do.</p>
 <h3 id="gas-limit-%5Boptional%5D">Gas Limit [optional] <a class="header-anchor" href="#gas-limit-%5Boptional%5D" aria-hidden="true">#</a></h3>
 <p>Optional parameter. Rarely useful to Dapp developers.</p>
 <p>Gas limit is a highly optional parameter, and we automatically calculate a reasonable price for it. You will probably know that your smart contract benefits from a custom gas limit if it ever does for some reason.</p>
