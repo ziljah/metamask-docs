@@ -630,6 +630,32 @@
   <span class="hljs-built_in">console</span>.log(reason === <span class="hljs-string">"User rejected provider access"</span>)
 })
 </code></pre>
+<h3 id="ethereum.send(options)">ethereum.send(options) <a class="header-anchor" href="#ethereum.send(options)" aria-hidden="true">#</a></h3>
+<p>The primary recommended method to send a message to the web3 browser. Message format maps to the format of <a href="https://github.com/ethereum/wiki/wiki/JSON-RPC#json-rpc-methods">the Ethereum JSON-RPC API</a>.</p>
+<p>Returns a promise in the form of a JSON-RPC response.</p>
+<p>Here’s an example of everyone’s favorite method, sending a transaction, which is both how Ether is sent, and how smart contract methods are called:</p>
+<pre><code class="hljs language-javascript">params: [{
+  <span class="hljs-string">"from"</span>: <span class="hljs-string">"0xb60e8dd61c5d32be8058bb8eb970870f07233155"</span>,
+  <span class="hljs-string">"to"</span>: <span class="hljs-string">"0xd46e8dd67c5d32be8058bb8eb970870f07244567"</span>,
+  <span class="hljs-string">"gas"</span>: <span class="hljs-string">"0x76c0"</span>, <span class="hljs-comment">// 30400</span>
+  <span class="hljs-string">"gasPrice"</span>: <span class="hljs-string">"0x9184e72a000"</span>, <span class="hljs-comment">// 10000000000000</span>
+  <span class="hljs-string">"value"</span>: <span class="hljs-string">"0x9184e72a"</span>, <span class="hljs-comment">// 2441406250</span>
+  <span class="hljs-string">"data"</span>: <span class="hljs-string">"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"</span>
+}]
+
+ethereum.send({
+  <span class="hljs-attr">method</span>: <span class="hljs-string">'eth_sendTransaction'</span>,
+  <span class="hljs-attr">params</span>: params,
+  <span class="hljs-attr">from</span>: accounts[<span class="hljs-number">0</span>], <span class="hljs-comment">// Provide the user's account to use.</span>
+})
+.then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">result</span>) </span>{
+  <span class="hljs-comment">// The result varies by method, per the JSON RPC API.</span>
+  <span class="hljs-comment">// For example, this method will return a transaction hash on success.</span>
+})
+.catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">reason</span>) </span>{
+ <span class="hljs-comment">// Like a typical promise, returns a reason on rejection.</span>
+})
+</code></pre>
 <h3 id="ethereum.sendasync(options%2C-callback)">ethereum.sendAsync(options, callback) <a class="header-anchor" href="#ethereum.sendasync(options%2C-callback)" aria-hidden="true">#</a></h3>
 <p><em>To be superceded by the promise-returning send() method in <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md">EIP 1193</a>.</em></p>
 <p>Sends a message to the web3 browser. Message format maps to the format of <a href="https://github.com/ethereum/wiki/wiki/JSON-RPC#json-rpc-methods">the Ethereum JSON-RPC API</a>.</p>
