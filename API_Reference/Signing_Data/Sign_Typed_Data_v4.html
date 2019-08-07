@@ -585,38 +585,11 @@
             </nav>
             <main>
                 <div class="container">
-                    <h1 id="experimental-apis">Experimental APIs <a class="header-anchor" href="#experimental-apis" aria-hidden="true">#</a></h1>
-<h2 id="wallet_watchasset">wallet_watchAsset <a class="header-anchor" href="#wallet_watchasset" aria-hidden="true">#</a></h2>
-<p>Most all Ethereum wallets display some set of tokens, usually from a centrally curated registry of tokens.</p>
-<p>At MetaMask, we believe the future of tokens has the potential to be much bigger than any one party can curate, and we want to enable this explosion of creativity.</p>
-<p>In support of this goal, we have implemented support for <a href="https://github.com/estebanmino/EIPs/blob/master/EIPS/eip-747.md">EIP 747</a>, which provides a way for your site to suggest a token that a user might want to track in their wallet.</p>
-<p>The code is simple:</p>
-<pre><code class="hljs language-javascript">ethereum.sendAsync({
-	<span class="hljs-attr">method</span>: <span class="hljs-string">'metamask_watchAsset'</span>,
-	<span class="hljs-attr">params</span>: {
-		<span class="hljs-string">"type"</span>:<span class="hljs-string">"ERC20"</span>, <span class="hljs-comment">// Initially only supports ERC20, but eventually more!</span>
-		<span class="hljs-string">"options"</span>:{
-			<span class="hljs-string">"address"</span>: tokenAddress, <span class="hljs-comment">// The address that the token is at.</span>
-			<span class="hljs-string">"symbol"</span>: tokenSymbol, <span class="hljs-comment">// A ticker symbol or shorthand, up to 5 chars.</span>
-			<span class="hljs-string">"decimals"</span>: tokenDecimals, <span class="hljs-comment">// The number of decimals in the token</span>
-			<span class="hljs-string">"image"</span>: tokenImage, <span class="hljs-comment">// A string url of the token logo</span>
-		},
-	},
-	<span class="hljs-attr">id</span>: <span class="hljs-built_in">Math</span>.round(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100000</span>),
-}, (err, addedBoolean) =&gt; {
-
-})
-</code></pre>
-<p>We even created a sample Dapp so developers could suggest their tokens to users with a simple hyperlink, without a line of code. <a href="https://github.com/MetaMask/Add-Token">Visit it here</a>.</p>
-<h2 id="ethereum._metamask"><code>ethereum._metamask</code> <a class="header-anchor" href="#ethereum._metamask" aria-hidden="true">#</a></h2>
-<p>MetaMask supports the standard Ethereum Provider API as defined in both <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md">EIP-1193</a> and <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1102.md">EIP-1102</a>. In addition to <code>ethereum.enable()</code> and its RPC equivalent <code>ethereum.send('eth_requestAccounts')</code>, MetaMask also exposes a collection of nonstandard convenience methods on the provider object at <code>ethereum._metamask</code>. <strong>Using these methods is dangerous</strong> since other dapp browsers may or may not implement them; for this reason, these methods are intentionally kept at a MetaMask-specific namespace to avoid confusion with standard provider functionality.</p>
-<p>Each method and its intended use is described below.</p>
-<h3 id="ethereum._metamask.isenabled%3A-()-%3D%3E-boolean"><code>ethereum._metamask.isEnabled: () =&gt; boolean</code> <a class="header-anchor" href="#ethereum._metamask.isenabled%3A-()-%3D%3E-boolean" aria-hidden="true">#</a></h3>
-<p>This method returns a <code>boolean</code> indicating if the current domain has access to user accounts. This is useful for determining if a user has approved account access for the current session.</p>
-<h3 id="ethereum._metamask.isapproved%3A-()-%3D%3E-promise%3Cboolean%3E"><code>ethereum._metamask.isApproved: () =&gt; Promise&lt;boolean&gt;</code> <a class="header-anchor" href="#ethereum._metamask.isapproved%3A-()-%3D%3E-promise%3Cboolean%3E" aria-hidden="true">#</a></h3>
-<p>This method returns a <code>Promise</code> that resolves to a <code>Boolean</code> indicating if the current domain has a cached approval. This is useful for determining if an approval popup will show when <code>ethereum.enable()</code> is called, since it indicates if a past approval exists.</p>
-<h3 id="ethereum._metamask.isunlocked%3A-()-%3D%3E-promise%3Cboolean%3E"><code>ethereum._metamask.isUnlocked: () =&gt; Promise&lt;boolean&gt;</code> <a class="header-anchor" href="#ethereum._metamask.isunlocked%3A-()-%3D%3E-promise%3Cboolean%3E" aria-hidden="true">#</a></h3>
-<p>This method returns a <code>Promise</code> that resolves to a <code>Boolean</code> indicating if MetaMask is unlocked by the user. This is useful for knowing if MetaMask is unlocked in order to provide meaningful instructions to the user during onboarding. Note that this does not indicate if a user has approved account exposure.</p>
+                    <h1 id="sign-typed-data-v4">Sign Typed Data v4 <a class="header-anchor" href="#sign-typed-data-v4" aria-hidden="true">#</a></h1>
+<p>The method <code>signTypedData_v4</code> currently represents the latest version of the <a href="https://eips.ethereum.org/EIPS/eip-712">EIP 712 spec</a>, with added support for arrays and with a breaking fix for the way structs are encoded.</p>
+<p>This does not mean it is perfect, and does not mean we will not eventually have a <code>v4</code>, but we do intend to protect this namespace and keep it comaptible going forwards.</p>
+<p>We have a <a href="https://medium.com/metamask/eip712-is-coming-what-to-expect-and-how-to-use-it-bb92fd1a7a26">great introductory blog post to this method here</a>.</p>
+<p>Hopefully soon we will also have good examples for parsing method input into structs for verification on-chain (great contribution opportunity!)</p>
 
                     <div class="bottomMatter">
                         Last updated:
