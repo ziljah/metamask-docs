@@ -687,12 +687,12 @@ ethereum.sendAsync({
 })
 </code></pre>
 <h3 id="ethereum.autorefreshonnetworkchange">ethereum.autoRefreshOnNetworkChange <a class="header-anchor" href="#ethereum.autorefreshonnetworkchange" aria-hidden="true">#</a></h3>
-<p>The metamask extension has always refreshed when you change your network, this experimental flag allows you to disable this refresh. By default it’s set to true so it does not break any dapps who rely on the refresh.</p>
-<p>If you wanted to make it not auto-reload on a network change you can do:</p>
+<p>When the network is changed, MetaMask will reload any pages that have made requests to the provider. This automatic reload behavior will be removed in a future release of MetaMask, but in the meantime it can be disabled with this flag.</p>
+<p>To disable auto-refresh on a network change you can do:</p>
 <pre><code class="hljs language-javascript">ethereum.autoRefreshOnNetworkChange = <span class="hljs-literal">false</span>;
 </code></pre>
-<p>This can be toggled on and off anytime in runtime.</p>
-<p>Note: This is a experimental feature at the current time.</p>
+<p>This can be toggled on or off at any time.</p>
+<p>Note: Setting this flag to <code>true</code> results in the default behavior, which is subject to change. If your site relies upon MetaMask reloading it upon network change, you will need to trigger the reload yourself in a <code>networkChanged</code> event handler to ensure it continues to work with future releases.</p>
 <h3 id="ethereum.on(eventname%2C-callback)">ethereum.on(eventName, callback) <a class="header-anchor" href="#ethereum.on(eventname%2C-callback)" aria-hidden="true">#</a></h3>
 <p>The provider supports listening for some events:</p>
 <ul>
@@ -704,8 +704,7 @@ ethereum.sendAsync({
   <span class="hljs-comment">// Time to reload your interface with accounts[0]!</span>
 })
 </code></pre>
-<p>Note: <code>networkChanged</code> is only useful if you use the experimental <code>ethereum.autoRefreshOnNetworkChange</code> to disable the auto-refresh. MetaMask currently reloads pages that have made requests to the provider
-upon network change, this behaviour will remain the same if you do not set the property to <code>false</code> as the above example explains.</p>
+<p>Note: At the moment, the <code>networkChanged</code> event is only useful if you disable auto-refresh on network change by setting <a href="#ethereum.autorefreshonnetworkchange"><code>ethereum.autoRefreshOnNetworkChange</code></a> to <code>false</code>. Otherwise, MetaMask will default to auto-reloading pages upon network change if they have made requests to the provider. This default will be changing in a future release.</p>
 
                     <div class="bottomMatter">
                         Last updated:
