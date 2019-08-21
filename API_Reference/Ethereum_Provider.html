@@ -621,8 +621,8 @@
   <span class="hljs-comment">// ['0xFDEa65C8e26263F6d9A1B5de9555D2931A33b825']</span>
 
 } <span class="hljs-keyword">catch</span> (error) {
-  <span class="hljs-comment">// Handle error. Likely the user rejected the login:</span>
-  <span class="hljs-built_in">console</span>.log(reason === <span class="hljs-string">"User rejected provider access"</span>)
+  <span class="hljs-comment">// Handle error. Likely the user rejected the login</span>
+  <span class="hljs-built_in">console</span>.error(error)
 }
 </code></pre>
 <p>Example usage (ES5):</p>
@@ -632,9 +632,9 @@
   <span class="hljs-comment">// Currently only ever one:</span>
   <span class="hljs-comment">// ['0xFDEa65C8e26263F6d9A1B5de9555D2931A33b825']</span>
 })
-.catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">reason</span>) </span>{
-  <span class="hljs-comment">// Handle error. Likely the user rejected the login:</span>
-  <span class="hljs-built_in">console</span>.log(reason === <span class="hljs-string">"User rejected provider access"</span>)
+.catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) </span>{
+  <span class="hljs-comment">// Handle error. Likely the user rejected the login</span>
+  <span class="hljs-built_in">console</span>.error(error)
 })
 </code></pre>
 <h3 id="ethereum.send(options)">ethereum.send(options) <a class="header-anchor" href="#ethereum.send(options)" aria-hidden="true">#</a></h3>
@@ -659,8 +659,8 @@ ethereum.send({
   <span class="hljs-comment">// The result varies by method, per the JSON RPC API.</span>
   <span class="hljs-comment">// For example, this method will return a transaction hash on success.</span>
 })
-.catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">reason</span>) </span>{
- <span class="hljs-comment">// Like a typical promise, returns a reason on rejection.</span>
+.catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) </span>{
+ <span class="hljs-comment">// Like a typical promise, returns an error on rejection.</span>
 })
 </code></pre>
 <h3 id="ethereum.sendasync(options%2C-callback)">ethereum.sendAsync(options, callback) <a class="header-anchor" href="#ethereum.sendasync(options%2C-callback)" aria-hidden="true">#</a></h3>
@@ -710,7 +710,7 @@ upon network change, this behaviour will remain the same if you do not set the p
                     <div class="bottomMatter">
                         Last updated:
                         
-                        8/20/2019
+                        8/21/2019
                         <span id="top">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></span>
                     </div>
                 </div>
