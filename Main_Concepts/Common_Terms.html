@@ -358,7 +358,7 @@
             <div class="name">
                 <div class="logo" style="background-image: url(https://i.ibb.co/BsTBKsn/fox.png)"></div>
                 MetaMask
-                <span class="version">v7.0.1</span>
+                <span class="version">v7.3.1</span>
             </div>
             <div class="actions">
                 <a href="/metamask-docs/" class="help">
@@ -585,25 +585,25 @@
             </nav>
             <main>
                 <div class="container">
-                    <h1 id="common-terms">Common Terms <a class="header-anchor" href="#common-terms" aria-hidden="true">#</a></h1>
-<h2 id="words-are-hard">Words are Hard <a class="header-anchor" href="#words-are-hard" aria-hidden="true">#</a></h2>
+                    <h1 id="common-terms">Common Terms <a class="header-anchor" href="#common-terms">#</a></h1>
+<h2 id="words-are-hard">Words are Hard <a class="header-anchor" href="#words-are-hard">#</a></h2>
 <p id="agoctitecs_p">
   This is a list of terms you might encounter when using the MetaMask interface.
 </p>
-<h4 id="you-can-also-read-in-spanish%2C-thanks-to-faraggi"><a href="https://kb.myetherwallet.com/las-palabras-son-dificiles-definiendo-terminos-comunes-de-ethereum">You can also read in Spanish</a>, thanks to <a href="https://github.com/faraggi/words-are-hard-es/blob/master/words-are-hard-es.md">faraggi</a> <a class="header-anchor" href="#you-can-also-read-in-spanish%2C-thanks-to-faraggi" aria-hidden="true">#</a></h4>
+<h4 id="you-can-also-read-in-spanish%2C-thanks-to-faraggi"><a href="https://kb.myetherwallet.com/las-palabras-son-dificiles-definiendo-terminos-comunes-de-ethereum">You can also read in Spanish</a>, thanks to <a href="https://github.com/faraggi/words-are-hard-es/blob/master/words-are-hard-es.md">faraggi</a> <a class="header-anchor" href="#you-can-also-read-in-spanish%2C-thanks-to-faraggi">#</a></h4>
 <hr>
-<h3 id="wallet">Wallet <a class="header-anchor" href="#wallet" aria-hidden="true">#</a></h3>
+<h3 id="wallet">Wallet <a class="header-anchor" href="#wallet">#</a></h3>
 <ul>
   <li id="wallet_l1">The interface / client / wrapper / holder that you use to manage your account(s).</li>
   <li id="wallet_l2">Example: MetaMask.io, your Ledger Hardware Wallet, a Multisig Wallet Contract.</li>
 </ul>
-<h3 id="account">Account <a class="header-anchor" href="#account" aria-hidden="true">#</a></h3>
+<h3 id="account">Account <a class="header-anchor" href="#account">#</a></h3>
 <ul>
   <li id="account_l1">A public & private keypair that "holds" your funds.</li>
   <li id="account_l2">Your funds are actually stored on the blockchain, not in the wallet or account.</li>
   <li id="account_l3"> Just like your Reddit account has a <code> username (public)</code> and <code> password (private)</code>, so does your Ethereum account. For additional security, you can use a password to encrypt your private key which would result in a <code> username (public)</code> and <code> password (private)</code> and <code> password for that password (private + more secure)</code>. See the <code> Keystore File</code> section. </li>
 </ul>
-<h3 id="address-(%E2%80%9Cpublic-key%E2%80%9D)">Address <em>(“Public Key”)</em> <a class="header-anchor" href="#address-(%E2%80%9Cpublic-key%E2%80%9D)" aria-hidden="true">#</a></h3>
+<h3 id="address-(%E2%80%9Cpublic-key%E2%80%9D)">Address <em>(“Public Key”)</em> <a class="header-anchor" href="#address-(%E2%80%9Cpublic-key%E2%80%9D)">#</a></h3>
 <ul>
   <li id="address_l1">You use this to send funds <b>to</b> an account.</li>
   <li id="address_l2">Sometimes referred to as the "public key"</li>
@@ -611,14 +611,14 @@
   <li id="address_l4">In Ethereum, the address begins with <code>0x</code>.</li>
   <li id="address_l5">Example: <code>0x06A85356DCb5b307096726FB86A78c59D38e08ee</code></li>
 </ul>
-<h3 id="public-key">Public Key <a class="header-anchor" href="#public-key" aria-hidden="true">#</a></h3>
+<h3 id="public-key">Public Key <a class="header-anchor" href="#public-key">#</a></h3>
 <ul>
   <li id="pubk_l1">In cryptography, you have a keypair: the public and private key.</li>
   <li id="pubk_l2">You can derive a public key from a private key, but cannot derive a private key from a public key.</li>
   <li id="pubk_l3">(Advanced) In Ethereum, the address "acts" like the public key, but it's not actually the public key.</li>
   <li id="pubk_l4">(Advanced) In Ethereum, the public key is derived from the private key and is 128 hex characters. You then take the <code>"SHA3" (Keccak-256)</code> hash of this (64 characters), take the last 40 characters, and prefix with <code>0x</code>, give you your 42-character address.</li>
 </ul>
-<h3 id="private-key">Private Key <a class="header-anchor" href="#private-key" aria-hidden="true">#</a></h3>
+<h3 id="private-key">Private Key <a class="header-anchor" href="#private-key">#</a></h3>
 <ul>
   <li id="privk_1">You use this to send funds <b>from</b> an account.</li>
   <li id="privk_2">The secret half of your Address / public key.</li>
@@ -628,7 +628,7 @@
   <li id="privk_6">This is the string you need to send from your account. Without it you cannot access your funds. Although, you don't need to save this raw, unencrypted private key in this format. You can saving the fancy versions of it (e.g. the Keystore File / Mnemonic Phrase).</li>
   <li id="privk_7">Example: <code>afdfd9c3d2095ef696594f6cedcae59e72dcd697e2a7521b1578140422a4f890</code></li>
 </ul>
-<h3 id="keystore-file">Keystore File <a class="header-anchor" href="#keystore-file" aria-hidden="true">#</a></h3>
+<h3 id="keystore-file">Keystore File <a class="header-anchor" href="#keystore-file">#</a></h3>
 <ul>
   <li id="keystoref_l1">
     Encrypted version of your private key in JSON format (though it does not have a JSON extension)
@@ -654,7 +654,7 @@
     (pw: <code>mypassword</code>)
   </li>
 </ul>
-<h3 id="mnemonic-phrase-%2F-seed-phrase-%2F-seed-words">Mnemonic Phrase / Seed Phrase / Seed Words <a class="header-anchor" href="#mnemonic-phrase-%2F-seed-phrase-%2F-seed-words" aria-hidden="true">#</a></h3>
+<h3 id="mnemonic-phrase-%2F-seed-phrase-%2F-seed-words">Mnemonic Phrase / Seed Phrase / Seed Words <a class="header-anchor" href="#mnemonic-phrase-%2F-seed-phrase-%2F-seed-words">#</a></h3>
 <ul>
   <li id="mphrase_l1">
     Another fancy version of your private key, that is actually used to derive multiple private keys.
@@ -678,7 +678,7 @@
     Example 24-words: <code>card enrich gesture connect kick topple fan body blind engine lemon swarm venue praise addict agent unaware equal bean sing govern income link leg</code>
   </li>
 </ul>
-<h3 id="hardware-wallet%3A">Hardware Wallet: <a class="header-anchor" href="#hardware-wallet%3A" aria-hidden="true">#</a></h3>
+<h3 id="hardware-wallet%3A">Hardware Wallet: <a class="header-anchor" href="#hardware-wallet%3A">#</a></h3>
 <ul>
   <li id="hardwarew_l1">
     Typically, a single-purpose device that "holds" your private key(s), ensuring your private keys are safe.
@@ -696,7 +696,7 @@
     <a href='https://kb.myetherwallet.com/hardware-wallets/' target='_blank'> See here for more information about Hardware Wallets</a>
   </li>
 </ul>
-<h3 id="identicon-%2F-addressidenticon-%2F-addressicon%3A">Identicon / AddressIdenticon / AddressIcon: <a class="header-anchor" href="#identicon-%2F-addressidenticon-%2F-addressicon%3A" aria-hidden="true">#</a></h3>
+<h3 id="identicon-%2F-addressidenticon-%2F-addressicon%3A">Identicon / AddressIdenticon / AddressIcon: <a class="header-anchor" href="#identicon-%2F-addressidenticon-%2F-addressicon%3A">#</a></h3>
 <ul>
   <li id="addressIdent_l1">
     The colorful blob of colors that corresponds to your address.
@@ -714,13 +714,13 @@
     <em>Note: the above addresses are a single character different but have remarkably different icons & colors. Magic!</em>
   </li>
 </ul>
-<h3 id="hexadecimal">Hexadecimal <a class="header-anchor" href="#hexadecimal" aria-hidden="true">#</a></h3>
+<h3 id="hexadecimal">Hexadecimal <a class="header-anchor" href="#hexadecimal">#</a></h3>
 <ul>
   <li id="hexadecimal_l">
     Used all over Ethereum for a variety of things, a hexadecimal string is comprised of the numbers <code>0 1 2 3 4 5 6 7 8 9</code> and <code>A B C D E F</code>
   </li>
 </ul>
-<h3 id="seed">Seed <a class="header-anchor" href="#seed" aria-hidden="true">#</a></h3>
+<h3 id="seed">Seed <a class="header-anchor" href="#seed">#</a></h3>
 <ul>
   <li id="seed_l1">
     The input given to derive a private key. This should always be generated in a truly random way, not something you make up with your measly human brain.
@@ -729,7 +729,7 @@
     If you chose the seed, it is known as a <code>brain wallet</code>
   </li>
 </ul>
-<h3 id="brain-wallet">Brain Wallet <a class="header-anchor" href="#brain-wallet" aria-hidden="true">#</a></h3>
+<h3 id="brain-wallet">Brain Wallet <a class="header-anchor" href="#brain-wallet">#</a></h3>
 <ul>
   <li id="bw_l1">
     An account generated from a seed or password or passphrase of your choosing.
@@ -747,7 +747,7 @@
     Don't use brain wallets.
   </li>
 </ul>
-<h3 id="entropy">Entropy <a class="header-anchor" href="#entropy" aria-hidden="true">#</a></h3>
+<h3 id="entropy">Entropy <a class="header-anchor" href="#entropy">#</a></h3>
 <ul>
   <li id="entropy_l1">
     Also known as "randomness".
@@ -765,7 +765,7 @@
     24-Word mnemonic phrases are also 256 bits of entropy. 2048 words in the dictionary. 11 bits of entropy (the words). <code>11 * 24 = 264</code>. The last word is a checksum.
   </li>
 </ul>
-<h3 id="derive-%2F-derivation">Derive / Derivation <a class="header-anchor" href="#derive-%2F-derivation" aria-hidden="true">#</a></h3>
+<h3 id="derive-%2F-derivation">Derive / Derivation <a class="header-anchor" href="#derive-%2F-derivation">#</a></h3>
 <ul>
   <li id="deriveDeriv_l1">
     To derive something is to obtain it from an original source.
@@ -777,7 +777,7 @@
     The Keystore is a product of the two, thus it is derived from them.
   </li>
 </ul>
-<h3 id="encryption">Encryption <a class="header-anchor" href="#encryption" aria-hidden="true">#</a></h3>
+<h3 id="encryption">Encryption <a class="header-anchor" href="#encryption">#</a></h3>
 <ul>
   <li id="encryption_l1">
     Encryption is the act of taking a string of letters/numbers, like your private key, and turning them into another string of letters/numbers through a method of private translation.
@@ -789,7 +789,7 @@
     Encryption offers protection against those trying to steal your information!
   </li>
 </ul>
-<h3 id="encrypted-vs-unencrypted-keys">Encrypted vs Unencrypted Keys <a class="header-anchor" href="#encrypted-vs-unencrypted-keys" aria-hidden="true">#</a></h3>
+<h3 id="encrypted-vs-unencrypted-keys">Encrypted vs Unencrypted Keys <a class="header-anchor" href="#encrypted-vs-unencrypted-keys">#</a></h3>
 <ul>
   <li id="encvunenc_l1">
     An unencrypted private key is 64 characters long, and it is used to unlock or restore wallets.
@@ -804,25 +804,25 @@
     Usually encrypted private keys are kept within the extension or device they are encrypted by, and they remain out of sight from the user. This is meant to add another layer of security to keep a user’s wallet information safe.
   </li>
 </ul>
-<h3 id="decentralize-%2F-decentralization">Decentralize / Decentralization <a class="header-anchor" href="#decentralize-%2F-decentralization" aria-hidden="true">#</a></h3>
+<h3 id="decentralize-%2F-decentralization">Decentralize / Decentralization <a class="header-anchor" href="#decentralize-%2F-decentralization">#</a></h3>
 <ul>
   <li id="decentralize_l">
     The process of transferring authority of a single entity (ex. Government or large corporation) to multiple smaller entities.
   </li>
 </ul>
-<h3 id="trustless">Trustless <a class="header-anchor" href="#trustless" aria-hidden="true">#</a></h3>
+<h3 id="trustless">Trustless <a class="header-anchor" href="#trustless">#</a></h3>
 <ul>
   <li id="trustless_l">
     A distributed trustless consensus which the blockchain is responsible for. Since everyone has a copy of the ledger of all transactions ever executed, there is no need for a third-party. You can verify the transactions yourself, however the Ethereum blockchain and Bitcoin blockchain were created to ensure rules and agreements between all parties are executed when all conditions are met.
   </li>
 </ul>
-<h3 id="smart-contracts">Smart Contracts <a class="header-anchor" href="#smart-contracts" aria-hidden="true">#</a></h3>
+<h3 id="smart-contracts">Smart Contracts <a class="header-anchor" href="#smart-contracts">#</a></h3>
 <ul>
   <li id="sc_l">
     A piece of code (or program) that is stored on the blockchain network. Conditions of the contract are predefined by the users, if all conditions are met, certain actions are executed by the contract (program).
   </li>
 </ul>
-<h3 id="blockchain">Blockchain <a class="header-anchor" href="#blockchain" aria-hidden="true">#</a></h3>
+<h3 id="blockchain">Blockchain <a class="header-anchor" href="#blockchain">#</a></h3>
 <ul>
   <li id="blockchain_l">
     A decentralized publicly owned ledger.
@@ -836,7 +836,7 @@
                     <div class="bottomMatter">
                         Last updated:
                         
-                        8/21/2019
+                        10/31/2019
                         <span id="top">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></span>
                     </div>
                 </div>

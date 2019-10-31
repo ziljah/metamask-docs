@@ -358,7 +358,7 @@
             <div class="name">
                 <div class="logo" style="background-image: url(https://i.ibb.co/BsTBKsn/fox.png)"></div>
                 MetaMask
-                <span class="version">v7.0.1</span>
+                <span class="version">v7.3.1</span>
             </div>
             <div class="actions">
                 <a href="/metamask-docs/" class="help">
@@ -585,8 +585,8 @@
             </nav>
             <main>
                 <div class="container">
-                    <h1 id="experimental-apis">Experimental APIs <a class="header-anchor" href="#experimental-apis" aria-hidden="true">#</a></h1>
-<h2 id="wallet_watchasset">wallet_watchAsset <a class="header-anchor" href="#wallet_watchasset" aria-hidden="true">#</a></h2>
+                    <h1 id="experimental-apis">Experimental APIs <a class="header-anchor" href="#experimental-apis">#</a></h1>
+<h2 id="wallet_watchasset">wallet_watchAsset <a class="header-anchor" href="#wallet_watchasset">#</a></h2>
 <p>Most all Ethereum wallets display some set of tokens, usually from a centrally curated registry of tokens.</p>
 <p>At MetaMask, we believe the future of tokens has the potential to be much bigger than any one party can curate, and we want to enable this explosion of creativity.</p>
 <p>In support of this goal, we have implemented support for <a href="https://github.com/estebanmino/EIPs/blob/master/EIPS/eip-747.md">EIP 747</a>, which provides a way for your site to suggest a token that a user might want to track in their wallet.</p>
@@ -608,20 +608,20 @@
 })
 </code></pre>
 <p>We even created a sample Dapp so developers could suggest their tokens to users with a simple hyperlink, without a line of code. <a href="https://github.com/MetaMask/Add-Token">Visit it here</a>.</p>
-<h2 id="ethereum._metamask"><code>ethereum._metamask</code> <a class="header-anchor" href="#ethereum._metamask" aria-hidden="true">#</a></h2>
+<h2 id="ethereum._metamask"><code>ethereum._metamask</code> <a class="header-anchor" href="#ethereum._metamask">#</a></h2>
 <p>MetaMask supports the standard Ethereum Provider API as defined in both <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md">EIP-1193</a> and <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1102.md">EIP-1102</a>. In addition to <code>ethereum.enable()</code> and its RPC equivalent <code>ethereum.send('eth_requestAccounts')</code>, MetaMask also exposes a collection of nonstandard convenience methods on the provider object at <code>ethereum._metamask</code>. <strong>Using these methods is dangerous</strong> since other dapp browsers may or may not implement them; for this reason, these methods are intentionally kept at a MetaMask-specific namespace to avoid confusion with standard provider functionality.</p>
 <p>Each method and its intended use is described below.</p>
-<h3 id="ethereum._metamask.isenabled%3A-()-%3D%3E-boolean"><code>ethereum._metamask.isEnabled: () =&gt; boolean</code> <a class="header-anchor" href="#ethereum._metamask.isenabled%3A-()-%3D%3E-boolean" aria-hidden="true">#</a></h3>
+<h3 id="ethereum._metamask.isenabled%3A-()-%3D%3E-boolean"><code>ethereum._metamask.isEnabled: () =&gt; boolean</code> <a class="header-anchor" href="#ethereum._metamask.isenabled%3A-()-%3D%3E-boolean">#</a></h3>
 <p>This method returns a <code>boolean</code> indicating if the current domain has access to user accounts. This is useful for determining if a user has approved account access for the current session.</p>
-<h3 id="ethereum._metamask.isapproved%3A-()-%3D%3E-promise%3Cboolean%3E"><code>ethereum._metamask.isApproved: () =&gt; Promise&lt;boolean&gt;</code> <a class="header-anchor" href="#ethereum._metamask.isapproved%3A-()-%3D%3E-promise%3Cboolean%3E" aria-hidden="true">#</a></h3>
+<h3 id="ethereum._metamask.isapproved%3A-()-%3D%3E-promise%3Cboolean%3E"><code>ethereum._metamask.isApproved: () =&gt; Promise&lt;boolean&gt;</code> <a class="header-anchor" href="#ethereum._metamask.isapproved%3A-()-%3D%3E-promise%3Cboolean%3E">#</a></h3>
 <p>This method returns a <code>Promise</code> that resolves to a <code>Boolean</code> indicating if the current domain has a cached approval. This is useful for determining if an approval popup will show when <code>ethereum.enable()</code> is called, since it indicates if a past approval exists.</p>
-<h3 id="ethereum._metamask.isunlocked%3A-()-%3D%3E-promise%3Cboolean%3E"><code>ethereum._metamask.isUnlocked: () =&gt; Promise&lt;boolean&gt;</code> <a class="header-anchor" href="#ethereum._metamask.isunlocked%3A-()-%3D%3E-promise%3Cboolean%3E" aria-hidden="true">#</a></h3>
+<h3 id="ethereum._metamask.isunlocked%3A-()-%3D%3E-promise%3Cboolean%3E"><code>ethereum._metamask.isUnlocked: () =&gt; Promise&lt;boolean&gt;</code> <a class="header-anchor" href="#ethereum._metamask.isunlocked%3A-()-%3D%3E-promise%3Cboolean%3E">#</a></h3>
 <p>This method returns a <code>Promise</code> that resolves to a <code>Boolean</code> indicating if MetaMask is unlocked by the user. This is useful for knowing if MetaMask is unlocked in order to provide meaningful instructions to the user during onboarding. Note that this does not indicate if a user has approved account exposure.</p>
 
                     <div class="bottomMatter">
                         Last updated:
                         
-                        8/21/2019
+                        10/31/2019
                         <span id="top">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></span>
                     </div>
                 </div>

@@ -358,7 +358,7 @@
             <div class="name">
                 <div class="logo" style="background-image: url(https://i.ibb.co/BsTBKsn/fox.png)"></div>
                 MetaMask
-                <span class="version">v7.0.1</span>
+                <span class="version">v7.3.1</span>
             </div>
             <div class="actions">
                 <a href="/metamask-docs/" class="help">
@@ -585,30 +585,30 @@
             </nav>
             <main>
                 <div class="container">
-                    <h1 id="getting-started">Getting Started <a class="header-anchor" href="#getting-started" aria-hidden="true">#</a></h1>
+                    <h1 id="getting-started">Getting Started <a class="header-anchor" href="#getting-started">#</a></h1>
 <p>To develop for MetaMask, you’re first going to want to get MetaMask installed on your development machine. <a href="https://metamask.io/">Download here</a>.</p>
 <p>Once you have it running, you should find that new browser tabs have a <code>window.ethereum</code> object available in the console. This is the way MetaMask provides for you to interact with it.</p>
 <p>You can review the full API for that object <a href="../API_Reference/Ethereum_Provider">here</a>.</p>
-<h2 id="basic-considerations">Basic Considerations <a class="header-anchor" href="#basic-considerations" aria-hidden="true">#</a></h2>
-<h3 id="web3-browser-detection">Web3 Browser Detection <a class="header-anchor" href="#web3-browser-detection" aria-hidden="true">#</a></h3>
+<h2 id="basic-considerations">Basic Considerations <a class="header-anchor" href="#basic-considerations">#</a></h2>
+<h3 id="web3-browser-detection">Web3 Browser Detection <a class="header-anchor" href="#web3-browser-detection">#</a></h3>
 <p>The first thing your app will want to do is verify whether the user is using MetaMask or not, which is simple using a check like <code>if (typeof window.ethereum !== 'undefined') { /* deal with it */ }</code>.</p>
-<h3 id="running-a-test-network">Running a Test Network <a class="header-anchor" href="#running-a-test-network" aria-hidden="true">#</a></h3>
+<h3 id="running-a-test-network">Running a Test Network <a class="header-anchor" href="#running-a-test-network">#</a></h3>
 <p>In the top right menu of MetaMask, you can select the network that you are currently connected to. Among several popular defaults, you’ll find <code>Custom RPC</code> and <code>Localhost 8545</code>. These are both useful for connecting to a test blockchain, like <a href="https://truffleframework.com/ganache">ganache</a>, which you can quickly install and start if you have <code>npm</code> installed with <code>npm i -g ganache-cli &amp;&amp; ganache-cli</code>.</p>
 <p>Ganache has some great features for starting it up with different states. If you start it with the <code>-m</code> flag, you can feed it the same seed phrase you have in your MetaMask, and the test network will give your first 10 accounts 100 test ether each, which makes it easier to start work.</p>
 <p>Since your seed phrase is the power to control all your accounts, it is probably worth keeping at least one seed phrase for development, separate from any that you use for storing real value. One easy way to manage multiple seed phrases with MetaMask is with multiple browser profiles, each of which can have its own clean extension installations.</p>
-<h4 id="resetting-your-local-nonce-calculation">Resetting Your Local Nonce Calculation <a class="header-anchor" href="#resetting-your-local-nonce-calculation" aria-hidden="true">#</a></h4>
+<h4 id="resetting-your-local-nonce-calculation">Resetting Your Local Nonce Calculation <a class="header-anchor" href="#resetting-your-local-nonce-calculation">#</a></h4>
 <p>If you’re running a test blockchain, and then restart it, you can accidentally confuse MetaMask, because it calculates the next <a href="./Sending_Transactions#nonce-%5Bignored%5D">nonce</a> based on both the network state <em>and</em> the known sent transactions.</p>
 <p>To clear MetaMask’s transaction queue, and effectively reset its nonce calculation, you can use the <code>Reset Account</code> button in <code>Settings</code> (available in the top-right sandwich menu).</p>
-<h3 id="detecting-metamask">Detecting MetaMask <a class="header-anchor" href="#detecting-metamask" aria-hidden="true">#</a></h3>
+<h3 id="detecting-metamask">Detecting MetaMask <a class="header-anchor" href="#detecting-metamask">#</a></h3>
 <p>If you want to differentiate MetaMask from other ethereum-compatible browsers, you can detect MetaMask using <code>ethereum.isMetaMask</code>.</p>
-<h3 id="user-state">User State <a class="header-anchor" href="#user-state" aria-hidden="true">#</a></h3>
+<h3 id="user-state">User State <a class="header-anchor" href="#user-state">#</a></h3>
 <p>Currently there are a few stateful things you want to consider when interacting with this API:</p>
 <ul>
 <li>What is the current network?</li>
 <li>What is the current account?</li>
 </ul>
 <p>Both of these are available synchronously as <code>ethereum.networkVersion</code> and <code>ethereum.selectedAddress</code>. You can listen for changes using events, too (<a href="./API_Reference">see the API reference</a>).</p>
-<h3 id="logging-in">Logging In <a class="header-anchor" href="#logging-in" aria-hidden="true">#</a></h3>
+<h3 id="logging-in">Logging In <a class="header-anchor" href="#logging-in">#</a></h3>
 <p>When you’re ready to request the user logs in, you can call this simple method:</p>
 <pre><code class="hljs language-javascript">ethereum.enable()
 </code></pre>
@@ -619,7 +619,7 @@
 <span class="hljs-keyword">const</span> account = accounts[<span class="hljs-number">0</span>] <span class="hljs-comment">// We currently only ever provide a single account,</span>
                             <span class="hljs-comment">// but the array gives us some room to grow.</span>
 </code></pre>
-<h2 id="choosing-a-convenience-library">Choosing a Convenience Library <a class="header-anchor" href="#choosing-a-convenience-library" aria-hidden="true">#</a></h2>
+<h2 id="choosing-a-convenience-library">Choosing a Convenience Library <a class="header-anchor" href="#choosing-a-convenience-library">#</a></h2>
 <p>Convenience libraries exist for a variety of reasons.</p>
 <p>Some of them simplify the creation of specific user interface elements, some entirely manage the user account onboarding, and others give you a variety of methods of interacting with smart contracts, for a variety of API preferences, from promises, to callbacks, to strong types, and on.</p>
 <p>The provider API itself is very simple, and wraps <a href="https://github.com/ethereum/wiki/wiki/JSON-RPC#json-rpc-methods">Ethereum JSON-RPC</a> formatted messages, which is why developers usually use a convenience library for interacting with the provider, like <a href="https://www.npmjs.com/package/web3">web3</a>, <a href="https://truffleframework.com/">truffle</a>, <a href="https://www.npmjs.com/package/ethjs">ethjs</a>, <a href="https://embark.status.im/">Embark</a>, or others. From those tools, you can generally find sufficient documentation to interact with the provider, without reading this lower-level API.</p>
@@ -627,7 +627,7 @@
                     <div class="bottomMatter">
                         Last updated:
                         
-                        8/21/2019
+                        10/31/2019
                         <span id="top">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></span>
                     </div>
                 </div>

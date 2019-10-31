@@ -358,7 +358,7 @@
             <div class="name">
                 <div class="logo" style="background-image: url(https://i.ibb.co/BsTBKsn/fox.png)"></div>
                 MetaMask
-                <span class="version">v7.0.1</span>
+                <span class="version">v7.3.1</span>
             </div>
             <div class="actions">
                 <a href="/metamask-docs/" class="help">
@@ -585,7 +585,7 @@
             </nav>
             <main>
                 <div class="container">
-                    <h1 id="the-ethereum-rpc-api">The Ethereum RPC API <a class="header-anchor" href="#the-ethereum-rpc-api" aria-hidden="true">#</a></h1>
+                    <h1 id="the-ethereum-rpc-api">The Ethereum RPC API <a class="header-anchor" href="#the-ethereum-rpc-api">#</a></h1>
 <p>MetaMask uses the <code>ethereum.sendAsync()</code> API to wrap an RPC API which is based on an interface exposed by all Ethereum clients, with some extra methods that are provided by MetaMask, as a key-holding signer. You can look up how to pass these methods to the <code>window.ethereum</code> object <a href="./Provider_API">here</a>.</p>
 <p>This document is a cross-post of <a href="https://github.com/ethereum/EIPs/pull/1474/">EIP 1474</a>, which aims to standardize the declaration of this interface.</p>
 <pre><code class="hljs">eip: <span class="hljs-number">1474</span>
@@ -597,17 +597,17 @@ type: Standards Track
 category: Interface
 created: <span class="hljs-number">2018</span>-<span class="hljs-number">10</span>-<span class="hljs-number">02</span>
 </code></pre>
-<h2 id="simple-summary">Simple Summary <a class="header-anchor" href="#simple-summary" aria-hidden="true">#</a></h2>
+<h2 id="simple-summary">Simple Summary <a class="header-anchor" href="#simple-summary">#</a></h2>
 <p>This proposal defines a standard set of remote procedure call methods that an Ethereum node should implement.</p>
-<h2 id="abstract">Abstract <a class="header-anchor" href="#abstract" aria-hidden="true">#</a></h2>
+<h2 id="abstract">Abstract <a class="header-anchor" href="#abstract">#</a></h2>
 <p>Nodes created by the current generation of Ethereum clients expose inconsistent and incompatible remote procedure call (RPC) methods because no formal Ethereum RPC specification exists. This proposal standardizes such a specification to provide developers with a predictable Ethereum RPC interface regardless of underlying node implementation.</p>
-<h2 id="specification">Specification <a class="header-anchor" href="#specification" aria-hidden="true">#</a></h2>
-<h3 id="concepts">Concepts <a class="header-anchor" href="#concepts" aria-hidden="true">#</a></h3>
-<h4 id="rfc-2119">RFC-2119 <a class="header-anchor" href="#rfc-2119" aria-hidden="true">#</a></h4>
+<h2 id="specification">Specification <a class="header-anchor" href="#specification">#</a></h2>
+<h3 id="concepts">Concepts <a class="header-anchor" href="#concepts">#</a></h3>
+<h4 id="rfc-2119">RFC-2119 <a class="header-anchor" href="#rfc-2119">#</a></h4>
 <p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”,  “MAY”, and “OPTIONAL” in this document are to be interpreted as described in <a href="https://www.ietf.org/rfc/rfc2119.txt">RFC-2119</a>.</p>
-<h4 id="json-rpc">JSON-RPC <a class="header-anchor" href="#json-rpc" aria-hidden="true">#</a></h4>
+<h4 id="json-rpc">JSON-RPC <a class="header-anchor" href="#json-rpc">#</a></h4>
 <p>Communication with Ethereum nodes is accomplished using <a href="https://www.jsonrpc.org/specification">JSON-RPC</a>, a stateless, lightweight <a href="https://en.wikipedia.org/wiki/Remote_procedure_call">remote procedure call</a> protocol that uses <a href="http://www.json.org/">JSON</a> as its data format. Ethereum RPC methods <strong>MUST</strong> be called using <a href="https://www.jsonrpc.org/specification#request_object">JSON-RPC request objects</a> and <strong>MUST</strong> respond with <a href="https://www.jsonrpc.org/specification#response_object">JSON-RPC response objects</a>.</p>
-<h4 id="error-codes">Error codes <a class="header-anchor" href="#error-codes" aria-hidden="true">#</a></h4>
+<h4 id="error-codes">Error codes <a class="header-anchor" href="#error-codes">#</a></h4>
 <p>If an Ethereum RPC method encounters an error, the <code>error</code> member included on the response object <strong>MUST</strong> be an object containing a <code>code</code> member and descriptive <code>message</code> member. The following list contains all possible error codes and associated messages:</p>
 <table>
 <thead>
@@ -691,9 +691,9 @@ created: <span class="hljs-number">2018</span>-<span class="hljs-number">10</spa
     }
 }
 </code></pre>
-<h4 id="value-encoding">Value encoding <a class="header-anchor" href="#value-encoding" aria-hidden="true">#</a></h4>
+<h4 id="value-encoding">Value encoding <a class="header-anchor" href="#value-encoding">#</a></h4>
 <p>Specific types of values passed to and returned from Ethereum RPC methods require special encoding:</p>
-<h5 id="quantity"><code>Quantity</code> <a class="header-anchor" href="#quantity" aria-hidden="true">#</a></h5>
+<h5 id="quantity"><code>Quantity</code> <a class="header-anchor" href="#quantity">#</a></h5>
 <ul>
 <li>A <code>Quantity</code> value <strong>MUST</strong> be hex-encoded.</li>
 <li>A <code>Quantity</code> value <strong>MUST</strong> be “0x”-prefixed.</li>
@@ -747,7 +747,7 @@ created: <span class="hljs-number">2018</span>-<span class="hljs-number">10</spa
 </tr>
 </tbody>
 </table>
-<h5 id="data"><code>Data</code> <a class="header-anchor" href="#data" aria-hidden="true">#</a></h5>
+<h5 id="data"><code>Data</code> <a class="header-anchor" href="#data">#</a></h5>
 <ul>
 <li>A <code>Data</code> value <strong>MUST</strong> be hex-encoded.</li>
 <li>A <code>Data</code> value <strong>MUST</strong> be “0x”-prefixed.</li>
@@ -800,18 +800,18 @@ created: <span class="hljs-number">2018</span>-<span class="hljs-number">10</spa
 </tr>
 </tbody>
 </table>
-<h5 id="proposing-changes">Proposing changes <a class="header-anchor" href="#proposing-changes" aria-hidden="true">#</a></h5>
+<h5 id="proposing-changes">Proposing changes <a class="header-anchor" href="#proposing-changes">#</a></h5>
 <p>New Ethereum RPC methods and changes to existing methods <strong>MUST</strong> be proposed via the traditional EIP process. This allows for community consensus around new method implementations and proposed method modifications. RPC method proposals <strong>MUST</strong> reach “draft” status before being added to this proposal and the official Ethereum RPC specification defined herein.</p>
-<h3 id="methods">Methods <a class="header-anchor" href="#methods" aria-hidden="true">#</a></h3>
+<h3 id="methods">Methods <a class="header-anchor" href="#methods">#</a></h3>
 <details open>
 <summary><code><strong>web3_clientVersion</strong></code></summary>
-<h4 id="description">Description <a class="header-anchor" href="#description" aria-hidden="true">#</a></h4>
+<h4 id="description">Description <a class="header-anchor" href="#description">#</a></h4>
 <p>Returns the version of the current client</p>
-<h4 id="parameters">Parameters <a class="header-anchor" href="#parameters" aria-hidden="true">#</a></h4>
+<h4 id="parameters">Parameters <a class="header-anchor" href="#parameters">#</a></h4>
 <p><em>(none)</em></p>
-<h4 id="returns">Returns <a class="header-anchor" href="#returns" aria-hidden="true">#</a></h4>
+<h4 id="returns">Returns <a class="header-anchor" href="#returns">#</a></h4>
 <p>{<code>string</code>} - client version</p>
-<h4 id="example">Example <a class="header-anchor" href="#example" aria-hidden="true">#</a></h4>
+<h4 id="example">Example <a class="header-anchor" href="#example">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -831,9 +831,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>web3_sha3</strong></code></summary>
-<h4 id="description-2">Description <a class="header-anchor" href="#description-2" aria-hidden="true">#</a></h4>
+<h4 id="description-2">Description <a class="header-anchor" href="#description-2">#</a></h4>
 <p>Hashes data using the Keccak-256 algorithm</p>
-<h4 id="parameters-2">Parameters <a class="header-anchor" href="#parameters-2" aria-hidden="true">#</a></h4>
+<h4 id="parameters-2">Parameters <a class="header-anchor" href="#parameters-2">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -850,9 +850,9 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-2">Returns <a class="header-anchor" href="#returns-2" aria-hidden="true">#</a></h4>
+<h4 id="returns-2">Returns <a class="header-anchor" href="#returns-2">#</a></h4>
 <p>{<a href="#data"><code>Data</code></a>} - Keccak-256 hash of the given data</p>
-<h4 id="example-2">Example <a class="header-anchor" href="#example-2" aria-hidden="true">#</a></h4>
+<h4 id="example-2">Example <a class="header-anchor" href="#example-2">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -872,13 +872,13 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>net_listening</strong></code></summary>
-<h4 id="description-3">Description <a class="header-anchor" href="#description-3" aria-hidden="true">#</a></h4>
+<h4 id="description-3">Description <a class="header-anchor" href="#description-3">#</a></h4>
 <p>Determines if this client is listening for new network connections</p>
-<h4 id="parameters-3">Parameters <a class="header-anchor" href="#parameters-3" aria-hidden="true">#</a></h4>
+<h4 id="parameters-3">Parameters <a class="header-anchor" href="#parameters-3">#</a></h4>
 <p><em>(none)</em></p>
-<h4 id="returns-3">Returns <a class="header-anchor" href="#returns-3" aria-hidden="true">#</a></h4>
+<h4 id="returns-3">Returns <a class="header-anchor" href="#returns-3">#</a></h4>
 <p>{<code>boolean</code>} - <code>true</code> if listening is active or <code>false</code> if listening is not active</p>
-<h4 id="example-3">Example <a class="header-anchor" href="#example-3" aria-hidden="true">#</a></h4>
+<h4 id="example-3">Example <a class="header-anchor" href="#example-3">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -898,13 +898,13 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>net_peerCount</strong></code></summary>
-<h4 id="description-4">Description <a class="header-anchor" href="#description-4" aria-hidden="true">#</a></h4>
+<h4 id="description-4">Description <a class="header-anchor" href="#description-4">#</a></h4>
 <p>Returns the number of peers currently connected to this client</p>
-<h4 id="parameters-4">Parameters <a class="header-anchor" href="#parameters-4" aria-hidden="true">#</a></h4>
+<h4 id="parameters-4">Parameters <a class="header-anchor" href="#parameters-4">#</a></h4>
 <p><em>(none)</em></p>
-<h4 id="returns-4">Returns <a class="header-anchor" href="#returns-4" aria-hidden="true">#</a></h4>
+<h4 id="returns-4">Returns <a class="header-anchor" href="#returns-4">#</a></h4>
 <p>{<a href="#quantity"><code>Quantity</code></a>} - number of connected peers</p>
-<h4 id="example-4">Example <a class="header-anchor" href="#example-4" aria-hidden="true">#</a></h4>
+<h4 id="example-4">Example <a class="header-anchor" href="#example-4">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -924,11 +924,11 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>net_version</strong></code></summary>
-<h4 id="description-5">Description <a class="header-anchor" href="#description-5" aria-hidden="true">#</a></h4>
+<h4 id="description-5">Description <a class="header-anchor" href="#description-5">#</a></h4>
 <p>Returns the chain ID associated with the current network</p>
-<h4 id="parameters-5">Parameters <a class="header-anchor" href="#parameters-5" aria-hidden="true">#</a></h4>
+<h4 id="parameters-5">Parameters <a class="header-anchor" href="#parameters-5">#</a></h4>
 <p><em>(none)</em></p>
-<h4 id="returns-5">Returns <a class="header-anchor" href="#returns-5" aria-hidden="true">#</a></h4>
+<h4 id="returns-5">Returns <a class="header-anchor" href="#returns-5">#</a></h4>
 <p>{<code>string</code>} - chain ID associated with the current network</p>
 <p>Common chain IDs:</p>
 <ul>
@@ -938,7 +938,7 @@ curl -X POST --data <span class="hljs-string">'{
 <li><code>&quot;42&quot;</code> - Kovan testnet</li>
 </ul>
 <p><strong>Note:</strong> See EIP-155 for a <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md#list-of-chain-ids">complete list</a> of possible chain IDs.</p>
-<h4 id="example-5">Example <a class="header-anchor" href="#example-5" aria-hidden="true">#</a></h4>
+<h4 id="example-5">Example <a class="header-anchor" href="#example-5">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337
@@ -958,13 +958,13 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_accounts</strong></code></summary>
-<h4 id="description-6">Description <a class="header-anchor" href="#description-6" aria-hidden="true">#</a></h4>
+<h4 id="description-6">Description <a class="header-anchor" href="#description-6">#</a></h4>
 <p>Returns a list of addresses owned by this client</p>
-<h4 id="parameters-6">Parameters <a class="header-anchor" href="#parameters-6" aria-hidden="true">#</a></h4>
+<h4 id="parameters-6">Parameters <a class="header-anchor" href="#parameters-6">#</a></h4>
 <p><em>(none)</em></p>
-<h4 id="returns-6">Returns <a class="header-anchor" href="#returns-6" aria-hidden="true">#</a></h4>
+<h4 id="returns-6">Returns <a class="header-anchor" href="#returns-6">#</a></h4>
 <p>{<a href="#data"><code>Data[]</code></a>} - array of addresses</p>
-<h4 id="example-6">Example <a class="header-anchor" href="#example-6" aria-hidden="true">#</a></h4>
+<h4 id="example-6">Example <a class="header-anchor" href="#example-6">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -984,13 +984,13 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_blockNumber</strong></code></summary>
-<h4 id="description-7">Description <a class="header-anchor" href="#description-7" aria-hidden="true">#</a></h4>
+<h4 id="description-7">Description <a class="header-anchor" href="#description-7">#</a></h4>
 <p>Returns the number of the most recent block seen by this client</p>
-<h4 id="parameters-7">Parameters <a class="header-anchor" href="#parameters-7" aria-hidden="true">#</a></h4>
+<h4 id="parameters-7">Parameters <a class="header-anchor" href="#parameters-7">#</a></h4>
 <p><em>(none)</em></p>
-<h4 id="returns-7">Returns <a class="header-anchor" href="#returns-7" aria-hidden="true">#</a></h4>
+<h4 id="returns-7">Returns <a class="header-anchor" href="#returns-7">#</a></h4>
 <p>{<a href="#quantity"><code>Quantity</code></a>} - number of the latest block</p>
-<h4 id="example-7">Example <a class="header-anchor" href="#example-7" aria-hidden="true">#</a></h4>
+<h4 id="example-7">Example <a class="header-anchor" href="#example-7">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -1010,9 +1010,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_call</strong></code></summary>
-<h4 id="description-8">Description <a class="header-anchor" href="#description-8" aria-hidden="true">#</a></h4>
+<h4 id="description-8">Description <a class="header-anchor" href="#description-8">#</a></h4>
 <p>Executes a new message call immediately without submitting a transaction to the network</p>
-<h4 id="parameters-8">Parameters <a class="header-anchor" href="#parameters-8" aria-hidden="true">#</a></h4>
+<h4 id="parameters-8">Parameters <a class="header-anchor" href="#parameters-8">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -1034,9 +1034,9 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-8">Returns <a class="header-anchor" href="#returns-8" aria-hidden="true">#</a></h4>
+<h4 id="returns-8">Returns <a class="header-anchor" href="#returns-8">#</a></h4>
 <p>{<a href="#data"><code>Data</code></a>} - return value of executed contract</p>
-<h4 id="example-8">Example <a class="header-anchor" href="#example-8" aria-hidden="true">#</a></h4>
+<h4 id="example-8">Example <a class="header-anchor" href="#example-8">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -1063,13 +1063,13 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_coinbase</strong></code></summary>
-<h4 id="description-9">Description <a class="header-anchor" href="#description-9" aria-hidden="true">#</a></h4>
+<h4 id="description-9">Description <a class="header-anchor" href="#description-9">#</a></h4>
 <p>Returns the coinbase address for this client</p>
-<h4 id="parameters-9">Parameters <a class="header-anchor" href="#parameters-9" aria-hidden="true">#</a></h4>
+<h4 id="parameters-9">Parameters <a class="header-anchor" href="#parameters-9">#</a></h4>
 <p><em>(none)</em></p>
-<h4 id="returns-9">Returns <a class="header-anchor" href="#returns-9" aria-hidden="true">#</a></h4>
+<h4 id="returns-9">Returns <a class="header-anchor" href="#returns-9">#</a></h4>
 <p>{<a href="#data"><code>Data</code></a>} - coinbase address</p>
-<h4 id="example-9">Example <a class="header-anchor" href="#example-9" aria-hidden="true">#</a></h4>
+<h4 id="example-9">Example <a class="header-anchor" href="#example-9">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -1089,10 +1089,10 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_estimateGas</strong></code></summary>
-<h4 id="description-10">Description <a class="header-anchor" href="#description-10" aria-hidden="true">#</a></h4>
+<h4 id="description-10">Description <a class="header-anchor" href="#description-10">#</a></h4>
 <p>Estimates the gas necessary to complete a transaction without submitting it to the network</p>
 <p><strong>Note:</strong> The resulting gas estimation may be significantly more than the amount of gas actually used by the transaction. This is due to a variety of reasons including EVM mechanics and node performance.</p>
-<h4 id="parameters-10">Parameters <a class="header-anchor" href="#parameters-10" aria-hidden="true">#</a></h4>
+<h4 id="parameters-10">Parameters <a class="header-anchor" href="#parameters-10">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -1114,9 +1114,9 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-10">Returns <a class="header-anchor" href="#returns-10" aria-hidden="true">#</a></h4>
+<h4 id="returns-10">Returns <a class="header-anchor" href="#returns-10">#</a></h4>
 <p>{<a href="#quantity"><code>Quantity</code></a>} - amount of gas required by transaction</p>
-<h4 id="example-10">Example <a class="header-anchor" href="#example-10" aria-hidden="true">#</a></h4>
+<h4 id="example-10">Example <a class="header-anchor" href="#example-10">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -1143,13 +1143,13 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_gasPrice</strong></code></summary>
-<h4 id="description-11">Description <a class="header-anchor" href="#description-11" aria-hidden="true">#</a></h4>
+<h4 id="description-11">Description <a class="header-anchor" href="#description-11">#</a></h4>
 <p>Returns the current price of gas expressed in wei</p>
-<h4 id="parameters-11">Parameters <a class="header-anchor" href="#parameters-11" aria-hidden="true">#</a></h4>
+<h4 id="parameters-11">Parameters <a class="header-anchor" href="#parameters-11">#</a></h4>
 <p><em>(none)</em></p>
-<h4 id="returns-11">Returns <a class="header-anchor" href="#returns-11" aria-hidden="true">#</a></h4>
+<h4 id="returns-11">Returns <a class="header-anchor" href="#returns-11">#</a></h4>
 <p>{<a href="#quantity"><code>Quantity</code></a>} - current gas price in wei</p>
-<h4 id="example-11">Example <a class="header-anchor" href="#example-11" aria-hidden="true">#</a></h4>
+<h4 id="example-11">Example <a class="header-anchor" href="#example-11">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -1169,9 +1169,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_getBalance</strong></code></summary>
-<h4 id="description-12">Description <a class="header-anchor" href="#description-12" aria-hidden="true">#</a></h4>
+<h4 id="description-12">Description <a class="header-anchor" href="#description-12">#</a></h4>
 <p>Returns the balance of an address in wei</p>
-<h4 id="parameters-12">Parameters <a class="header-anchor" href="#parameters-12" aria-hidden="true">#</a></h4>
+<h4 id="parameters-12">Parameters <a class="header-anchor" href="#parameters-12">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -1193,9 +1193,9 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-12">Returns <a class="header-anchor" href="#returns-12" aria-hidden="true">#</a></h4>
+<h4 id="returns-12">Returns <a class="header-anchor" href="#returns-12">#</a></h4>
 <p>{<a href="#quantity"><code>Quantity</code></a>} - balance of the provided account in wei</p>
-<h4 id="example-12">Example <a class="header-anchor" href="#example-12" aria-hidden="true">#</a></h4>
+<h4 id="example-12">Example <a class="header-anchor" href="#example-12">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -1215,9 +1215,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_getBlockByHash</strong></code></summary>
-<h4 id="description-13">Description <a class="header-anchor" href="#description-13" aria-hidden="true">#</a></h4>
+<h4 id="description-13">Description <a class="header-anchor" href="#description-13">#</a></h4>
 <p>Returns information about a block specified by hash</p>
-<h4 id="parameters-13">Parameters <a class="header-anchor" href="#parameters-13" aria-hidden="true">#</a></h4>
+<h4 id="parameters-13">Parameters <a class="header-anchor" href="#parameters-13">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -1239,7 +1239,7 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-13">Returns <a class="header-anchor" href="#returns-13" aria-hidden="true">#</a></h4>
+<h4 id="returns-13">Returns <a class="header-anchor" href="#returns-13">#</a></h4>
 <p>{<code>null|object</code>} - <code>null</code> if no block is found, otherwise a block object with the following members:</p>
 <ul>
 <li>{<a href="#data"><code>Data</code></a>} <code>extraData</code> - “extra data” field of this block</li>
@@ -1262,7 +1262,7 @@ curl -X POST --data <span class="hljs-string">'{
 <li>{<code>Array&lt;Transaction&gt;</code>} <code>transactions</code> - list of transaction objects or hashes</li>
 <li>{<code>Array&lt;Transaction&gt;</code>} <code>uncles</code> - list of uncle hashes</li>
 </ul>
-<h4 id="example-13">Example <a class="header-anchor" href="#example-13" aria-hidden="true">#</a></h4>
+<h4 id="example-13">Example <a class="header-anchor" href="#example-13">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -1301,9 +1301,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_getBlockByNumber</strong></code></summary>
-<h4 id="description-14">Description <a class="header-anchor" href="#description-14" aria-hidden="true">#</a></h4>
+<h4 id="description-14">Description <a class="header-anchor" href="#description-14">#</a></h4>
 <p>Returns information about a block specified by number</p>
-<h4 id="parameters-14">Parameters <a class="header-anchor" href="#parameters-14" aria-hidden="true">#</a></h4>
+<h4 id="parameters-14">Parameters <a class="header-anchor" href="#parameters-14">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -1325,7 +1325,7 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-14">Returns <a class="header-anchor" href="#returns-14" aria-hidden="true">#</a></h4>
+<h4 id="returns-14">Returns <a class="header-anchor" href="#returns-14">#</a></h4>
 <p>{<code>null|object</code>} - <code>null</code> if no block is found, otherwise a block object with the following members:</p>
 <ul>
 <li>{<a href="#data"><code>Data</code></a>} <code>extraData</code> - “extra data” field of this block</li>
@@ -1348,7 +1348,7 @@ curl -X POST --data <span class="hljs-string">'{
 <li>{<code>Array&lt;Transaction&gt;</code>} <code>transactions</code> - list of transaction objects or hashes</li>
 <li>{<code>Array&lt;Transaction&gt;</code>} <code>uncles</code> - list of uncle hashes</li>
 </ul>
-<h4 id="example-14">Example <a class="header-anchor" href="#example-14" aria-hidden="true">#</a></h4>
+<h4 id="example-14">Example <a class="header-anchor" href="#example-14">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -1387,9 +1387,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_getBlockTransactionCountByHash</strong></code></summary>
-<h4 id="description-15">Description <a class="header-anchor" href="#description-15" aria-hidden="true">#</a></h4>
+<h4 id="description-15">Description <a class="header-anchor" href="#description-15">#</a></h4>
 <p>Returns the number of transactions in a block specified by block hash</p>
-<h4 id="parameters-15">Parameters <a class="header-anchor" href="#parameters-15" aria-hidden="true">#</a></h4>
+<h4 id="parameters-15">Parameters <a class="header-anchor" href="#parameters-15">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -1406,9 +1406,9 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-15">Returns <a class="header-anchor" href="#returns-15" aria-hidden="true">#</a></h4>
+<h4 id="returns-15">Returns <a class="header-anchor" href="#returns-15">#</a></h4>
 <p>{<a href="#quantity"><code>Quantity</code></a>} - number of transactions in the specified block</p>
-<h4 id="example-15">Example <a class="header-anchor" href="#example-15" aria-hidden="true">#</a></h4>
+<h4 id="example-15">Example <a class="header-anchor" href="#example-15">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -1428,9 +1428,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_getBlockTransactionCountByNumber</strong></code></summary>
-<h4 id="description-16">Description <a class="header-anchor" href="#description-16" aria-hidden="true">#</a></h4>
+<h4 id="description-16">Description <a class="header-anchor" href="#description-16">#</a></h4>
 <p>Returns the number of transactions in a block specified by block number</p>
-<h4 id="parameters-16">Parameters <a class="header-anchor" href="#parameters-16" aria-hidden="true">#</a></h4>
+<h4 id="parameters-16">Parameters <a class="header-anchor" href="#parameters-16">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -1447,9 +1447,9 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-16">Returns <a class="header-anchor" href="#returns-16" aria-hidden="true">#</a></h4>
+<h4 id="returns-16">Returns <a class="header-anchor" href="#returns-16">#</a></h4>
 <p>{<a href="#quantity"><code>Quantity</code></a>} - number of transactions in the specified block</p>
-<h4 id="example-16">Example <a class="header-anchor" href="#example-16" aria-hidden="true">#</a></h4>
+<h4 id="example-16">Example <a class="header-anchor" href="#example-16">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -1469,9 +1469,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_getCode</strong></code></summary>
-<h4 id="description-17">Description <a class="header-anchor" href="#description-17" aria-hidden="true">#</a></h4>
+<h4 id="description-17">Description <a class="header-anchor" href="#description-17">#</a></h4>
 <p>Returns the contract code stored at a given address</p>
-<h4 id="parameters-17">Parameters <a class="header-anchor" href="#parameters-17" aria-hidden="true">#</a></h4>
+<h4 id="parameters-17">Parameters <a class="header-anchor" href="#parameters-17">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -1493,9 +1493,9 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-17">Returns <a class="header-anchor" href="#returns-17" aria-hidden="true">#</a></h4>
+<h4 id="returns-17">Returns <a class="header-anchor" href="#returns-17">#</a></h4>
 <p>{<a href="#data"><code>Data</code></a>} - code from the specified address</p>
-<h4 id="example-17">Example <a class="header-anchor" href="#example-17" aria-hidden="true">#</a></h4>
+<h4 id="example-17">Example <a class="header-anchor" href="#example-17">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -1515,9 +1515,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_getFilterChanges</strong></code></summary>
-<h4 id="description-18">Description <a class="header-anchor" href="#description-18" aria-hidden="true">#</a></h4>
+<h4 id="description-18">Description <a class="header-anchor" href="#description-18">#</a></h4>
 <p>Returns a list of all logs based on filter ID since the last log retrieval</p>
-<h4 id="parameters-18">Parameters <a class="header-anchor" href="#parameters-18" aria-hidden="true">#</a></h4>
+<h4 id="parameters-18">Parameters <a class="header-anchor" href="#parameters-18">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -1534,7 +1534,7 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-18">Returns <a class="header-anchor" href="#returns-18" aria-hidden="true">#</a></h4>
+<h4 id="returns-18">Returns <a class="header-anchor" href="#returns-18">#</a></h4>
 <p>{<code>Array&lt;Log&gt;</code>} - array of log objects with the following members:</p>
 <ul>
 <li>{<a href="#data"><code>Data</code></a>} <code>address</code> - address from which this log originated</li>
@@ -1548,7 +1548,7 @@ curl -X POST --data <span class="hljs-string">'{
 <li>{<code>boolean</code>} <code>removed</code> - <code>true</code> if this filter has been destroyed and is invalid</li>
 </ul>
 <p><strong>Note:</strong> The return value of <code>eth_getFilterChanges</code> when retrieving logs from <code>eth_newBlockFilter</code> and <code>eth_newPendingTransactionFilter</code> filters will be an array of hashes, not an array of Log objects.</p>
-<h4 id="example-18">Example <a class="header-anchor" href="#example-18" aria-hidden="true">#</a></h4>
+<h4 id="example-18">Example <a class="header-anchor" href="#example-18">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -1577,9 +1577,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_getFilterLogs</strong></code></summary>
-<h4 id="description-19">Description <a class="header-anchor" href="#description-19" aria-hidden="true">#</a></h4>
+<h4 id="description-19">Description <a class="header-anchor" href="#description-19">#</a></h4>
 <p>Returns a list of all logs based on filter ID</p>
-<h4 id="parameters-19">Parameters <a class="header-anchor" href="#parameters-19" aria-hidden="true">#</a></h4>
+<h4 id="parameters-19">Parameters <a class="header-anchor" href="#parameters-19">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -1596,7 +1596,7 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-19">Returns <a class="header-anchor" href="#returns-19" aria-hidden="true">#</a></h4>
+<h4 id="returns-19">Returns <a class="header-anchor" href="#returns-19">#</a></h4>
 <p>{<code>Array&lt;Log&gt;</code>} - array of log objects with the following members:</p>
 <ul>
 <li>{<a href="#data"><code>Data</code></a>} address - address from which this log originated</li>
@@ -1610,7 +1610,7 @@ curl -X POST --data <span class="hljs-string">'{
 <li>{<code>boolean</code>} removed - <code>true</code> if this filter has been destroyed and is invalid</li>
 </ul>
 <p><strong>Note:</strong> The return value of <code>eth_getFilterLogs</code> when retrieving logs from <code>eth_newBlockFilter</code> and <code>eth_newPendingTransactionFilter</code> filters will be an array of hashes, not an array of Log objects.</p>
-<h4 id="example-19">Example <a class="header-anchor" href="#example-19" aria-hidden="true">#</a></h4>
+<h4 id="example-19">Example <a class="header-anchor" href="#example-19">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -1639,9 +1639,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_getLogs</strong></code></summary>
-<h4 id="description-20">Description <a class="header-anchor" href="#description-20" aria-hidden="true">#</a></h4>
+<h4 id="description-20">Description <a class="header-anchor" href="#description-20">#</a></h4>
 <p>Returns a list of all logs based on a filter object</p>
-<h4 id="parameters-20">Parameters <a class="header-anchor" href="#parameters-20" aria-hidden="true">#</a></h4>
+<h4 id="parameters-20">Parameters <a class="header-anchor" href="#parameters-20">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -1659,7 +1659,7 @@ curl -X POST --data <span class="hljs-string">'{
 </tbody>
 </table>
 <p><strong>Note:</strong> If <code>blockhash</code> is passed, neither <code>fromBlock</code> nor <code>toBlock</code> are allowed or respected.</p>
-<h4 id="returns-20">Returns <a class="header-anchor" href="#returns-20" aria-hidden="true">#</a></h4>
+<h4 id="returns-20">Returns <a class="header-anchor" href="#returns-20">#</a></h4>
 <p>{<code>Array&lt;Log&gt;</code>} - array of log objects with the following members:</p>
 <ul>
 <li>{<a href="#data"><code>Data</code></a>} <code>address</code> - address from which this log originated</li>
@@ -1673,7 +1673,7 @@ curl -X POST --data <span class="hljs-string">'{
 <li>{<code>boolean</code>} <code>removed</code> - <code>true</code> if this filter has been destroyed and is invalid</li>
 </ul>
 <p><strong>Note:</strong> The return value of <code>eth_getLogs</code> when retrieving logs from <code>eth_newBlockFilter</code> and <code>eth_newPendingTransactionFilter</code> filters will be an array of hashes, not an array of Log objects.</p>
-<h4 id="example-20">Example <a class="header-anchor" href="#example-20" aria-hidden="true">#</a></h4>
+<h4 id="example-20">Example <a class="header-anchor" href="#example-20">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -1704,9 +1704,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_getStorageAt</strong></code></summary>
-<h4 id="description-21">Description <a class="header-anchor" href="#description-21" aria-hidden="true">#</a></h4>
+<h4 id="description-21">Description <a class="header-anchor" href="#description-21">#</a></h4>
 <p>Returns the value from a storage position at an address</p>
-<h4 id="parameters-21">Parameters <a class="header-anchor" href="#parameters-21" aria-hidden="true">#</a></h4>
+<h4 id="parameters-21">Parameters <a class="header-anchor" href="#parameters-21">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -1733,9 +1733,9 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-21">Returns <a class="header-anchor" href="#returns-21" aria-hidden="true">#</a></h4>
+<h4 id="returns-21">Returns <a class="header-anchor" href="#returns-21">#</a></h4>
 <p>{<a href="#data"><code>Data</code></a>} - value stored at the given address and data index</p>
-<h4 id="example-21">Example <a class="header-anchor" href="#example-21" aria-hidden="true">#</a></h4>
+<h4 id="example-21">Example <a class="header-anchor" href="#example-21">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -1755,9 +1755,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_getTransactionByBlockHashAndIndex</strong></code></summary>
-<h4 id="description-22">Description <a class="header-anchor" href="#description-22" aria-hidden="true">#</a></h4>
+<h4 id="description-22">Description <a class="header-anchor" href="#description-22">#</a></h4>
 <p>Returns information about a transaction specified by block hash and transaction index</p>
-<h4 id="parameters-22">Parameters <a class="header-anchor" href="#parameters-22" aria-hidden="true">#</a></h4>
+<h4 id="parameters-22">Parameters <a class="header-anchor" href="#parameters-22">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -1779,7 +1779,7 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-22">Returns <a class="header-anchor" href="#returns-22" aria-hidden="true">#</a></h4>
+<h4 id="returns-22">Returns <a class="header-anchor" href="#returns-22">#</a></h4>
 <p>{<code>null|object</code>} - <code>null</code> if no transaction is found, otherwise a transaction object with the following members:</p>
 <ul>
 <li>{<a href="#data"><code>Data</code></a>} <code>r</code> - ECDSA signature r</li>
@@ -1797,7 +1797,7 @@ curl -X POST --data <span class="hljs-string">'{
 <li>{<a href="#quantity"><code>Quantity</code></a>} <code>transactionIndex</code> - index of this transaction in the block or <code>null</code> if pending</li>
 <li>{<a href="#quantity"><code>Quantity</code></a>} <code>value</code> - value in wei sent with this transaction</li>
 </ul>
-<h4 id="example-22">Example <a class="header-anchor" href="#example-22" aria-hidden="true">#</a></h4>
+<h4 id="example-22">Example <a class="header-anchor" href="#example-22">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -1832,9 +1832,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_getTransactionByBlockNumberAndIndex</strong></code></summary>
-<h4 id="description-23">Description <a class="header-anchor" href="#description-23" aria-hidden="true">#</a></h4>
+<h4 id="description-23">Description <a class="header-anchor" href="#description-23">#</a></h4>
 <p>Returns information about a transaction specified by block number and transaction index</p>
-<h4 id="parameters-23">Parameters <a class="header-anchor" href="#parameters-23" aria-hidden="true">#</a></h4>
+<h4 id="parameters-23">Parameters <a class="header-anchor" href="#parameters-23">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -1856,7 +1856,7 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-23">Returns <a class="header-anchor" href="#returns-23" aria-hidden="true">#</a></h4>
+<h4 id="returns-23">Returns <a class="header-anchor" href="#returns-23">#</a></h4>
 <p>{<code>null|object</code>} - <code>null</code> if no transaction is found, otherwise a transaction object with the following members:</p>
 <ul>
 <li>{<a href="#data"><code>Data</code></a>} <code>r</code> - ECDSA signature r</li>
@@ -1874,7 +1874,7 @@ curl -X POST --data <span class="hljs-string">'{
 <li>{<a href="#quantity"><code>Quantity</code></a>} <code>transactionIndex</code> - index of this transaction in the block or <code>null</code> if pending</li>
 <li>{<a href="#quantity"><code>Quantity</code></a>} <code>value</code> - value in wei sent with this transaction</li>
 </ul>
-<h4 id="example-23">Example <a class="header-anchor" href="#example-23" aria-hidden="true">#</a></h4>
+<h4 id="example-23">Example <a class="header-anchor" href="#example-23">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -1909,9 +1909,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_getTransactionByHash</strong></code></summary>
-<h4 id="description-24">Description <a class="header-anchor" href="#description-24" aria-hidden="true">#</a></h4>
+<h4 id="description-24">Description <a class="header-anchor" href="#description-24">#</a></h4>
 <p>Returns information about a transaction specified by hash</p>
-<h4 id="parameters-24">Parameters <a class="header-anchor" href="#parameters-24" aria-hidden="true">#</a></h4>
+<h4 id="parameters-24">Parameters <a class="header-anchor" href="#parameters-24">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -1928,7 +1928,7 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-24">Returns <a class="header-anchor" href="#returns-24" aria-hidden="true">#</a></h4>
+<h4 id="returns-24">Returns <a class="header-anchor" href="#returns-24">#</a></h4>
 <p>{<code>null|object</code>} - <code>null</code> if no transaction is found, otherwise a transaction object with the following members:</p>
 <ul>
 <li>{<a href="#data"><code>Data</code></a>} <code>r</code> - ECDSA signature r</li>
@@ -1946,7 +1946,7 @@ curl -X POST --data <span class="hljs-string">'{
 <li>{<a href="#quantity"><code>Quantity</code></a>} <code>transactionIndex</code> - index of this transaction in the block or <code>null</code> if pending</li>
 <li>{<a href="#quantity"><code>Quantity</code></a>} <code>value</code> - value in wei sent with this transaction</li>
 </ul>
-<h4 id="example-24">Example <a class="header-anchor" href="#example-24" aria-hidden="true">#</a></h4>
+<h4 id="example-24">Example <a class="header-anchor" href="#example-24">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -1981,9 +1981,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_getTransactionCount</strong></code></summary>
-<h4 id="description-25">Description <a class="header-anchor" href="#description-25" aria-hidden="true">#</a></h4>
+<h4 id="description-25">Description <a class="header-anchor" href="#description-25">#</a></h4>
 <p>Returns the number of transactions sent from an address</p>
-<h4 id="parameters-25">Parameters <a class="header-anchor" href="#parameters-25" aria-hidden="true">#</a></h4>
+<h4 id="parameters-25">Parameters <a class="header-anchor" href="#parameters-25">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -2005,9 +2005,9 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-25">Returns <a class="header-anchor" href="#returns-25" aria-hidden="true">#</a></h4>
+<h4 id="returns-25">Returns <a class="header-anchor" href="#returns-25">#</a></h4>
 <p>{<a href="#quantity"><code>Quantity</code></a>} - number of transactions sent from the specified address</p>
-<h4 id="example-25">Example <a class="header-anchor" href="#example-25" aria-hidden="true">#</a></h4>
+<h4 id="example-25">Example <a class="header-anchor" href="#example-25">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -2027,10 +2027,10 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_getTransactionReceipt</strong></code></summary>
-<h4 id="description-26">Description <a class="header-anchor" href="#description-26" aria-hidden="true">#</a></h4>
+<h4 id="description-26">Description <a class="header-anchor" href="#description-26">#</a></h4>
 <p>Returns the receipt of a transaction specified by hash</p>
 <p><strong>Note:</strong> Transaction receipts are unavailable for pending transactions.</p>
-<h4 id="parameters-26">Parameters <a class="header-anchor" href="#parameters-26" aria-hidden="true">#</a></h4>
+<h4 id="parameters-26">Parameters <a class="header-anchor" href="#parameters-26">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -2047,7 +2047,7 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-26">Returns <a class="header-anchor" href="#returns-26" aria-hidden="true">#</a></h4>
+<h4 id="returns-26">Returns <a class="header-anchor" href="#returns-26">#</a></h4>
 <p>{<code>null|object</code>} - <code>null</code> if no transaction is found, otherwise a transaction receipt object with the following members:</p>
 <ul>
 <li>{<a href="#data"><code>Data</code></a>} <code>blockHash</code> - hash of block containing this transaction</li>
@@ -2063,7 +2063,7 @@ curl -X POST --data <span class="hljs-string">'{
 <li>{<a href="#quantity"><code>Quantity</code></a>} <code>transactionIndex</code> - index of this transaction in the block</li>
 <li>{<code>Array&lt;Log&gt;</code>} <code>logs</code> - list of log objects generated by this transaction</li>
 </ul>
-<h4 id="example-26">Example <a class="header-anchor" href="#example-26" aria-hidden="true">#</a></h4>
+<h4 id="example-26">Example <a class="header-anchor" href="#example-26">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -2094,9 +2094,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_getUncleByBlockHashAndIndex</strong></code></summary>
-<h4 id="description-27">Description <a class="header-anchor" href="#description-27" aria-hidden="true">#</a></h4>
+<h4 id="description-27">Description <a class="header-anchor" href="#description-27">#</a></h4>
 <p>Returns information about an uncle specified by block hash and uncle index position</p>
-<h4 id="parameters-27">Parameters <a class="header-anchor" href="#parameters-27" aria-hidden="true">#</a></h4>
+<h4 id="parameters-27">Parameters <a class="header-anchor" href="#parameters-27">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -2118,7 +2118,7 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-27">Returns <a class="header-anchor" href="#returns-27" aria-hidden="true">#</a></h4>
+<h4 id="returns-27">Returns <a class="header-anchor" href="#returns-27">#</a></h4>
 <p>{<code>null|object</code>} - <code>null</code> if no block or uncle is found, otherwise an uncle object with the following members:</p>
 <ul>
 <li>{<a href="#data"><code>Data</code></a>} <code>extraData</code> - “extra data” field of this block</li>
@@ -2140,7 +2140,7 @@ curl -X POST --data <span class="hljs-string">'{
 <li>{<a href="#quantity"><code>Quantity</code></a>} <code>totalDifficulty</code> - total difficulty of the chain until this block</li>
 <li>{<code>Array&lt;Transaction&gt;</code>} <code>uncles</code> - list of uncle hashes</li>
 </ul>
-<h4 id="example-27">Example <a class="header-anchor" href="#example-27" aria-hidden="true">#</a></h4>
+<h4 id="example-27">Example <a class="header-anchor" href="#example-27">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -2171,9 +2171,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_getUncleByBlockNumberAndIndex</strong></code></summary>
-<h4 id="description-28">Description <a class="header-anchor" href="#description-28" aria-hidden="true">#</a></h4>
+<h4 id="description-28">Description <a class="header-anchor" href="#description-28">#</a></h4>
 <p>Returns information about an uncle specified by block number and uncle index position</p>
-<h4 id="parameters-28">Parameters <a class="header-anchor" href="#parameters-28" aria-hidden="true">#</a></h4>
+<h4 id="parameters-28">Parameters <a class="header-anchor" href="#parameters-28">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -2195,7 +2195,7 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-28">Returns <a class="header-anchor" href="#returns-28" aria-hidden="true">#</a></h4>
+<h4 id="returns-28">Returns <a class="header-anchor" href="#returns-28">#</a></h4>
 <p>{<code>null|object</code>} - <code>null</code> if no block or uncle is found, otherwise an uncle object with the following members:</p>
 <ul>
 <li>{<a href="#data"><code>Data</code></a>} <code>extraData</code> - “extra data” field of this block</li>
@@ -2217,7 +2217,7 @@ curl -X POST --data <span class="hljs-string">'{
 <li>{<a href="#quantity"><code>Quantity</code></a>} <code>totalDifficulty</code> - total difficulty of the chain until this block</li>
 <li>{<code>Array&lt;Transaction&gt;</code>} <code>uncles</code> - list of uncle hashes</li>
 </ul>
-<h4 id="example-28">Example <a class="header-anchor" href="#example-28" aria-hidden="true">#</a></h4>
+<h4 id="example-28">Example <a class="header-anchor" href="#example-28">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -2248,9 +2248,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_getUncleCountByBlockHash</strong></code></summary>
-<h4 id="description-29">Description <a class="header-anchor" href="#description-29" aria-hidden="true">#</a></h4>
+<h4 id="description-29">Description <a class="header-anchor" href="#description-29">#</a></h4>
 <p>Returns the number of uncles in a block specified by block hash</p>
-<h4 id="parameters-29">Parameters <a class="header-anchor" href="#parameters-29" aria-hidden="true">#</a></h4>
+<h4 id="parameters-29">Parameters <a class="header-anchor" href="#parameters-29">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -2267,9 +2267,9 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-29">Returns <a class="header-anchor" href="#returns-29" aria-hidden="true">#</a></h4>
+<h4 id="returns-29">Returns <a class="header-anchor" href="#returns-29">#</a></h4>
 <p>{<a href="#quantity"><code>Quantity</code></a>} - number of uncles in the specified block</p>
-<h4 id="example-29">Example <a class="header-anchor" href="#example-29" aria-hidden="true">#</a></h4>
+<h4 id="example-29">Example <a class="header-anchor" href="#example-29">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -2289,9 +2289,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_getUncleCountByBlockNumber</strong></code></summary>
-<h4 id="description-30">Description <a class="header-anchor" href="#description-30" aria-hidden="true">#</a></h4>
+<h4 id="description-30">Description <a class="header-anchor" href="#description-30">#</a></h4>
 <p>Returns the number of uncles in a block specified by block number</p>
-<h4 id="parameters-30">Parameters <a class="header-anchor" href="#parameters-30" aria-hidden="true">#</a></h4>
+<h4 id="parameters-30">Parameters <a class="header-anchor" href="#parameters-30">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -2308,9 +2308,9 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-30">Returns <a class="header-anchor" href="#returns-30" aria-hidden="true">#</a></h4>
+<h4 id="returns-30">Returns <a class="header-anchor" href="#returns-30">#</a></h4>
 <p>{<a href="#quantity"><code>Quantity</code></a>} - number of uncles in the specified block</p>
-<h4 id="example-30">Example <a class="header-anchor" href="#example-30" aria-hidden="true">#</a></h4>
+<h4 id="example-30">Example <a class="header-anchor" href="#example-30">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -2330,18 +2330,18 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_getWork</strong></code></summary>
-<h4 id="description-31">Description <a class="header-anchor" href="#description-31" aria-hidden="true">#</a></h4>
+<h4 id="description-31">Description <a class="header-anchor" href="#description-31">#</a></h4>
 <p>Returns a list containing relevant information for proof-of-work</p>
-<h4 id="parameters-31">Parameters <a class="header-anchor" href="#parameters-31" aria-hidden="true">#</a></h4>
+<h4 id="parameters-31">Parameters <a class="header-anchor" href="#parameters-31">#</a></h4>
 <p><em>none</em></p>
-<h4 id="returns-31">Returns <a class="header-anchor" href="#returns-31" aria-hidden="true">#</a></h4>
+<h4 id="returns-31">Returns <a class="header-anchor" href="#returns-31">#</a></h4>
 <p>{<a href="#data"><code>Data[]</code></a>} - array with the following items:</p>
 <ol>
 <li>{<a href="#data"><code>Data</code></a>} - current block header pow-hash</li>
 <li>{<a href="#data"><code>Data</code></a>} - seed hash used for the DAG</li>
 <li>{<a href="#data"><code>Data</code></a>} - boundary condition (“target”), 2^256 / difficulty</li>
 </ol>
-<h4 id="example-31">Example <a class="header-anchor" href="#example-31" aria-hidden="true">#</a></h4>
+<h4 id="example-31">Example <a class="header-anchor" href="#example-31">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -2365,13 +2365,13 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_hashrate</strong></code></summary>
-<h4 id="description-32">Description <a class="header-anchor" href="#description-32" aria-hidden="true">#</a></h4>
+<h4 id="description-32">Description <a class="header-anchor" href="#description-32">#</a></h4>
 <p>Returns the number of hashes-per-second this node is mining at</p>
-<h4 id="parameters-32">Parameters <a class="header-anchor" href="#parameters-32" aria-hidden="true">#</a></h4>
+<h4 id="parameters-32">Parameters <a class="header-anchor" href="#parameters-32">#</a></h4>
 <p><em>(none)</em></p>
-<h4 id="returns-32">Returns <a class="header-anchor" href="#returns-32" aria-hidden="true">#</a></h4>
+<h4 id="returns-32">Returns <a class="header-anchor" href="#returns-32">#</a></h4>
 <p>{<a href="#quantity"><code>Quantity</code></a>} - number of hashes-per-second</p>
-<h4 id="example-32">Example <a class="header-anchor" href="#example-32" aria-hidden="true">#</a></h4>
+<h4 id="example-32">Example <a class="header-anchor" href="#example-32">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -2391,13 +2391,13 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_mining</strong></code></summary>
-<h4 id="description-33">Description <a class="header-anchor" href="#description-33" aria-hidden="true">#</a></h4>
+<h4 id="description-33">Description <a class="header-anchor" href="#description-33">#</a></h4>
 <p>Determines if this client is mining new blocks</p>
-<h4 id="parameters-33">Parameters <a class="header-anchor" href="#parameters-33" aria-hidden="true">#</a></h4>
+<h4 id="parameters-33">Parameters <a class="header-anchor" href="#parameters-33">#</a></h4>
 <p><em>(none)</em></p>
-<h4 id="returns-33">Returns <a class="header-anchor" href="#returns-33" aria-hidden="true">#</a></h4>
+<h4 id="returns-33">Returns <a class="header-anchor" href="#returns-33">#</a></h4>
 <p>{<code>boolean</code>} - <code>true</code> if this client is mining or <code>false</code> if it is not mining</p>
-<h4 id="example-33">Example <a class="header-anchor" href="#example-33" aria-hidden="true">#</a></h4>
+<h4 id="example-33">Example <a class="header-anchor" href="#example-33">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -2417,13 +2417,13 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_newBlockFilter</strong></code></summary>
-<h4 id="description-34">Description <a class="header-anchor" href="#description-34" aria-hidden="true">#</a></h4>
+<h4 id="description-34">Description <a class="header-anchor" href="#description-34">#</a></h4>
 <p>Creates a filter to listen for new blocks that can be used with <code>eth_getFilterChanges</code></p>
-<h4 id="parameters-34">Parameters <a class="header-anchor" href="#parameters-34" aria-hidden="true">#</a></h4>
+<h4 id="parameters-34">Parameters <a class="header-anchor" href="#parameters-34">#</a></h4>
 <p><em>none</em></p>
-<h4 id="returns-34">Returns <a class="header-anchor" href="#returns-34" aria-hidden="true">#</a></h4>
+<h4 id="returns-34">Returns <a class="header-anchor" href="#returns-34">#</a></h4>
 <p>{<a href="#quantity"><code>Quantity</code></a>} - ID of the newly-created filter that can be used with <code>eth_getFilterChanges</code></p>
-<h4 id="example-34">Example <a class="header-anchor" href="#example-34" aria-hidden="true">#</a></h4>
+<h4 id="example-34">Example <a class="header-anchor" href="#example-34">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337
@@ -2443,9 +2443,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_newFilter</strong></code></summary>
-<h4 id="description-35">Description <a class="header-anchor" href="#description-35" aria-hidden="true">#</a></h4>
+<h4 id="description-35">Description <a class="header-anchor" href="#description-35">#</a></h4>
 <p>Creates a filter to listen for specific state changes that can then be used with <code>eth_getFilterChanges</code></p>
-<h4 id="parameters-35">Parameters <a class="header-anchor" href="#parameters-35" aria-hidden="true">#</a></h4>
+<h4 id="parameters-35">Parameters <a class="header-anchor" href="#parameters-35">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -2470,9 +2470,9 @@ curl -X POST --data <span class="hljs-string">'{
 <li><code>[A, B]</code> - “A in first position AND B in second position (and anything after)”</li>
 <li><code>[[A, B], [A, B]]</code> - “(A OR B) in first position AND (A OR B) in second position (and anything after)”</li>
 </ul>
-<h4 id="returns-35">Returns <a class="header-anchor" href="#returns-35" aria-hidden="true">#</a></h4>
+<h4 id="returns-35">Returns <a class="header-anchor" href="#returns-35">#</a></h4>
 <p>{<a href="#quantity"><code>Quantity</code></a>} - ID of the newly-created filter that can be used with <code>eth_getFilterChanges</code></p>
-<h4 id="example-35">Example <a class="header-anchor" href="#example-35" aria-hidden="true">#</a></h4>
+<h4 id="example-35">Example <a class="header-anchor" href="#example-35">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337
@@ -2494,13 +2494,13 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_newPendingTransactionFilter</strong></code></summary>
-<h4 id="description-36">Description <a class="header-anchor" href="#description-36" aria-hidden="true">#</a></h4>
+<h4 id="description-36">Description <a class="header-anchor" href="#description-36">#</a></h4>
 <p>Creates a filter to listen for new pending transactions that can be used with <code>eth_getFilterChanges</code></p>
-<h4 id="parameters-36">Parameters <a class="header-anchor" href="#parameters-36" aria-hidden="true">#</a></h4>
+<h4 id="parameters-36">Parameters <a class="header-anchor" href="#parameters-36">#</a></h4>
 <p><em>none</em></p>
-<h4 id="returns-36">Returns <a class="header-anchor" href="#returns-36" aria-hidden="true">#</a></h4>
+<h4 id="returns-36">Returns <a class="header-anchor" href="#returns-36">#</a></h4>
 <p>{<a href="#quantity"><code>Quantity</code></a>} - ID of the newly-created filter that can be used with <code>eth_getFilterChanges</code></p>
-<h4 id="example-36">Example <a class="header-anchor" href="#example-36" aria-hidden="true">#</a></h4>
+<h4 id="example-36">Example <a class="header-anchor" href="#example-36">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337
@@ -2520,13 +2520,13 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_protocolVersion</strong></code></summary>
-<h4 id="description-37">Description <a class="header-anchor" href="#description-37" aria-hidden="true">#</a></h4>
+<h4 id="description-37">Description <a class="header-anchor" href="#description-37">#</a></h4>
 <p>Returns the current Ethereum protocol version</p>
-<h4 id="parameters-37">Parameters <a class="header-anchor" href="#parameters-37" aria-hidden="true">#</a></h4>
+<h4 id="parameters-37">Parameters <a class="header-anchor" href="#parameters-37">#</a></h4>
 <p><em>(none)</em></p>
-<h4 id="returns-37">Returns <a class="header-anchor" href="#returns-37" aria-hidden="true">#</a></h4>
+<h4 id="returns-37">Returns <a class="header-anchor" href="#returns-37">#</a></h4>
 <p>{<code>string</code>} - current Ethereum protocol version</p>
-<h4 id="example-37">Example <a class="header-anchor" href="#example-37" aria-hidden="true">#</a></h4>
+<h4 id="example-37">Example <a class="header-anchor" href="#example-37">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -2546,9 +2546,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_sendRawTransaction</strong></code></summary>
-<h4 id="description-38">Description <a class="header-anchor" href="#description-38" aria-hidden="true">#</a></h4>
+<h4 id="description-38">Description <a class="header-anchor" href="#description-38">#</a></h4>
 <p>Sends and already-signed transaction to the network</p>
-<h4 id="parameters-38">Parameters <a class="header-anchor" href="#parameters-38" aria-hidden="true">#</a></h4>
+<h4 id="parameters-38">Parameters <a class="header-anchor" href="#parameters-38">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -2565,9 +2565,9 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-38">Returns <a class="header-anchor" href="#returns-38" aria-hidden="true">#</a></h4>
+<h4 id="returns-38">Returns <a class="header-anchor" href="#returns-38">#</a></h4>
 <p>{<a href="#data"><code>Data</code></a>} - transaction hash, or the zero hash if the transaction is not yet available</p>
-<h4 id="example-38">Example <a class="header-anchor" href="#example-38" aria-hidden="true">#</a></h4>
+<h4 id="example-38">Example <a class="header-anchor" href="#example-38">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -2587,9 +2587,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_sendTransaction</strong></code></summary>
-<h4 id="description-39">Description <a class="header-anchor" href="#description-39" aria-hidden="true">#</a></h4>
+<h4 id="description-39">Description <a class="header-anchor" href="#description-39">#</a></h4>
 <p>Creates, signs, and sends a new transaction to the network</p>
-<h4 id="parameters-39">Parameters <a class="header-anchor" href="#parameters-39" aria-hidden="true">#</a></h4>
+<h4 id="parameters-39">Parameters <a class="header-anchor" href="#parameters-39">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -2606,9 +2606,9 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-39">Returns <a class="header-anchor" href="#returns-39" aria-hidden="true">#</a></h4>
+<h4 id="returns-39">Returns <a class="header-anchor" href="#returns-39">#</a></h4>
 <p>{<a href="#data"><code>Data</code></a>} - transaction hash, or the zero hash if the transaction is not yet available</p>
-<h4 id="example-39">Example <a class="header-anchor" href="#example-39" aria-hidden="true">#</a></h4>
+<h4 id="example-39">Example <a class="header-anchor" href="#example-39">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -2635,9 +2635,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_sign</strong></code></summary>
-<h4 id="description-40">Description <a class="header-anchor" href="#description-40" aria-hidden="true">#</a></h4>
+<h4 id="description-40">Description <a class="header-anchor" href="#description-40">#</a></h4>
 <p>Calculates an Ethereum-specific signature in the form of <code>keccak256(&quot;\x19Ethereum Signed Message:\n&quot; + len(message) + message))</code></p>
-<h4 id="parameters-40">Parameters <a class="header-anchor" href="#parameters-40" aria-hidden="true">#</a></h4>
+<h4 id="parameters-40">Parameters <a class="header-anchor" href="#parameters-40">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -2659,9 +2659,9 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-40">Returns <a class="header-anchor" href="#returns-40" aria-hidden="true">#</a></h4>
+<h4 id="returns-40">Returns <a class="header-anchor" href="#returns-40">#</a></h4>
 <p>{<a href="#data"><code>Data</code></a>} - signature hash of the provided data</p>
-<h4 id="example-40">Example <a class="header-anchor" href="#example-40" aria-hidden="true">#</a></h4>
+<h4 id="example-40">Example <a class="header-anchor" href="#example-40">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -2681,9 +2681,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_signTransaction</strong></code></summary>
-<h4 id="description-41">Description <a class="header-anchor" href="#description-41" aria-hidden="true">#</a></h4>
+<h4 id="description-41">Description <a class="header-anchor" href="#description-41">#</a></h4>
 <p>Signs a transaction that can be submitted to the network at a later time using with <code>eth_sendRawTransaction</code></p>
-<h4 id="parameters-41">Parameters <a class="header-anchor" href="#parameters-41" aria-hidden="true">#</a></h4>
+<h4 id="parameters-41">Parameters <a class="header-anchor" href="#parameters-41">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -2700,9 +2700,9 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-41">Returns <a class="header-anchor" href="#returns-41" aria-hidden="true">#</a></h4>
+<h4 id="returns-41">Returns <a class="header-anchor" href="#returns-41">#</a></h4>
 <p>{<a href="#data"><code>Data</code></a>} - signature hash of the transaction object</p>
-<h4 id="example-41">Example <a class="header-anchor" href="#example-41" aria-hidden="true">#</a></h4>
+<h4 id="example-41">Example <a class="header-anchor" href="#example-41">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -2729,9 +2729,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_signTypedData</strong></code></summary>
-<h4 id="description-42">Description <a class="header-anchor" href="#description-42" aria-hidden="true">#</a></h4>
+<h4 id="description-42">Description <a class="header-anchor" href="#description-42">#</a></h4>
 <p>Calculates an Ethereum-specific signature in the form of <code>keccak256(&quot;\x19Ethereum Signed Message:\n&quot; + len(message) + message))</code></p>
-<h4 id="parameters-42">Parameters <a class="header-anchor" href="#parameters-42" aria-hidden="true">#</a></h4>
+<h4 id="parameters-42">Parameters <a class="header-anchor" href="#parameters-42">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -2754,9 +2754,9 @@ curl -X POST --data <span class="hljs-string">'{
 </tbody>
 </table>
 <p><strong>Note:</strong> Client developers should refer to EIP-712 for complete semantics around <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-712.md#specification">encoding and signing data</a>. Dapp developers should refer to EIP-712 for the expected structure of <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-712.md#parameters">RPC method input parameters</a>.</p>
-<h4 id="returns-42">Returns <a class="header-anchor" href="#returns-42" aria-hidden="true">#</a></h4>
+<h4 id="returns-42">Returns <a class="header-anchor" href="#returns-42">#</a></h4>
 <p>{<a href="#data"><code>Data</code></a>} - signature hash of the provided message</p>
-<h4 id="example-42">Example <a class="header-anchor" href="#example-42" aria-hidden="true">#</a></h4>
+<h4 id="example-42">Example <a class="header-anchor" href="#example-42">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
 	"id": 1337
@@ -2827,9 +2827,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_submitHashrate</strong></code></summary>
-<h4 id="description-43">Description <a class="header-anchor" href="#description-43" aria-hidden="true">#</a></h4>
+<h4 id="description-43">Description <a class="header-anchor" href="#description-43">#</a></h4>
 <p>Submit a mining hashrate</p>
-<h4 id="parameters-43">Parameters <a class="header-anchor" href="#parameters-43" aria-hidden="true">#</a></h4>
+<h4 id="parameters-43">Parameters <a class="header-anchor" href="#parameters-43">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -2851,9 +2851,9 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-43">Returns <a class="header-anchor" href="#returns-43" aria-hidden="true">#</a></h4>
+<h4 id="returns-43">Returns <a class="header-anchor" href="#returns-43">#</a></h4>
 <p>{<code>boolean</code>} - <code>true</code> if submitting went through successfully, <code>false</code> otherwise</p>
-<h4 id="example-43">Example <a class="header-anchor" href="#example-43" aria-hidden="true">#</a></h4>
+<h4 id="example-43">Example <a class="header-anchor" href="#example-43">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -2876,9 +2876,9 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_submitWork</strong></code></summary>
-<h4 id="description-44">Description <a class="header-anchor" href="#description-44" aria-hidden="true">#</a></h4>
+<h4 id="description-44">Description <a class="header-anchor" href="#description-44">#</a></h4>
 <p>Submit a proof-of-work solution</p>
-<h4 id="parameters-44">Parameters <a class="header-anchor" href="#parameters-44" aria-hidden="true">#</a></h4>
+<h4 id="parameters-44">Parameters <a class="header-anchor" href="#parameters-44">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -2905,9 +2905,9 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-44">Returns <a class="header-anchor" href="#returns-44" aria-hidden="true">#</a></h4>
+<h4 id="returns-44">Returns <a class="header-anchor" href="#returns-44">#</a></h4>
 <p>{<code>boolean</code>} - <code>true</code> if the provided solution is valid, <code>false</code> otherwise</p>
-<h4 id="example-44">Example <a class="header-anchor" href="#example-44" aria-hidden="true">#</a></h4>
+<h4 id="example-44">Example <a class="header-anchor" href="#example-44">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -2931,18 +2931,18 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_syncing</strong></code></summary>
-<h4 id="description-45">Description <a class="header-anchor" href="#description-45" aria-hidden="true">#</a></h4>
+<h4 id="description-45">Description <a class="header-anchor" href="#description-45">#</a></h4>
 <p>Returns information about the status of this client’s network synchronization</p>
-<h4 id="parameters-45">Parameters <a class="header-anchor" href="#parameters-45" aria-hidden="true">#</a></h4>
+<h4 id="parameters-45">Parameters <a class="header-anchor" href="#parameters-45">#</a></h4>
 <p><em>(none)</em></p>
-<h4 id="returns-45">Returns <a class="header-anchor" href="#returns-45" aria-hidden="true">#</a></h4>
+<h4 id="returns-45">Returns <a class="header-anchor" href="#returns-45">#</a></h4>
 <p>{<code>boolean|object</code>} - <code>false</code> if this client is not syncing with the network, otherwise an object with the following members:</p>
 <ul>
 <li>{<a href="#quantity"><code>Quantity</code></a>} <code>currentBlock</code> - number of the most-recent block synced</li>
 <li>{<a href="#quantity"><code>Quantity</code></a>} <code>highestBlock</code> - number of latest block on the network</li>
 <li>{<a href="#quantity"><code>Quantity</code></a>} <code>startingBlock</code> - block number at which syncing started</li>
 </ul>
-<h4 id="example-45">Example <a class="header-anchor" href="#example-45" aria-hidden="true">#</a></h4>
+<h4 id="example-45">Example <a class="header-anchor" href="#example-45">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -2966,10 +2966,10 @@ curl -X POST --data <span class="hljs-string">'{
 </details>
 <details>
 <summary><code><strong>eth_uninstallFilter</strong></code></summary>
-<h4 id="description-46">Description <a class="header-anchor" href="#description-46" aria-hidden="true">#</a></h4>
+<h4 id="description-46">Description <a class="header-anchor" href="#description-46">#</a></h4>
 <p>Destroys a filter based on filter ID</p>
 <p><strong>Note:</strong> This should only be called if a filter and its notifications are no longer needed. This will also be called automatically on a filter if its notifications are not retrieved using <code>eth_getFilterChanges</code> for a period of time.</p>
-<h4 id="parameters-46">Parameters <a class="header-anchor" href="#parameters-46" aria-hidden="true">#</a></h4>
+<h4 id="parameters-46">Parameters <a class="header-anchor" href="#parameters-46">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -2986,9 +2986,9 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h4 id="returns-46">Returns <a class="header-anchor" href="#returns-46" aria-hidden="true">#</a></h4>
+<h4 id="returns-46">Returns <a class="header-anchor" href="#returns-46">#</a></h4>
 <p>{<code>boolean</code>} - <code>true</code> if the filter is found and successfully destroyed or <code>false</code> if it is not</p>
-<h4 id="example-46">Example <a class="header-anchor" href="#example-46" aria-hidden="true">#</a></h4>
+<h4 id="example-46">Example <a class="header-anchor" href="#example-46">#</a></h4>
 <pre><code class="hljs language-sh"><span class="hljs-comment"># Request</span>
 curl -X POST --data <span class="hljs-string">'{
     "id": 1337,
@@ -3006,12 +3006,12 @@ curl -X POST --data <span class="hljs-string">'{
 </code></pre>
 <hr>
 </details>
-<h2 id="rationale">Rationale <a class="header-anchor" href="#rationale" aria-hidden="true">#</a></h2>
+<h2 id="rationale">Rationale <a class="header-anchor" href="#rationale">#</a></h2>
 <p>Much of Ethereum’s effectiveness as an enterprise-grade application platform depends on its ability to provide a reliable and predictable developer experience. Nodes created by the current generation of Ethereum clients expose RPC endpoints with differing method signatures; this forces applications to work around method inconsistencies to maintain compatibility with various Ethereum RPC implementations.</p>
 <p>Both Ethereum client developers and downstream dapp developers lack a formal Ethereum RPC specification. This proposal standardizes such a specification in a way that’s versionable and modifiable through the traditional EIP process.</p>
-<h2 id="backwards-compatibility">Backwards compatibility <a class="header-anchor" href="#backwards-compatibility" aria-hidden="true">#</a></h2>
+<h2 id="backwards-compatibility">Backwards compatibility <a class="header-anchor" href="#backwards-compatibility">#</a></h2>
 <p>This proposal impacts Ethereum client developers by requiring that any exposed RPC interface adheres to this specification. This proposal impacts dapp developers by requiring that any RPC calls currently used in applications are made according to this specification.</p>
-<h2 id="implementation">Implementation <a class="header-anchor" href="#implementation" aria-hidden="true">#</a></h2>
+<h2 id="implementation">Implementation <a class="header-anchor" href="#implementation">#</a></h2>
 <p>The current generation of Ethereum clients includes several implementations that attempt to expose this RPC specification:</p>
 <table>
 <thead>
@@ -3039,13 +3039,13 @@ curl -X POST --data <span class="hljs-string">'{
 </tr>
 </tbody>
 </table>
-<h2 id="copyright">Copyright <a class="header-anchor" href="#copyright" aria-hidden="true">#</a></h2>
+<h2 id="copyright">Copyright <a class="header-anchor" href="#copyright">#</a></h2>
 <p>Copyright and related rights waived via <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.</p>
 
                     <div class="bottomMatter">
                         Last updated:
                         
-                        8/21/2019
+                        10/31/2019
                         <span id="top">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></span>
                     </div>
                 </div>

@@ -358,7 +358,7 @@
             <div class="name">
                 <div class="logo" style="background-image: url(https://i.ibb.co/BsTBKsn/fox.png)"></div>
                 MetaMask
-                <span class="version">v7.0.1</span>
+                <span class="version">v7.3.1</span>
             </div>
             <div class="actions">
                 <a href="/metamask-docs/" class="help">
@@ -585,7 +585,7 @@
             </nav>
             <main>
                 <div class="container">
-                    <h1 id="registering-your-contract%E2%80%99s-method-names">Registering Your Contract’s Method Names <a class="header-anchor" href="#registering-your-contract%E2%80%99s-method-names" aria-hidden="true">#</a></h1>
+                    <h1 id="registering-your-contract%E2%80%99s-method-names">Registering Your Contract’s Method Names <a class="header-anchor" href="#registering-your-contract%E2%80%99s-method-names">#</a></h1>
 <p>MetaMask uses the parity on-chain registry of function signatures to display method names on the confirm screen. For many common method names, like token methods, this allows MetaMask to successfully look up the method names by their <a href="https://solidity.readthedocs.io/en/v0.4.21/abi-spec.html">method signature</a>. However, sometimes you’re using a method that is not in that on-chain registry, and MetaMask will simply display <code>Unknown Function</code> to the user.</p>
 <p>To add your contract’s function names to this registry so it shows in the MetaMask interface, follow the below steps.</p>
 <ol>
@@ -608,16 +608,16 @@
 <p>Approve the transaction through MetaMask (you only pay gas)</p>
 </li>
 </ol>
-<h5 id="verify">Verify <a class="header-anchor" href="#verify" aria-hidden="true">#</a></h5>
+<h5 id="verify">Verify <a class="header-anchor" href="#verify">#</a></h5>
 <p><code>web3.sha3('getOwners()') =&gt; 0xa0e67e2bdc0a6d8a09ccd6c353c9df590807ad66ff5e6630c4f31a86dfa84821</code></p>
 <p>take the first 10 characters <code>0xa0e67e2b</code>
 and input into <strong><a href="https://jennypollack.github.io/function_signature_registry/">this demo app</a> that checks the on-chain registry</strong> (mainnet or rinkeby)</p>
-<h5 id="alternate-steps-using-remix.ethereum.org%3A">Alternate steps using <a href="http://remix.ethereum.org">remix.ethereum.org</a>: <a class="header-anchor" href="#alternate-steps-using-remix.ethereum.org%3A" aria-hidden="true">#</a></h5>
+<h5 id="alternate-steps-using-remix.ethereum.org%3A">Alternate steps using <a href="http://remix.ethereum.org">remix.ethereum.org</a>: <a class="header-anchor" href="#alternate-steps-using-remix.ethereum.org%3A">#</a></h5>
 <p>Paste the contract code from <a href="https://www.bokconsulting.com.au/blog/a-quick-look-at-paritys-signature-registry-contract/">bokky’s blog post</a> into <a href="remix.ethereum.org">remix</a></p>
 <p>Set the correct compiler version based on the contract.</p>
 <p>Use remix’s write functionality to add to the registry.</p>
 <p>You can look at the FUNCTIONHASHES section on <a href="http://remix.ethereum.org">remix.ethereum.org</a> by loading the signature registry contract, press the Details button on the compile tab.</p>
-<h5 id="additional-info">Additional Info <a class="header-anchor" href="#additional-info" aria-hidden="true">#</a></h5>
+<h5 id="additional-info">Additional Info <a class="header-anchor" href="#additional-info">#</a></h5>
 <p>You can also use the <a href="https://rinkeby.etherscan.io/address/0x0c0831fb1ec7442485fb41a033ba188389a990b4">signature registry</a> deployed on rinkeby but should note that <strong>MetaMask reads from the mainnet eth-method-registry endpoint, regardless of user’s network</strong></p>
 <p><a href="https://github.com/danfinlay/eth-method-registry">eth-method-registry</a> is used to lookup methods in MetaMask.</p>
 <p>This <a href="https://ethereum.stackexchange.com/questions/59678/metamask-shows-unknown-function-when-calling-method-send-function">stack exchange</a> answer is a good <strong>tldr</strong>.</p>
@@ -625,7 +625,7 @@ and input into <strong><a href="https://jennypollack.github.io/function_signatur
                     <div class="bottomMatter">
                         Last updated:
                         
-                        8/21/2019
+                        10/31/2019
                         <span id="top">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></span>
                     </div>
                 </div>
