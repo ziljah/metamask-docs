@@ -358,7 +358,7 @@
             <div class="name">
                 <div class="logo" style="background-image: url(https://i.ibb.co/BsTBKsn/fox.png)"></div>
                 MetaMask
-                <span class="version">v7.4.0</span>
+                <span class="version">v7.5.2</span>
             </div>
             <div class="actions">
                 <a href="/metamask-docs/" class="help">
@@ -600,11 +600,11 @@ like <a href="https://www.npmjs.com/package/web3">web3</a>, <a href="https://www
 From those tools, you can generally find sufficient documentation to interact with the provider, without reading this lower-level API.</p>
 <p>However, for developers of convenience libraries, and for developers who would like to use features that are not yet supported by their favorite libraries, knowledge of the provider API is essential.</p>
 <h2 id="upcoming-breaking-changes">Upcoming Breaking Changes <a class="header-anchor" href="#upcoming-breaking-changes">#</a></h2>
-<p>On <strong>December 16, 2019</strong>, we are introducing breaking changes to this API, which we encourage you to
+<p>On <strong>January 13, 2020</strong>, we are introducing breaking changes to this API, which we encourage you to
 <a href="https://medium.com/metamask/breaking-changes-to-the-metamask-inpage-provider-b4dde069dd0a">read more about here</a>.
 We only break APIs as a last resort, and unfortunately had to pursue this change.</p>
 <p>We will begin supporting the new API during the week of <strong>November 25, 2019</strong>.
-At that point, we will support the old and new API until December 16, after which only the new API will be supported.
+At that point, we will support the old and new API until January 13, 2020, after which only the new API will be supported.
 This update will make the MetaMask inpage provider fully compatible with
 <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md">EIP 1193</a>
 and <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1102.md">EIP 1102</a> as of November 6, 2019.</p>
@@ -612,9 +612,9 @@ and <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1102.md">EIP 
 <h4 id="a-note-on-language">A Note on Language <a class="header-anchor" href="#a-note-on-language">#</a></h4>
 <p>In our usage, if a feature is <em>deprecated</em>, we strongly discourage its use, and may remove it in the future.
 Features that will be <em>removed</em> or <em>replaced</em> on a particular date are clearly marked as such.
-We do not anticipate any need for further breaking changes after December 16.</p>
+We do not anticipate any need for further breaking changes after January 13, 2020.</p>
 <h1 id="current-api">Current API <a class="header-anchor" href="#current-api">#</a></h1>
-<p>This API will be available until <strong>December 16, 2019</strong>, when it will be replaced by <a href="#new-api">the new API</a>.</p>
+<p>This API will be available until <strong>January 13, 2020</strong>, when it will be replaced by <a href="#new-api">the new API</a>.</p>
 <h2 id="properties">Properties <a class="header-anchor" href="#properties">#</a></h2>
 <p>These properties can be used to check the current state of the connected user,
 which can be important things to verify before sending a transaction.</p>
@@ -661,7 +661,7 @@ Returns a promise of an array of hex-prefixed ethereum address strings.</p>
 })
 </code></pre>
 <h3 id="ethereum.send(options%2C-callback)-(to-be-replaced)">ethereum.send(options, callback) (To Be Replaced) <a class="header-anchor" href="#ethereum.send(options%2C-callback)-(to-be-replaced)">#</a></h3>
-<p><em>This will be replaced with <code>ethereum.send(method: string, params: Array&lt;any&gt;)</code> on <strong>December 16, 2019</strong>.</em>
+<p><em>This will be replaced with <code>ethereum.send(method: string, params: Array&lt;any&gt;)</code> on <strong>January 13, 2020</strong>.</em>
 <em><a href="https://github.com/MetaMask/metamask-docs/blob/new-provider/03_API_Reference/01_Ethereum_Provider.md#ethereumsendmethod-string-params-array">Click here</a> for more information.</em></p>
 <p>See <code>ethereum.sendAsync</code>, directly below.</p>
 <h3 id="ethereum.sendasync(options%2C-callback)">ethereum.sendAsync(options, callback) <a class="header-anchor" href="#ethereum.sendasync(options%2C-callback)">#</a></h3>
@@ -690,7 +690,7 @@ ethereum.sendAsync({
 })
 </code></pre>
 <h3 id="ethereum.autorefreshonnetworkchange-(to-be-removed)">ethereum.autoRefreshOnNetworkChange (To Be Removed) <a class="header-anchor" href="#ethereum.autorefreshonnetworkchange-(to-be-removed)">#</a></h3>
-<p><em>This will be removed on December 16, 2019. At this time, MetaMask will also stop reloading the page on network changes.</em>
+<p><em>This will be removed on January 13, 2020. At this time, MetaMask will also stop reloading the page on network changes.</em>
 <em><a href="https://medium.com/metamask/no-longer-reloading-pages-on-network-change-fbf041942b44">Click here</a> for more details.</em></p>
 <p>When the network is changed, MetaMask will reload any pages that have made requests to the provider.
 This automatic reload behavior will be removed in a future release of MetaMask, but in the meantime it can be disabled with this flag.</p>
@@ -713,11 +713,11 @@ This automatic reload behavior will be removed in a future release of MetaMask, 
 <p><strong>Note:</strong> At the moment, the <code>networkChanged</code> event is only useful if you disable auto-refresh on network
 change by setting <a href="#ethereum.autorefreshonnetworkchange"><code>ethereum.autoRefreshOnNetworkChange</code></a> to <code>false</code>.
 Otherwise, MetaMask will default to auto-reloading pages upon network change if they have made requests to the provider.
-<em>MetaMask will stop reloading pages on network change on December 16, 2019, and this setting will be removed.</em>
+<em>MetaMask will stop reloading pages on network change on January 13, 2020, and this setting will be removed.</em>
 <em><a href="https://medium.com/metamask/no-longer-reloading-pages-on-network-change-fbf041942b44">Click here</a> for more details.</em></p>
 <h1 id="new-api">New API <a class="header-anchor" href="#new-api">#</a></h1>
 <p>This API will become available during the week of <strong>November 25, 2019</strong>.
-It will be the only API supported starting <strong>December 16, 2019.</strong>
+It will be the only API supported starting <strong>January 13, 2020.</strong>
 If you want examples of how to setup your dapp using the new API, you can check out
 <a href="https://gist.github.com/rekmarks/d318677c8fc89e5f7a2f526e00a0768a">this gist</a>.</p>
 <h2 id="methods-2">Methods <a class="header-anchor" href="#methods-2">#</a></h2>
@@ -849,7 +849,7 @@ ethereum.sendAsync({
                     <div class="bottomMatter">
                         Last updated:
                         
-                        11/12/2019
+                        11/15/2019
                         <span id="top">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></span>
                     </div>
                 </div>
