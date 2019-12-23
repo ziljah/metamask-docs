@@ -599,16 +599,14 @@ You can use this API to detect the user of an Ethereum browser.</p>
 like <a href="https://www.npmjs.com/package/web3">web3</a>, <a href="https://www.npmjs.com/package/ethers">ethers</a>, <a href="https://truffleframework.com/">truffle</a>, <a href="https://embark.status.im/">Embark</a>, or others.
 From those tools, you can generally find sufficient documentation to interact with the provider, without reading this lower-level API.</p>
 <p>However, for developers of convenience libraries, and for developers who would like to use features that are not yet supported by their favorite libraries, knowledge of the provider API is essential.</p>
-<h2 id="upcoming-breaking-changes">Upcoming Breaking Changes <a class="header-anchor" href="#upcoming-breaking-changes">#</a></h2>
-<p>In <strong>Q1 2020</strong>, we are introducing breaking changes to this API, which we encourage you to
-<a href="https://medium.com/metamask/breaking-changes-to-the-metamask-inpage-provider-b4dde069dd0a">read more about here</a>.
-We only break APIs as a last resort, and unfortunately had to pursue this change.</p>
-<p>We will begin supporting the new API in <strong>Q1 2020</strong>.
-AWe will support the old and new API for 6 weeks, after which only the new API will be supported.
-This update will make the MetaMask inpage provider fully compatible with
+<h2 id="upcoming-provider-changes">Upcoming PRovider Changes <a class="header-anchor" href="#upcoming-provider-changes">#</a></h2>
+<p>In early 2020, we will be introducing some changes changes to this API, and beginning to deprecate some old synchronous methods. You can <a href="https://medium.com/metamask/breaking-changes-to-the-metamask-inpage-provider-b4dde069dd0a">read more about that transition here</a>.</p>
+<p>We will begin supporting the new API in early 2020.
+AWe will support the old and new APIs for at least 6 weeks, after which some of the older methods will be deprecated.
+These changes will make the MetaMask inpage provider fully compatible with
 <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md">EIP 1193</a>
-and <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1102.md">EIP 1102</a> as of November 6, 2019.</p>
-<p>You can continue reading to learn about the current API. Otherwise, <a href="#new-api">click here to learn about the new API</a>.</p>
+and <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1102.md">EIP 1102</a>.</p>
+<p>You can continue reading to learn about the current API. Otherwise, <a href="#new-api">click here to learn about the upcoming API changes</a>.</p>
 <h4 id="a-note-on-language">A Note on Language <a class="header-anchor" href="#a-note-on-language">#</a></h4>
 <p>In our usage, if a feature is <em>deprecated</em>, we strongly discourage its use, and may remove it in the future.
 Features that will be <em>removed</em> or <em>replaced</em> on a particular date are clearly marked as such.
@@ -849,7 +847,7 @@ ethereum.sendAsync({
                     <div class="bottomMatter">
                         Last updated:
                         
-                        12/10/2019
+                        12/23/2019
                         <span id="top">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></span>
                     </div>
                 </div>
