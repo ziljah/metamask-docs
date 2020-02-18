@@ -358,7 +358,7 @@
             <div class="name">
                 <div class="logo" style="background-image: url(https://i.ibb.co/BsTBKsn/fox.png)"></div>
                 MetaMask
-                <span class="version">v7.7.1</span>
+                <span class="version">v7.7.4</span>
             </div>
             <div class="actions">
                 <a href="/metamask-docs/" class="help">
@@ -599,18 +599,20 @@ You can use this API to detect the user of an Ethereum browser.</p>
 like <a href="https://www.npmjs.com/package/web3">web3</a>, <a href="https://www.npmjs.com/package/ethers">ethers</a>, <a href="https://truffleframework.com/">truffle</a>, <a href="https://embark.status.im/">Embark</a>, or others.
 From those tools, you can generally find sufficient documentation to interact with the provider, without reading this lower-level API.</p>
 <p>However, for developers of convenience libraries, and for developers who would like to use features that are not yet supported by their favorite libraries, knowledge of the provider API is essential.</p>
-<h3 id="upcoming-provider-changes">Upcoming Provider Changes <a class="header-anchor" href="#upcoming-provider-changes">#</a></h3>
-<p>In early 2020, we will be introducing some changes changes to this API, and beginning to deprecate some old synchronous methods. You can <a href="https://medium.com/metamask/breaking-changes-to-the-metamask-inpage-provider-b4dde069dd0a">read more about that transition here</a>.</p>
-<p>We will begin supporting the new API in early 2020.
-AWe will support the old and new APIs for at least 6 weeks, after which some of the older methods will be deprecated.
-These changes will make the MetaMask inpage provider fully compatible with
+<h2 id="upcoming-provider-changes">Upcoming Provider Changes <a class="header-anchor" href="#upcoming-provider-changes">#</a></h2>
+<p>In <strong>early 2020</strong>, we are introducing breaking changes to this API, which we encourage you to
+<a href="https://medium.com/metamask/breaking-changes-to-the-metamask-inpage-provider-b4dde069dd0a">read more about here</a>.
+We only break APIs as a last resort, and unfortunately had to pursue this change.</p>
+<p>We will begin supporting the new API in <strong>Q1 2020</strong>.
+We will support the old and new API for 6 weeks, after which only the new API will be supported.
+This update will make the MetaMask inpage provider fully compatible with
 <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md">EIP 1193</a>
 and <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1102.md">EIP 1102</a>.</p>
 <p>You can continue reading to learn about the current API. Otherwise, <a href="#new-api">click here to learn about the upcoming API changes</a>.</p>
 <h3 id="a-note-on-language">A Note on Language <a class="header-anchor" href="#a-note-on-language">#</a></h3>
 <p>In our usage, if a feature is <em>deprecated</em>, we strongly discourage its use, and may remove it in the future.
 Features that will be <em>removed</em> or <em>replaced</em> on a particular date are clearly marked as such.
-We do not anticipate any need for further breaking changes after Q1 2020.</p>
+We do not anticipate any further breaking changes after removing the old API as described herein.</p>
 <h1 id="current-api">Current API <a class="header-anchor" href="#current-api">#</a></h1>
 <h2 id="properties">Properties <a class="header-anchor" href="#properties">#</a></h2>
 <p>These properties can be used to check the current state of the connected user,
@@ -628,7 +630,7 @@ which can be important things to verify before sending a transaction.</p>
 <p>Returns a hex-prefixed string representing the current user’s selected address, ex: <code>&quot;0xfdea65c8e26263f6d9a1b5de9555d2931a33b825&quot;</code>.</p>
 <h3 id="ethereum.ismetamask">ethereum.isMetaMask <a class="header-anchor" href="#ethereum.ismetamask">#</a></h3>
 <p>Returns <code>true</code> or <code>false</code>, representing whether the user has MetaMask installed.</p>
-<h2 id="methods">Methods <a class="header-anchor" href="#methods">#</a></h2>
+<h2 id="methods-(current-api)">Methods (Current API) <a class="header-anchor" href="#methods-(current-api)">#</a></h2>
 <h3 id="ethereum.enable()">ethereum.enable() <a class="header-anchor" href="#ethereum.enable()">#</a></h3>
 <p>Requests the user provides an ethereum address to be identified by.
 Returns a promise of an array of hex-prefixed ethereum address strings.</p>
@@ -657,13 +659,22 @@ Returns a promise of an array of hex-prefixed ethereum address strings.</p>
   <span class="hljs-built_in">console</span>.error(error)
 })
 </code></pre>
-<h3 id="ethereum.send(options%2C-callback)-(to-be-replaced)">ethereum.send(options, callback) (To Be Replaced) <a class="header-anchor" href="#ethereum.send(options%2C-callback)-(to-be-replaced)">#</a></h3>
-<p><em>This will be replaced with <code>ethereum.send(method: string, params: Array&lt;any&gt;)</code> on <strong>January 13, 2020</strong>.</em>
+<h3 id="ethereum.send(payload%2C-callback)-(to-be-replaced)">ethereum.send(payload, callback) (To Be Replaced) <a class="header-anchor" href="#ethereum.send(payload%2C-callback)-(to-be-replaced)">#</a></h3>
+<p><em>This will be replaced with <code>ethereum.send(method: string, params: Array&lt;any&gt;)</code> in <strong><a href="#new-api">the new API</a></strong>.</em>
 <em><a href="https://github.com/MetaMask/metamask-docs/blob/new-provider/03_API_Reference/01_Ethereum_Provider.md#ethereumsendmethod-string-params-array">Click here</a> for more information.</em></p>
 <p>See <code>ethereum.sendAsync</code>, directly below.</p>
-<h3 id="ethereum.sendasync(options%2C-callback)">ethereum.sendAsync(options, callback) <a class="header-anchor" href="#ethereum.sendasync(options%2C-callback)">#</a></h3>
-<p><em>To be superceded by the promise-returning send() method in
-<a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md">EIP 1193</a>.</em></p>
+<h3 id="ethereum.sendasync(payload%2C-callback)">ethereum.sendAsync(payload, callback) <a class="header-anchor" href="#ethereum.sendasync(payload%2C-callback)">#</a></h3>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">interface</span> JsonRpcResponse {
+  id: <span class="hljs-built_in">string</span> | <span class="hljs-literal">undefined</span>,
+  jsonrpc: <span class="hljs-string">'2.0'</span>,
+  method: <span class="hljs-built_in">string</span>,
+  result: <span class="hljs-built_in">any</span>,
+}
+
+ethereum.sendAsync(payload: <span class="hljs-built_in">Object</span>, callback: <span class="hljs-built_in">Function</span>): JsonRpcResponse
+</code></pre>
+<p><em>To be superseded by the Promise-returning <code>ethereum.send()</code> method in</em>
+<em><a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md">EIP 1193</a>. (See also <strong><a href="#new-api">the new API</a></strong>.)</em></p>
 <p>Sends a message to the web3 browser. Message format maps to the format of
 <a href="https://github.com/ethereum/wiki/wiki/JSON-RPC#json-rpc-methods">the Ethereum JSON-RPC API</a>.</p>
 <p>Here’s an example of everyone’s favorite method, <code>eth_sendTransaction</code>, which is both how Ether is sent, and how smart contract methods are called:</p>
@@ -680,14 +691,19 @@ ethereum.sendAsync({
   <span class="hljs-attr">method</span>: <span class="hljs-string">'eth_sendTransaction'</span>,
   <span class="hljs-attr">params</span>: params,
   <span class="hljs-attr">from</span>: accounts[<span class="hljs-number">0</span>], <span class="hljs-comment">// Provide the user's account to use.</span>
-}, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, result</span>) </span>{
-  <span class="hljs-comment">// A typical node-style, error-first callback.</span>
-  <span class="hljs-comment">// The result varies by method, per the JSON RPC API.</span>
-  <span class="hljs-comment">// For example, this method will return a transaction hash on success.</span>
+}, (err, response) =&gt; {
+  <span class="hljs-keyword">if</span> (err) {
+    <span class="hljs-comment">// Handle the error</span>
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-comment">// This always returns a JSON RPC response object.</span>
+    <span class="hljs-comment">// The result varies by method, per the JSON RPC API.</span>
+    <span class="hljs-comment">// For example, this method will return a transaction hash on success.</span>
+    <span class="hljs-keyword">const</span> result = response.result
+  }
 })
 </code></pre>
 <h3 id="ethereum.autorefreshonnetworkchange-(to-be-removed)">ethereum.autoRefreshOnNetworkChange (To Be Removed) <a class="header-anchor" href="#ethereum.autorefreshonnetworkchange-(to-be-removed)">#</a></h3>
-<p><em>This will be removed on January 13, 2020. At this time, MetaMask will also stop reloading the page on network changes.</em>
+<p><em>This will be removed <strong><a href="#new-api">the new API</a></strong>. At this time, MetaMask will also stop reloading the page on network changes.</em>
 <em><a href="https://medium.com/metamask/no-longer-reloading-pages-on-network-change-fbf041942b44">Click here</a> for more details.</em></p>
 <p>When the network is changed, MetaMask will reload any pages that have made requests to the provider.
 This automatic reload behavior will be removed in a future release of MetaMask, but in the meantime it can be disabled with this flag.</p>
@@ -710,14 +726,14 @@ This automatic reload behavior will be removed in a future release of MetaMask, 
 <p><strong>Note:</strong> At the moment, the <code>networkChanged</code> event is only useful if you disable auto-refresh on network
 change by setting <a href="#ethereum.autorefreshonnetworkchange"><code>ethereum.autoRefreshOnNetworkChange</code></a> to <code>false</code>.
 Otherwise, MetaMask will default to auto-reloading pages upon network change if they have made requests to the provider.
-<em>MetaMask will stop reloading pages on network change on January 13, 2020, and this setting will be removed.</em>
+<em>MetaMask will stop reloading pages on network change <strong><a href="#new-api">the new API</a></strong>, and this setting will be removed.</em>
 <em><a href="https://medium.com/metamask/no-longer-reloading-pages-on-network-change-fbf041942b44">Click here</a> for more details.</em></p>
 <h1 id="new-api">New API <a class="header-anchor" href="#new-api">#</a></h1>
-<p>This API will become available during the week of <strong>November 25, 2019</strong>.
-It will be the only API supported starting <strong>January 13, 2020.</strong>
+<p>This API will become available in <strong>Q1 2020</strong>.
+It will be the only API supported starting <strong>following a six-week deprecation period.</strong>
 If you want examples of how to setup your dapp using the new API, you can check out
 <a href="https://gist.github.com/rekmarks/d318677c8fc89e5f7a2f526e00a0768a">this gist</a>.</p>
-<h2 id="methods-2">Methods <a class="header-anchor" href="#methods-2">#</a></h2>
+<h2 id="methods-(new-api)">Methods (New API) <a class="header-anchor" href="#methods-(new-api)">#</a></h2>
 <h3 id="ethereum.send(%E2%80%98eth_requestaccounts%E2%80%99)">ethereum.send(‘eth_requestAccounts’) <a class="header-anchor" href="#ethereum.send(%E2%80%98eth_requestaccounts%E2%80%99)">#</a></h3>
 <h4 id="ethereum.enable()-(deprecated)">ethereum.enable() (Deprecated) <a class="header-anchor" href="#ethereum.enable()-(deprecated)">#</a></h4>
 <p>Requests that the user provides an ethereum address to be identified by.
@@ -754,7 +770,9 @@ See <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1102.md">EIP 
   }
 })
 </code></pre>
-<h3 id="ethereum.send(method%3A-string%2C-params%3A-array)">ethereum.send(method: string, params: Array<any>) <a class="header-anchor" href="#ethereum.send(method%3A-string%2C-params%3A-array)">#</a></h3>
+<h3 id="ethereum.send(method%2C-params)">ethereum.send(method, params) <a class="header-anchor" href="#ethereum.send(method%2C-params)">#</a></h3>
+<pre><code class="hljs language-typescript">ethereum.send(method: <span class="hljs-built_in">string</span>, params: <span class="hljs-built_in">Array</span>&lt;<span class="hljs-built_in">any</span>&gt;): <span class="hljs-built_in">Promise</span>&lt;<span class="hljs-built_in">any</span>&gt;
+</code></pre>
 <p>The way to send requests to the dapp browser. <code>method</code> and <code>params</code> should follow <a href="https://github.com/ethereum/wiki/wiki/JSON-RPC#json-rpc-methods">the Ethereum JSON-RPC API</a>.</p>
 <p>Returns a <code>Promise</code> that resolves to the result of the method. Not all methods require <code>params</code>, e.g. <code>ethereum.send('eth_accounts')</code>.</p>
 <p>Here’s an example of everyone’s favorite method, <code>eth_sendTransaction</code>, which is both how Ether is sent, and how smart contract methods are called:</p>
@@ -801,7 +819,16 @@ ethereum.on(<span class="hljs-string">'chainChanged'</span>, <span class="hljs-f
 <span class="hljs-string">'5'</span>: Goerli Test Network
 <span class="hljs-string">'42'</span>: Kovan Test Network
 </code></pre>
-<h3 id="ethereum.sendasync(options%2C-callback)-(deprecated)">ethereum.sendAsync(options, callback) (Deprecated) <a class="header-anchor" href="#ethereum.sendasync(options%2C-callback)-(deprecated)">#</a></h3>
+<h3 id="ethereum.sendasync(payload%2C-callback)-(deprecated)">ethereum.sendAsync(payload, callback) (Deprecated) <a class="header-anchor" href="#ethereum.sendasync(payload%2C-callback)-(deprecated)">#</a></h3>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">interface</span> JsonRpcResponse {
+  id: <span class="hljs-built_in">string</span> | <span class="hljs-literal">undefined</span>,
+  jsonrpc: <span class="hljs-string">'2.0'</span>,
+  method: <span class="hljs-built_in">string</span>,
+  result: <span class="hljs-built_in">any</span>,
+}
+
+ethereum.sendAsync(payload: <span class="hljs-built_in">Object</span>, callback: <span class="hljs-built_in">Function</span>): JsonRpcResponse
+</code></pre>
 <p><em>We strongly discourage the use of this method, which may be removed in the future.</em></p>
 <p>Sends a message to the dapp browser. Message format maps to the format of
 <a href="https://github.com/ethereum/wiki/wiki/JSON-RPC#json-rpc-methods">the Ethereum JSON-RPC API</a>.</p>
@@ -819,10 +846,15 @@ ethereum.sendAsync({
   <span class="hljs-attr">method</span>: <span class="hljs-string">'eth_sendTransaction'</span>,
   <span class="hljs-attr">params</span>: params,
   <span class="hljs-attr">from</span>: accounts[<span class="hljs-number">0</span>], <span class="hljs-comment">// Provide the user's account to use.</span>
-}, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, result</span>) </span>{
-  <span class="hljs-comment">// A typical node-style, error-first callback.</span>
-  <span class="hljs-comment">// The result varies by method, per the JSON RPC API.</span>
-  <span class="hljs-comment">// For example, this method will return a transaction hash on success.</span>
+}, (err, result) =&gt; {
+  <span class="hljs-keyword">if</span> (err) {
+    <span class="hljs-comment">// Handle the error</span>
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-comment">// This always returns a JSON RPC response object.</span>
+    <span class="hljs-comment">// The result varies by method, per the JSON RPC API.</span>
+    <span class="hljs-comment">// For example, this method will return a transaction hash on success.</span>
+    <span class="hljs-keyword">const</span> result = response.result
+  }
 })
 </code></pre>
 <h2 id="properties-2">Properties <a class="header-anchor" href="#properties-2">#</a></h2>
@@ -846,7 +878,7 @@ ethereum.sendAsync({
                     <div class="bottomMatter">
                         Last updated:
                         
-                        12/23/2019
+                        2/18/2020
                         <span id="top">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></span>
                     </div>
                 </div>
