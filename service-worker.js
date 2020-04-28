@@ -27,7 +27,7 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "585df6c4b22c642e6ab6d299bcbff892"
+    "revision": "d6fc0e9d8a3eed7b1ce3e7b48c4fdea0"
   },
   {
     "url": "assets/css/0.styles.2266dc7b.css",
@@ -74,40 +74,40 @@ self.__precacheManifest = [
     "revision": "c55c4158ec2bbc4795553eb9f0df1350"
   },
   {
-    "url": "assets/js/19.c08115b1.js",
-    "revision": "a7d2d0f92b4d4335d5ebb226f19c7161"
+    "url": "assets/js/19.3abd3f04.js",
+    "revision": "cb2c20c04f069aa1d3b4d5085b27fb5b"
   },
   {
-    "url": "assets/js/20.b63ec920.js",
-    "revision": "edf55a49f71e755d2b884306a6c16749"
+    "url": "assets/js/20.ab99602b.js",
+    "revision": "4bb192e49738234bc661d89c2b124276"
   },
   {
-    "url": "assets/js/21.f6a01326.js",
-    "revision": "3028885d7cd9e6f72d032b8fa586224b"
+    "url": "assets/js/21.198a2033.js",
+    "revision": "0a5fb9dc79a66947ed72fb43f9c2d527"
   },
   {
-    "url": "assets/js/22.600a9a8e.js",
-    "revision": "b29d610b13977afeb107aa3f62c4e57b"
+    "url": "assets/js/22.4c95a626.js",
+    "revision": "355cf51e39144e65c6b489c2994a1eb6"
   },
   {
-    "url": "assets/js/23.984af1d2.js",
-    "revision": "a5de27505b11e8c5e86c890175f3a2a2"
+    "url": "assets/js/23.058d71fd.js",
+    "revision": "638851851a5756c1552f11ea511baf52"
   },
   {
-    "url": "assets/js/24.c527aff3.js",
-    "revision": "07027582a808c87449ff1de1eb83c3e1"
+    "url": "assets/js/24.435f7e7d.js",
+    "revision": "808fdabad915dac161a05f10ac83929f"
   },
   {
-    "url": "assets/js/25.c815b6f7.js",
-    "revision": "bda51ac6ea732371c338dd3f803c5c46"
+    "url": "assets/js/25.291dff0c.js",
+    "revision": "3c81a01dd284c21b56d466ac82d0d8c8"
   },
   {
-    "url": "assets/js/26.c4945654.js",
-    "revision": "71541e1fae031390157f070f79c0f9c7"
+    "url": "assets/js/26.545d7f3b.js",
+    "revision": "6418a9f10b057d20efbc15b33c3fc83d"
   },
   {
-    "url": "assets/js/27.cc91f66f.js",
-    "revision": "c77ad68d6a2b1383144e81be35a8fb25"
+    "url": "assets/js/27.2d3ead22.js",
+    "revision": "59eb21b3d2085efd8c59c42cb6dce459"
   },
   {
     "url": "assets/js/28.d16c9a41.js",
@@ -146,156 +146,96 @@ self.__precacheManifest = [
     "revision": "9ae389668083f09446b42bb7ffa900e2"
   },
   {
-    "url": "assets/js/app.f2658956.js",
-    "revision": "ef86f622876bd79d865abee91c6b6dc5"
+    "url": "assets/js/app.c5fb00bc.js",
+    "revision": "a05849c887fade55fa7060f5ddb687ef"
   },
   {
     "url": "assets/js/vendors~notification.845db04c.js",
     "revision": "a255cb8d877421ce112f3e8e7b7da9cf"
   },
   {
-    "url": "ethereum-metamask-chrome.png",
-    "revision": "79226bac078ce93a58b74aff1a8a6aa3"
-  },
-  {
     "url": "faq/index.html",
-    "revision": "36f6c21e2189db7c2f472944b36d16c5"
+    "revision": "fbbb7cea65958675d1fc996af7de4436"
   },
   {
     "url": "guide/accessing-accounts.html",
-    "revision": "042ea2fa282f8363d1ddf758b2b34cf2"
+    "revision": "102999b43043dcffb13ff6d44ce2ecd4"
   },
   {
     "url": "guide/assets.html",
-    "revision": "0f243ed8df9d9f67c386a1aa64a214bb"
+    "revision": "d8fe084369e1bc7812d15f0d088ad358"
   },
   {
     "url": "guide/common-terms.html",
-    "revision": "128007c9f75b77b8014154336f9b9246"
+    "revision": "582c09b829976c3d46b0d86b76584c7c"
   },
   {
     "url": "guide/create-dapp.html",
-    "revision": "66fea114570c9d4f274375a7e73b84f6"
+    "revision": "2c53dc32cbba006a0ea9d5d10518bbde"
   },
   {
     "url": "guide/dapp-compatibility.html",
-    "revision": "cc275d7ec8afef180bb6391e2ea31b8d"
+    "revision": "57d2e50c8650a7c879f51b139d7a4a29"
   },
   {
     "url": "guide/defining-your-icon.html",
-    "revision": "e542276821a93d0c13bb564754667c9c"
+    "revision": "c34e3cd707c96f74deb55dda7841a8e4"
   },
   {
     "url": "guide/deploy.html",
-    "revision": "e80d3b0bbc9c8d17560d37d4c604f29f"
+    "revision": "fa70e6de61decc4c2a8b3761ba9a05bc"
   },
   {
     "url": "guide/ethereum-provider.html",
-    "revision": "9e5bd26af8f4c970ab42762ba463d8bc"
+    "revision": "805b0b479de6660d146ccd661f1c2542"
   },
   {
     "url": "guide/experimental-apis.html",
-    "revision": "10a0daf05edd2bc4a53a91da0afc2a6c"
+    "revision": "0ccb35e4eadbeb91c507c28f3b74dc55"
   },
   {
     "url": "guide/frontmatter.html",
-    "revision": "c41904f3a4e39a9a7ad95c8f338d0c19"
+    "revision": "380877edecd20b37f721b244d47005a3"
   },
   {
     "url": "guide/getting-started.html",
-    "revision": "ef18e1ca775a364735e9d4c0e30c9cfd"
+    "revision": "3931e9b27d4dc7133a7d874993ce6d80"
   },
   {
     "url": "guide/index.html",
-    "revision": "19cd6f939847670b8981582eb887ae93"
+    "revision": "38c3ae4ea6b5f923faa0c43d4a141d02"
   },
   {
     "url": "guide/initializing-dapps.html",
-    "revision": "cfbc476780bd23b1df5a158c99d526a9"
+    "revision": "11eb5d674f2bd3f9449d90fc588f4e80"
   },
   {
     "url": "guide/json-rpc-api.html",
-    "revision": "d2522623eb93a54e8464f86dff9cbbf3"
+    "revision": "ba50863346ff61f5504222a7a1bfa25e"
   },
   {
     "url": "guide/onboarding-library.html",
-    "revision": "a02632194a7198b0d465127fc4b388c8"
+    "revision": "48a92c508e4dc9f87a0bd37312c36c07"
   },
   {
     "url": "guide/registering-function-names.html",
-    "revision": "7032cb0dd588e99d49190aa569ac62b0"
+    "revision": "f3f024d30fc9b3aec8301b1ecbe79b2d"
   },
   {
     "url": "guide/registering-your-token.html",
-    "revision": "853b38fb6f8e74d3ac21dbea36be723b"
+    "revision": "2673da4f7b81c4504833342fcc7cd86d"
   },
   {
     "url": "guide/sending-transactions.html",
-    "revision": "fd72c69dda73df70ba0fb2fee40f9f27"
+    "revision": "1c7faa0d9a6bc1851fe0ffc8458dca35"
   },
   {
     "url": "guide/signing-data.html",
-    "revision": "26426ced1490fe73640ec1e3d1aca0d9"
-  },
-  {
-    "url": "icons/android-chrome-192x192.png",
-    "revision": "f130a0b70e386170cf6f011c0ca8c4f4"
-  },
-  {
-    "url": "icons/android-chrome-512x512.png",
-    "revision": "0ff1bc4d14e5c9abcacba7c600d97814"
-  },
-  {
-    "url": "icons/apple-touch-icon-120x120.png",
-    "revision": "936d6e411cabd71f0e627011c3f18fe2"
-  },
-  {
-    "url": "icons/apple-touch-icon-152x152.png",
-    "revision": "1a034e64d80905128113e5272a5ab95e"
-  },
-  {
-    "url": "icons/apple-touch-icon-180x180.png",
-    "revision": "c43cd371a49ee4ca17ab3a60e72bdd51"
-  },
-  {
-    "url": "icons/apple-touch-icon-60x60.png",
-    "revision": "9a2b5c0f19de617685b7b5b42464e7db"
-  },
-  {
-    "url": "icons/apple-touch-icon-76x76.png",
-    "revision": "af28d69d59284dd202aa55e57227b11b"
-  },
-  {
-    "url": "icons/apple-touch-icon.png",
-    "revision": "66830ea6be8e7e94fb55df9f7b778f2e"
-  },
-  {
-    "url": "icons/favicon-16x16.png",
-    "revision": "4bb1a55479d61843b89a2fdafa7849b3"
-  },
-  {
-    "url": "icons/favicon-32x32.png",
-    "revision": "98b614336d9a12cb3f7bedb001da6fca"
-  },
-  {
-    "url": "icons/msapplication-icon-144x144.png",
-    "revision": "b89032a4a5a1879f30ba05a13947f26f"
-  },
-  {
-    "url": "icons/mstile-150x150.png",
-    "revision": "058a3335d15a3eb84e7ae3707ba09620"
-  },
-  {
-    "url": "icons/safari-pinned-tab.svg",
-    "revision": "f22d501a35a87d9f21701cb031f6ea17"
+    "revision": "0043efd1bd8dcf3a3b755d82fe561664"
   },
   {
     "url": "metamask-fox.svg",
     "revision": "c06f3a3e804ebc7343949fdca3fdd7f8"
-  },
-  {
-    "url": "plugin.png",
-    "revision": "3e325210d3e3752e32818385fc4afbc9"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
