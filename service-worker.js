@@ -27,7 +27,7 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "d80acc438d65afd4e72ec19a6c187e9c"
+    "revision": "82a66ce0a7ddc03c4b140a1cdaa83ee6"
   },
   {
     "url": "assets/css/0.styles.8dcb5106.css",
@@ -46,8 +46,8 @@ self.__precacheManifest = [
     "revision": "7a218ebf3e877987f7991b2a6907e7fc"
   },
   {
-    "url": "assets/js/12.ae20a8a3.js",
-    "revision": "8f27f342dcfaa2e3895c209e1292ecd0"
+    "url": "assets/js/12.15a78987.js",
+    "revision": "1c79890120eaec59e8df3f42b6ecf9be"
   },
   {
     "url": "assets/js/13.7f205b2f.js",
@@ -70,8 +70,8 @@ self.__precacheManifest = [
     "revision": "1b193cc637e1bd0eef25ea709e62d3be"
   },
   {
-    "url": "assets/js/18.67e0b8f1.js",
-    "revision": "a07329649c903804be39c5a8b06954c9"
+    "url": "assets/js/18.17758de8.js",
+    "revision": "3525929c3787c4505b400d86dc35d144"
   },
   {
     "url": "assets/js/19.e53ca7af.js",
@@ -86,20 +86,20 @@ self.__precacheManifest = [
     "revision": "123fedd7c7546317aed2e6286ce59329"
   },
   {
-    "url": "assets/js/22.30f7e333.js",
-    "revision": "3743cb39f4c11274e0dfb0533e5de9a1"
+    "url": "assets/js/22.a315b43a.js",
+    "revision": "85e20464380d33031a5163d851186c9d"
   },
   {
-    "url": "assets/js/23.9a7996f0.js",
-    "revision": "12c52b13afff3bda40657f94415794ff"
+    "url": "assets/js/23.f12ea3b8.js",
+    "revision": "98c7fbdfd8e23c9091902d01cae03f17"
   },
   {
     "url": "assets/js/24.6ad5806e.js",
     "revision": "f5a7067e0c676dea22c62d3869dc3072"
   },
   {
-    "url": "assets/js/25.f46a1127.js",
-    "revision": "957199a8403c35087ba2a4d7b53d9908"
+    "url": "assets/js/25.63b7f1a2.js",
+    "revision": "2b96c6eaf0f54790b1b690408be646d4"
   },
   {
     "url": "assets/js/26.047cd97c.js",
@@ -154,8 +154,8 @@ self.__precacheManifest = [
     "revision": "d32cfadee44033783136b91510fd2dc6"
   },
   {
-    "url": "assets/js/app.896b8243.js",
-    "revision": "9d5fc2667731bd125f56d689e6d627a9"
+    "url": "assets/js/app.e0328372.js",
+    "revision": "ae300ca0bc1e2cda4995e88af8809910"
   },
   {
     "url": "assets/js/vendors~docsearch.13c21034.js",
@@ -167,87 +167,87 @@ self.__precacheManifest = [
   },
   {
     "url": "faq/index.html",
-    "revision": "57d42017aaaa0e1d2cceac96752d389a"
+    "revision": "01402c0df979f178aeff02ca96b6824b"
   },
   {
     "url": "guide/accessing-accounts.html",
-    "revision": "b76c5d917251ace027298078f83abdb7"
+    "revision": "82dc3f800ba754bca487c23de8ffa2f1"
   },
   {
     "url": "guide/common-terms.html",
-    "revision": "acd6eaf584ff18705ed4ad072dd35dc6"
+    "revision": "6f97653160bd58e076e8b402c78b7bcb"
   },
   {
     "url": "guide/contributors.html",
-    "revision": "3c833a58f049b0873b84d3bc4ab8d27e"
+    "revision": "ef6d9b6d7a1eb96d909807612d89c0cb"
   },
   {
     "url": "guide/create-dapp.html",
-    "revision": "d3a1cbb631baed450173be747067a499"
+    "revision": "8bad0d4910d23e125c2f20cdc7c8050a"
   },
   {
     "url": "guide/defining-your-icon.html",
-    "revision": "4983ab292778e048f5b29d041718874b"
+    "revision": "fc0692bc063a83e2d38e034459e5dad6"
   },
   {
     "url": "guide/ethereum-provider.html",
-    "revision": "10c36c30ed9e44a57c9d24a346d4aabe"
+    "revision": "4d838b9aa19326d860ebd06ace249205"
   },
   {
     "url": "guide/getting-started.html",
-    "revision": "0b73f7e55f846767ffceb40b1f4f3618"
+    "revision": "3be78f3db5d5b2d1a780c6b8255f164f"
   },
   {
     "url": "guide/index.html",
-    "revision": "a242d97dd9a6e71386c8dfd47bd5f7de"
+    "revision": "ed071b73aa123ed444cd8d1acd3565d1"
   },
   {
     "url": "guide/initializing-dapps.html",
-    "revision": "fac440d2760872f4afe94d4da98ed86c"
+    "revision": "5d5a67478a784219bba2541b5b3b025d"
   },
   {
     "url": "guide/metamask-extension-provider.html",
-    "revision": "0c5aeef122a0aff1fe405e9b9325c779"
+    "revision": "27d1fb006a37be6f0026dda327ad1f00"
   },
   {
     "url": "guide/mobile-best-practices.html",
-    "revision": "e4fb6c26531979f73de6c128b2b0f35a"
+    "revision": "4f2a862be308df299b69566ec06ee9de"
   },
   {
     "url": "guide/mobile-getting-started.html",
-    "revision": "243cf0431da6c3be6070f023dcf2f2c7"
+    "revision": "3fb65bd1ede491886fefbbc9b7f3e8cf"
   },
   {
     "url": "guide/onboarding-library.html",
-    "revision": "86e471ff50e1c74750df06d113bf7332"
+    "revision": "cbf28a1d37cd55fa7cfa681124d26a4b"
   },
   {
     "url": "guide/provider-migration.html",
-    "revision": "45f0c487080d1ac7b834347a59428f1c"
+    "revision": "2a331a2472d3dfc1552ebd10e4d10e5d"
   },
   {
     "url": "guide/registering-function-names.html",
-    "revision": "1c19625711315754ec6d2f96bf64e08c"
+    "revision": "9954e0ca01c4c96c5a6f3fa627bd40d3"
   },
   {
     "url": "guide/registering-your-token.html",
-    "revision": "400e265e726a55be39ddae53c0d6053c"
+    "revision": "bae1ca2d02f81db04f99c08cf9d41a8e"
   },
   {
     "url": "guide/rpc-api.html",
-    "revision": "b15d446006c7b261c9c878a1a0b967cd"
+    "revision": "8ae4c5c289a069b761ee5fd00315e812"
   },
   {
     "url": "guide/sending-transactions.html",
-    "revision": "35e9a8a282159aad68a61f6972ddaad9"
+    "revision": "fda97a1f539e055f645e35ecbe2706e9"
   },
   {
     "url": "guide/signing-data.html",
-    "revision": "d4686c8e4e03c866b08bf67c2615bcbd"
+    "revision": "5535ce9b6d2612c6f74a391a12dd66a0"
   },
   {
     "url": "guide/site-compatibility-checklist.html",
-    "revision": "022a1553ba1f7ae47b6f7d2c2449505d"
+    "revision": "9ca7ce493430ec54106b434accf588f1"
   },
   {
     "url": "metamask-fox.svg",
