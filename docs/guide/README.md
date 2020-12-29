@@ -2,10 +2,10 @@
 
 Welcome to MetaMask’s Developer Documentation. This documentation is for learning to develop applications for MetaMask.
 
-- You can find the latest version of MetaMask on our [official website](https://metamask.io/).
+<!-- - You can find the latest version of MetaMask on our [official website](https://metamask.io/).
 - For help using MetaMask, visit our [User Support Site](https://metamask.zendesk.com/).
 - For up to the minute news, follow our [Peepeth](https://peepeth.com/MetaMask/), [Twitter](https://twitter.com/metamask_io) or [Medium](https://medium.com/metamask) pages.
-- To learn how to contribute to the MetaMask project itself, visit our [Internal Docs](https://github.com/MetaMask/metamask-extension/tree/develop/docs).
+- To learn how to contribute to the MetaMask project itself, visit our [Internal Docs](https://github.com/MetaMask/metamask-extension/tree/develop/docs). -->
 
 ::: danger Breaking Changes Imminent
 We are in the process of shipping changes that will break certain Ethereum web applications.
@@ -16,6 +16,27 @@ Action is required for Ethereum application developers only.
 MetaMask users do not need to do anything.
 :::
 
+<a href="/guide/#account-management">
+  <card>
+    <template v-slot:title>
+      <img src="./../.vuepress/images/account-management.svg">
+    </template>
+    <template v-slot>
+      <h3 class="text-center">Account Management</h3>
+    </template>
+  </card>
+</a>
+
+<a href="/guide/#blockchain-connection">
+  <card>
+    <template v-slot:title>
+      <img src="./../.vuepress/images./../images/blockchain-connection.png">
+    </template>
+    <template v-slot>
+      <h3 class="text-center">Blockchain Connection</h3>
+    </template>
+  </card>
+</a>
 ## Why MetaMask
 
 MetaMask was created to meet the needs of secure and usable Ethereum-based web sites. In particular, it handles account management and connecting the user to the blockchain.
