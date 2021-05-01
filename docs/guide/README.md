@@ -36,5 +36,6 @@ We’re aware that there are constantly new private blockchains that people are 
 
 ## New Dapp Developers
 
+- [Create a Simple Dapp](./create-dapp.html)
 - [Learning Solidity](https://karl.tech/learning-solidity-part-1-deploy-a-contract/) by karl Floersch
 - [CryptoZombies](https://cryptozombies.io/)
