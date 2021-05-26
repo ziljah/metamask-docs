@@ -27,11 +27,11 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "d8abf6ea3c2771ded2abe1777e9eb55c"
+    "revision": "cc35a596883cf72eee97b188c1ea433e"
   },
   {
-    "url": "assets/css/0.styles.43ab016c.css",
-    "revision": "0092aa4cabdf35c66d5fdc293cd2dd12"
+    "url": "assets/css/0.styles.6baf0c5c.css",
+    "revision": "9ce6d3c6ecc5a0f4282e13684999f2d0"
   },
   {
     "url": "assets/img/search.83621669.svg",
@@ -162,8 +162,8 @@ self.__precacheManifest = [
     "revision": "dfa275cb5681b841a47c7f1c70a0f365"
   },
   {
-    "url": "assets/js/app.4a12b9ae.js",
-    "revision": "9362ee9ac6ed908b0e4de822586f56ac"
+    "url": "assets/js/app.5a0956a5.js",
+    "revision": "d93c22eb76ccb6ccc08460fecd4746dc"
   },
   {
     "url": "assets/js/vendors~docsearch.3591cf1d.js",
@@ -175,87 +175,87 @@ self.__precacheManifest = [
   },
   {
     "url": "faq/index.html",
-    "revision": "c4ffdfed345853053a8d7335bafa96c1"
+    "revision": "c9bd8bfd89a7110f5372e82edc6b52b3"
   },
   {
     "url": "guide/accessing-accounts.html",
-    "revision": "876143e000a763089251ec3f7d1afda7"
+    "revision": "9265e5e8ea8b0c50b3c76f41a93ab8c9"
   },
   {
     "url": "guide/common-terms.html",
-    "revision": "cc9cbd936152ab626afd80790b220a0f"
+    "revision": "e3a455c52ac554067f13b9fddb221b22"
   },
   {
     "url": "guide/contributors.html",
-    "revision": "cfd78bd0091105c9aa2c025fcaf02fcc"
+    "revision": "1486ae84fea7d9de1e11ccba0b4072bd"
   },
   {
     "url": "guide/create-dapp.html",
-    "revision": "e42084ee04271fe5f6b39697e6afc873"
+    "revision": "c42bb597aadcf4b726bd1fda98483ed5"
   },
   {
     "url": "guide/defining-your-icon.html",
-    "revision": "82b9ec7f5b6e601c1b7a79f1c36ee91b"
+    "revision": "0c6e90a90b6afc8c820040894ba09ee7"
   },
   {
     "url": "guide/ethereum-provider.html",
-    "revision": "277e4de660b2e51df13026e788152794"
+    "revision": "4a7acb5ca6bc3c9316cd2c62fe112674"
   },
   {
     "url": "guide/getting-started.html",
-    "revision": "38dc96c48c6fed992c79b61502aa88ff"
+    "revision": "0c0acc1f576520aaa72fd5580786bf77"
   },
   {
     "url": "guide/index.html",
-    "revision": "98c06f3c8da5937d1a81ab92481f9c15"
+    "revision": "0503dc93ad1678b7d7bc9f8a6a217efb"
   },
   {
     "url": "guide/initializing-dapps.html",
-    "revision": "f43a9aa10cfba737904c6ea1188ed229"
+    "revision": "71bfcd4b97eaf6d33090d3ff79675cfa"
   },
   {
     "url": "guide/metamask-extension-provider.html",
-    "revision": "8280774fe87c0fb60607288f19b06ece"
+    "revision": "1e1549b8aaba6f8f14c6348eda0c8695"
   },
   {
     "url": "guide/mobile-best-practices.html",
-    "revision": "70ab94c2138df4195cf1c36a14d49014"
+    "revision": "b8b17978fa4dbc70af74e67f64b73061"
   },
   {
     "url": "guide/mobile-getting-started.html",
-    "revision": "91fba8c147787123cbd3bf5aac5104cc"
+    "revision": "0651b2feff3504a61edf3b1ce0dedf14"
   },
   {
     "url": "guide/onboarding-library.html",
-    "revision": "bb9848a9636b38585b4352844c28bb27"
+    "revision": "c082bf0255ec8004b3c4d185920c44a1"
   },
   {
     "url": "guide/provider-migration.html",
-    "revision": "6bf3766798725d67710c66e77ac9ff33"
+    "revision": "667c169c80def00752e5735cfaef4350"
   },
   {
     "url": "guide/registering-function-names.html",
-    "revision": "47db507c66eea836729c86a44b3346af"
+    "revision": "18b6da926864fd8ceb0b48ff17cdd82f"
   },
   {
     "url": "guide/registering-your-token.html",
-    "revision": "3cf9a3dad82e16aa083e7b8c07c9b1dd"
+    "revision": "007eb32246c2a7ee363c145e5349b287"
   },
   {
     "url": "guide/rpc-api.html",
-    "revision": "2c1e29074d1a3d6b8b8cb6551d802143"
+    "revision": "2f61c3bc8c3f2585f2c193035b6878a6"
   },
   {
     "url": "guide/sending-transactions.html",
-    "revision": "4e4e7072f522cfa4f25fc883e5d027c0"
+    "revision": "e2aae4ffb1883e084a63cf430f973801"
   },
   {
     "url": "guide/signing-data.html",
-    "revision": "c3cd069935af63ea6e56ec203ec180c3"
+    "revision": "a7547ccb34c00edb897e78c2c4402124"
   },
   {
     "url": "guide/site-compatibility-checklist.html",
-    "revision": "03a27660e205f6fa2ac792b129526d73"
+    "revision": "f6f721d304c68cf5385d0416acd863da"
   },
   {
     "url": "metamask-fox.svg",
